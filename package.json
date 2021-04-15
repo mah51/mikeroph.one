@@ -1,9 +1,9 @@
 {
-  "name": "typescript-nextjs-starter",
-  "description": "A TypeScript starter for Next.js that includes all you need to build amazing projects",
+  "name": "personal-site",
+  "description": "A website to show off some of my projects",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <oi@joaopedro.cc> (joaopedro.cc)",
+  "author": "https://www.github.com/mah51",
   "license": "MIT",
   "keywords": [
     "nextjs",
@@ -26,9 +26,15 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "1.0.10",
+    "@chakra-ui/react": "1.5.1",
+    "@emotion/react": "11.1.5",
+    "@emotion/styled": "11.3.0",
+    "framer-motion": "4.1.4",
     "next": "10.1.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "4.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "12.1.1",
