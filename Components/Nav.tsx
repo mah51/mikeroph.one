@@ -45,7 +45,13 @@ function Nav() {
 
   const { toggleColorMode: toggleMode } = useColorMode();
   return (
-    <chakra.header width="full" position="absolute" top={0} left={0}>
+    <chakra.header
+      width="full"
+      position="absolute"
+      top={0}
+      left={0}
+      zIndex={10}
+    >
       <chakra.nav mx="auto" p={3}>
         <Flex
           margin="auto"
@@ -113,14 +119,14 @@ function Nav() {
                   position: `absolute`,
                   bottom: 1,
                   left: 0,
-                  bg: useColorModeValue(`brand.primary`, `gray.600`),
+                  bg: useColorModeValue(`brand.primary`, `brand.700`),
                   zIndex: -1,
                 }}
                 _hover={{
                   _after: {
                     width: `100%`,
                   },
-                  color: useColorModeValue(`gray.900`, `brand.primary`),
+                  color: useColorModeValue(`gray.800`, `white`),
                 }}
               >
                 {name}
@@ -145,14 +151,14 @@ function Nav() {
                     position: `absolute`,
                     bottom: 1,
                     left: 0,
-                    bg: useColorModeValue(`brand.primary`, `gray.600`),
+                    bg: useColorModeValue(`brand.primary`, `brand.900`),
                     zIndex: -1,
                   }}
                   _hover={{
                     _after: {
                       width: `100%`,
                     },
-                    color: useColorModeValue(`gray.900`, `brand.primary`),
+                    color: useColorModeValue(`gray.800`, `white`),
                   }}
                 >
                   Other
