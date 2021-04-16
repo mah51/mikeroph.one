@@ -17,6 +17,8 @@ import {
   MenuItem,
   useDisclosure,
   Icon,
+  VStack,
+  CloseButton,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { BiMoon, BiSun } from 'react-icons/bi';
@@ -78,7 +80,7 @@ function Nav() {
                 position: `absolute`,
                 bottom: 1,
                 left: 0,
-                bg: useColorModeValue(`brand.primary`, `gray.600`),
+                bg: useColorModeValue(`brand.200`, `gray.600`),
                 zIndex: -1,
               }}
               _hover={{
@@ -95,9 +97,51 @@ function Nav() {
           <Box display={{ md: `none` }}>
             <IconButton
               aria-label="toggle menu"
-              icon={<AiOutlineMenu size="1.5em" />}
+              icon={
+                mobileNav.isOpen ? (
+                  <CloseButton style={{ zIndex: 20 }} aria-label="Close menu" />
+                ) : (
+                  <AiOutlineMenu size="1.5em" />
+                )
+              }
               variant="ghost"
+              onClick={mobileNav.isOpen ? mobileNav.onClose : mobileNav.onOpen}
             />
+
+            <VStack
+              pos="absolute"
+              top={0}
+              left={0}
+              width="100vw"
+              height="100vh"
+              css={{
+                backdropFilter: `saturate(180%) blur(5px)`,
+                backgroundColor: useColorModeValue(
+                  `rgba(255, 255, 255, 0.8)`,
+                  `rgba(26, 32, 44, 0.8)`,
+                ),
+              }}
+              display={mobileNav.isOpen ? `flex` : `none`}
+              flexDirection="column"
+              spacing={3}
+              rounded="sm"
+              shadow="sm"
+            >
+              <Button as={ChakraLink} href="/" w="full" mt={16} variant="ghost">
+                Home
+              </Button>
+              {links.map((link, i) => (
+                <Button
+                  as={ChakraLink}
+                  href={link.link}
+                  w="full"
+                  mx={2}
+                  variant="ghost"
+                >
+                  {link.name}
+                </Button>
+              ))}
+            </VStack>
           </Box>
 
           <HStack spacing={8} display={{ base: `none`, md: `flex` }}>
@@ -119,7 +163,7 @@ function Nav() {
                   position: `absolute`,
                   bottom: 1,
                   left: 0,
-                  bg: useColorModeValue(`brand.primary`, `brand.700`),
+                  bg: useColorModeValue(`brand.200`, `brand.700`),
                   zIndex: -1,
                 }}
                 _hover={{
@@ -151,7 +195,7 @@ function Nav() {
                     position: `absolute`,
                     bottom: 1,
                     left: 0,
-                    bg: useColorModeValue(`brand.primary`, `brand.900`),
+                    bg: useColorModeValue(`brand.200`, `brand.900`),
                     zIndex: -1,
                   }}
                   _hover={{

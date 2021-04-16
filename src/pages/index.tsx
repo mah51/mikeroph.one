@@ -46,7 +46,7 @@ export default function Home() {
           key="title"
         />
       </Head>
-      <Box height="full" width="full">
+      <Box minH="full" width="full">
         <Flex
           position="relative"
           _after={{
@@ -152,7 +152,7 @@ export default function Home() {
                     position: `absolute`,
                     bottom: 1,
                     left: 0,
-                    bg: useColorModeValue(`brand.300`, `brand.900`),
+                    bg: useColorModeValue(`brand.200`, `brand.900`),
                     zIndex: -1,
                   }}
                 >
