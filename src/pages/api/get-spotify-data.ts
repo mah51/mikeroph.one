@@ -51,6 +51,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         .status(200)
         .json({ artists, songs, recentlyPlayed, currentlyPlaying });
     } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e);
       if (e.response.status === 429) {
         res
           .status(429)
