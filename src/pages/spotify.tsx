@@ -40,8 +40,8 @@ function Spotify({ data, error }: SpotifyProps) {
 export async function getServerSideProps() {
   try {
     const { data } = await axios.get(
-      process.env.VERCEL_ENV === `production`
-        ? `/api/get-spotify-data`
+      process.env.VERCEL
+        ? `${process.env.VERCEL_URL}/api/get-spotify-data`
         : `http://localhost:3000/api/get-spotify-data`,
     );
     return {
