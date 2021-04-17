@@ -41,7 +41,7 @@ export async function getServerSideProps() {
   try {
     const { data } = await axios.get(
       process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-spotify-data`
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-spotify-data`
         : `http://localhost:3000/api/get-spotify-data`,
     );
     return {

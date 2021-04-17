@@ -106,7 +106,7 @@ export default function Home() {
             }}
             p={{ base: 0, sm: 16 }}
             direction={{ base: `column`, lg: `row` }}
-            mt={{ base: 24, lg: 72, xl: 80 }}
+            mt="calc(50vh - 164px)"
             mx="auto"
           >
             <SkeletonCircle isLoaded={imageLoad} boxSize="200px" margin="auto">
