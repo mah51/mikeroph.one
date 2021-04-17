@@ -9,7 +9,7 @@ import {
   chakra,
   Icon,
 } from '@chakra-ui/react';
-import { FaGithub, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const SocialButton = ({
   children,
@@ -71,7 +71,10 @@ function Footer() {
             />
           </Icon>
           {` `}
-          NextJS,{` `}
+          <chakra.span display={{ base: `none`, md: `inline` }}>
+            NextJS,
+          </chakra.span>
+          {` `}
           <Icon
             color={useColorModeValue(`gray.800`, `white`)}
             viewBox="0 0 512 512"
@@ -87,7 +90,10 @@ function Footer() {
             />
           </Icon>
           {` `}
-          TypeScript, and{` `}
+          <chakra.span display={{ base: `none`, md: `inline` }}>
+            TypeScript, and
+          </chakra.span>
+          {` `}
           <Icon
             color={useColorModeValue(`gray.800`, `white`)}
             viewBox="0 0 256 256"
@@ -102,7 +108,9 @@ function Footer() {
             />
           </Icon>
           {` `}
-          Chakra-UI
+          <chakra.span display={{ base: `none`, md: `inline` }}>
+            Chakra-UI
+          </chakra.span>
         </Text>
         <Stack direction="row" spacing={6}>
           <SocialButton label="GitHub" href="https://github.com/mah51/">

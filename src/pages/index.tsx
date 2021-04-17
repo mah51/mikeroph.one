@@ -13,25 +13,27 @@ import React, { useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 import Head from 'next/head';
 
+const interests = [
+  `photography`,
+  `programming`,
+  `web development`,
+  `sailing`,
+  `biology`,
+  `immunology`,
+  `gaming`,
+].sort(() => 0.5 - Math.random());
+
 export default function Home() {
   const breakpoint = useBreakpointValue({ base: `base`, md: `md` });
-  const interests = [
-    `photography`,
-    `programming`,
-    `web development`,
-    `sailing`,
-    `biology`,
-    `immunology`,
-    `gaming`,
-  ];
+
   const [imageLoad, setImageLoad] = useState(false);
 
   const [index, setIndex] = React.useState(0);
 
   React.useEffect(() => {
     const intervalId = setInterval(
-      () => setIndex(Math.floor(Math.random() * interests.length)),
-      10000, // every 10 seconds the interest changes
+      () => setIndex((i) => i + 1),
+      7000, // every 10 seconds the interest changes
     );
     return () => clearTimeout(intervalId);
   }, []);
@@ -46,7 +48,7 @@ export default function Home() {
           key="title"
         />
       </Head>
-      <Box minH="full" width="full">
+      <Box minH="100vh" width="full">
         <Flex
           position="relative"
           _after={{
@@ -104,7 +106,7 @@ export default function Home() {
             }}
             p={{ base: 0, sm: 16 }}
             direction={{ base: `column`, lg: `row` }}
-            mt="72"
+            mt={{ base: 24, lg: 72, xl: 80 }}
             mx="auto"
           >
             <SkeletonCircle isLoaded={imageLoad} boxSize="200px" margin="auto">
@@ -120,7 +122,7 @@ export default function Home() {
             <Flex
               direction="column"
               pl={{ base: 0, lg: 10 }}
-              mt={{ base: 10, lg: 0 }}
+              my={{ base: 10, lg: 0 }}
             >
               <Heading
                 fontSize={{ base: `4xl`, md: `4xl`, lg: `6xl` }}
@@ -133,7 +135,7 @@ export default function Home() {
                 fontSize="xl"
                 mt={7}
               >
-                Hi, I am Michael! A uni student studying BioChemistry in the UK.
+                Hi, I'm Michael! A uni student studying BioChemistry in the UK.
                 <br />
                 Some of my interests include: {` `}
                 <chakra.span
@@ -160,7 +162,7 @@ export default function Home() {
                     springConfig={presets.wobbly}
                     inline
                     className="transition"
-                    text={interests[index]}
+                    text={interests[index % interests.length]}
                   />
                 </chakra.span>
               </chakra.p>
