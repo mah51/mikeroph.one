@@ -47,6 +47,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           headers: { Authorization: `Bearer ${access_token}` },
         },
       );
+      res.setHeader(
+        `Cache-Control`,
+        `public, s-maxage=60, stale-while-revalidate=30`,
+      );
       res
         .status(200)
         .json({ artists, songs, recentlyPlayed, currentlyPlaying });

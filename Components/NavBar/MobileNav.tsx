@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   CloseButton,
-  Flex,
   IconButton,
   useColorModeValue,
   useDisclosure,
@@ -51,10 +50,11 @@ function MobileNav({ links }: any) {
         <Button as={ChakraLink} href="/" w="full" mt={16} variant="ghost">
           Home
         </Button>
-        {links.map((link: any) => {
+        {links.map((link: any, index: number) => {
           if (link.type === `dropdown`) {
-            return link.links.map((item: any) => (
+            return link.links.map((item: any, i: number) => (
               <Button
+                key={i.toString()}
                 as={ChakraLink}
                 href={item.link}
                 w="full"
@@ -67,6 +67,7 @@ function MobileNav({ links }: any) {
           }
           return (
             <Button
+              key={index.toString()}
               as={ChakraLink}
               href={link.link}
               w="full"

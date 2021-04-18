@@ -1,10 +1,5 @@
 import React from 'react';
 import {
-  Box,
-  Button,
-  chakra,
-  CloseButton,
-  Flex,
   HStack,
   Icon,
   IconButton,
@@ -14,11 +9,10 @@ import {
   MenuList,
   useColorMode,
   useColorModeValue,
-  VStack,
   Link as ChakraLink,
 } from '@chakra-ui/react';
 import { BiMoon, BiSun } from 'react-icons/bi';
-import { AiOutlineMenu } from 'react-icons/ai';
+import Link from 'next/link';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 function DesktopNav({ links }: any) {
@@ -27,45 +21,46 @@ function DesktopNav({ links }: any) {
   const { toggleColorMode: toggleMode } = useColorMode();
   return (
     <HStack spacing={8} display={{ base: `none`, md: `flex` }}>
-      {links.map((linkItem: any) => {
+      {links.map((linkItem: any, index: number) => {
         if (linkItem.type !== `dropdown`) {
           return (
-            <ChakraLink
-              href={linkItem.link}
-              key={linkItem.name}
-              fontSize="lg"
-              fontWeight="semibold"
-              position="relative"
-              textTransform="capitalize"
-              _after={{
-                transition: `all 0.25s ease-in-out`,
-                content: `''`,
-                /* Fixes anti-aliasing issue in chrome that leaves one pixel' */
-                outline: `1px solid transparent`,
-                width: `0%`,
-                height: `30%`,
-                position: `absolute`,
-                bottom: 1,
-                left: 0,
-                bg: useColorModeValue(`brand.200`, `brand.700`),
-                zIndex: -1,
-              }}
-              _hover={{
-                _after: {
-                  width: `100%`,
-                },
-                color: useColorModeValue(`gray.800`, `white`),
-              }}
-            >
-              {linkItem.name}
-            </ChakraLink>
+            <Link href={linkItem.link} key={index.toString()}>
+              <ChakraLink
+                key={index.toString()}
+                fontSize="lg"
+                fontWeight="semibold"
+                position="relative"
+                textTransform="capitalize"
+                _after={{
+                  transition: `all 0.25s ease-in-out`,
+                  content: `''`,
+                  /* Fixes anti-aliasing issue in chrome that leaves one pixel' */
+                  outline: `1px solid transparent`,
+                  width: `0%`,
+                  height: `30%`,
+                  position: `absolute`,
+                  bottom: 1,
+                  left: 0,
+                  bg: useColorModeValue(`brand.200`, `brand.700`),
+                  zIndex: -1,
+                }}
+                _hover={{
+                  _after: {
+                    width: `100%`,
+                  },
+                  color: useColorModeValue(`gray.800`, `white`),
+                }}
+              >
+                {linkItem.name}
+              </ChakraLink>
+            </Link>
           );
         }
         if (linkItem.type === `dropdown`) {
           return (
-            <Menu>
+            <Menu key={index.toString()}>
               <MenuButton
-                colorScheme="brand"
+                key={index.toString()}
                 color={useColorModeValue(`gray.800`, `white`)}
                 fontSize="lg"
                 fontWeight="semibold"
@@ -95,8 +90,8 @@ function DesktopNav({ links }: any) {
                 <Icon as={ChevronDownIcon} />
               </MenuButton>
               <MenuList>
-                {linkItem.links.map((item: any) => (
-                  <MenuItem as="a" href={item.link} key={item.name}>
+                {linkItem.links.map((item: any, i: number) => (
+                  <MenuItem as="a" href={item.link} key={i.toString()}>
                     {item.name}
                   </MenuItem>
                 ))}

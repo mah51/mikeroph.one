@@ -77,6 +77,7 @@ function Spotify({ data, error }: SpotifyProps) {
         columns={{ base: 1, lg: 2 }}
         height="full"
         width="full"
+        maxWidth="full"
         spacingY={10}
         spacingX={5}
         pt={20}

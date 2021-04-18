@@ -20,12 +20,12 @@ interface SongCardProps {
 
 export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
   const [imageLoad, setImageLoad] = useState(false);
-  console.log(song);
   return (
     <SimpleGrid
       my={5}
       p={5}
       width="full"
+      maxWidth="full"
       templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
       border="1px solid"
       borderColor={useColorModeValue(`gray.100`, `gray.700`)}
@@ -51,30 +51,31 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
         />
       </SkeletonCircle>
 
-      <Flex direction="column" ml={5}>
+      <Flex direction="column" ml={5} maxWidth="full" isTruncated>
         <Text
+          isTruncated
+          maxWidth="full"
           fontSize={
             titleCard ? { base: `2xl`, md: `3xl` } : { base: `xl`, md: `2xl` }
           }
           fontWeight="semibold"
         >
-          {`${
-            song.name.length > 25 ? `${song.name.slice(0, 25)}...` : song.name
-          }${titleCard && !isPlaying ? ` - Paused` : ``}`}
+          {`${song.name}${titleCard && !isPlaying ? ` - Paused` : ``}`}
         </Text>
         <Flex
           direction="column"
           color={useColorModeValue(`gray.600`, `gray.400`)}
           mt={2}
+          isTruncated
+          width="full"
           fontSize={{ base: `sm`, sm: `md` }}
         >
-          <Text>
-            Album •{` `}
-            {song.album.name.length > 30
-              ? `${song.album.name.slice(0, 30)}...`
-              : song.album.name}
+          <Text isTruncated maxWidth="full">
+            Album • {song.album.name}
           </Text>
-          <Text display="inline">Artist • {song.artists[0].name}</Text>
+          <Text isTruncated maxWidth="full">
+            Artist • {song.artists[0].name}
+          </Text>
         </Flex>
       </Flex>
     </SimpleGrid>
