@@ -12,6 +12,7 @@ import { SongCard, ArtistCard } from './MusicCards';
 export const TopSongs = ({ songs }: any) => (
   <Flex direction="column" maxW="xl" width="full" mx="auto">
     <Heading alignSelf="center">Top Songs</Heading>
+    {console.log(songs)}
     {songs.map((song: any) => (
       <SongCard song={song} key={song.id} />
     ))}
@@ -65,6 +66,10 @@ export const CurrentlyPlaying = ({
 }: CurrentlyPlayingProps) => (
   <Flex direction="column" alignItems="center" maxW="xl" width="full" mx="auto">
     <Heading mb="4">Currently playing</Heading>
-    <SongCard song={song} titleCard isPlaying={isPlaying} />
+    {song?.name ? (
+      <SongCard song={song} titleCard isPlaying={isPlaying} />
+    ) : (
+      <Text>Nothing playing</Text>
+    )}
   </Flex>
 );

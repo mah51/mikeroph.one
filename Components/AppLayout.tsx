@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Nav from './Nav';
-import Footer from './Footer';
+import Nav from './NavBar/Nav';
+import Footer from './Footer/Footer';
 import { initGA, logPageView } from '../utils/analytics';
 
 interface AppLayoutProps {

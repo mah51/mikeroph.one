@@ -7,8 +7,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import MobileNav from './NavBar/MobileNav';
-import DesktopNav from './NavBar/DesktopNav';
+import MobileNav from './MobileNav';
+import DesktopNav from './DesktopNav';
 
 const links = [
   {

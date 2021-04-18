@@ -20,6 +20,7 @@ interface SongCardProps {
 
 export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
   const [imageLoad, setImageLoad] = useState(false);
+  console.log(song);
   return (
     <SimpleGrid
       my={5}

@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/global.css';
 import { DefaultSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-import { Head } from 'next/document';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import AppLayout from '../../Components/AppLayout';
 import theme from '../../theme';
 
@@ -11,9 +11,10 @@ const meta = {
   title: `Michael Hall`,
   description: `My personal website, where I test stuff and show off my projects`,
 };
-
+const queryClient = new QueryClient();
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
   return (
     <>
       <ChakraProvider theme={theme}>
@@ -34,9 +35,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             description: meta.description,
           }}
         />
-        <AppLayout>
-          <Component {...pageProps} />
-        </AppLayout>
+        <QueryClientProvider client={queryClient}>
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </QueryClientProvider>
       </ChakraProvider>
     </>
   );

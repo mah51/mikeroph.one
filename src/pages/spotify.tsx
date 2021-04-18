@@ -1,9 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import {
   Box,
   Heading,
-  List,
   SimpleGrid,
   Text,
   useBreakpointValue,
@@ -52,7 +50,6 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
 };
 
 function Spotify({ data, error }: SpotifyProps) {
-  console.log(data);
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
@@ -100,11 +97,12 @@ function Spotify({ data, error }: SpotifyProps) {
 
 export async function getServerSideProps() {
   try {
-    const { data } = await axios.get(
+    const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_ENV
         ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-spotify-data`
         : `http://localhost:3000/api/get-spotify-data`,
     );
+    const data = await response.json();
     return {
       props: {
         data,
@@ -114,7 +112,6 @@ export async function getServerSideProps() {
     return {
       props: {
         error: true,
-        data: JSON.stringify(e),
       },
     };
   }
