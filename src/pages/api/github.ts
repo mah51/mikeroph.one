@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const user = await userResponse.json();
   const repositories = await userReposResponse.json();
 
-  const notForked = repositories.filter((repo) => !repo.fork);
+  const notForked = repositories.filter((repo: any) => !repo.fork);
   const stars = notForked.reduce(
     (a: number, r: { stargazers_count: number }) => a + r.stargazers_count,
     0,
