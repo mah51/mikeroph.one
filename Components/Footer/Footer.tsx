@@ -70,11 +70,7 @@ function Footer() {
             >
               {` – `}
             </chakra.span>
-            <chakra.p
-              color={useColorModeValue(`gray.500`, `gray.300`)}
-              isTruncated
-              maxW="full"
-            >
+            <chakra.p color="gray.500" isTruncated maxW="full">
               {currentlyPlaying?.artist ?? `Spotify`}
             </chakra.p>
           </Flex>
