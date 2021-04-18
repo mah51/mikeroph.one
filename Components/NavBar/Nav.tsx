@@ -48,10 +48,12 @@ function Nav() {
   return (
     <chakra.header
       width="full"
-      position="absolute"
+      position="fixed"
       top={0}
       left={0}
       zIndex={10}
+      bg={useColorModeValue(`rgba(255, 255, 255, 0.8)`, `gray.800`)}
+      sx={{ backdropFilter: `saturate(180%) blur(5px)` }}
     >
       <chakra.nav mx="auto" p={3}>
         <Flex
