@@ -12,17 +12,22 @@ import DesktopNav from './NavBar/DesktopNav';
 
 const links = [
   {
-    name: `About me`,
-    link: `/about`,
+    name: `Blog`,
+    link: `/blog`,
   },
   {
     name: `Projects`,
     link: `/projects`,
   },
   {
-    name: `Resume`,
-    link: `/resume`,
+    name: `stats`,
+    link: `/stats`,
   },
+  {
+    name: `About`,
+    link: `/about`,
+  },
+
   {
     type: `dropdown`,
     name: `Other`,

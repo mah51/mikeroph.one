@@ -90,7 +90,7 @@ export default function Home() {
             _before={{
               content: `""`,
               background: `url(helix.png)`,
-              top: breakpoint === `base` ? `70vh` : `55vh`,
+              top: breakpoint === `base` ? `75vh` : `60vh`,
               right: `30vw`,
               minWidth: `300px`,
               minHeight: `300px`,
@@ -106,13 +106,13 @@ export default function Home() {
             }}
             p={{ base: 0, sm: 16 }}
             direction={{ base: `column`, lg: `row` }}
-            mt="calc(50vh - 164px)"
+            mt="calc(50vh - 189px)"
             mx="auto"
           >
-            <SkeletonCircle isLoaded={imageLoad} boxSize="200px" margin="auto">
+            <SkeletonCircle isLoaded={imageLoad} boxSize="250px" margin="auto">
               <Image
                 borderRadius="full"
-                boxSize="200px"
+                boxSize="250px"
                 src="profile.jpeg"
                 objectFit="cover"
                 alt="Michael Hall"
@@ -120,6 +120,7 @@ export default function Home() {
               />
             </SkeletonCircle>
             <Flex
+              alignSelf="center"
               direction="column"
               pl={{ base: 0, lg: 10 }}
               my={{ base: 10, lg: 0 }}
@@ -128,14 +129,15 @@ export default function Home() {
                 fontSize={{ base: `4xl`, md: `4xl`, lg: `6xl` }}
                 textAlign={{ base: `center`, lg: `left` }}
               >
-                Welcome to my website!
+                Hi, I'm Michael!
               </Heading>
               <chakra.p
                 textAlign={{ base: `center`, lg: `left` }}
                 fontSize="xl"
                 mt={7}
               >
-                Hi, I'm Michael! A uni student studying BioChemistry in the UK.
+                Welcome to my website! I'm a uni student studying biochemistry
+                in the UK.
                 <br />
                 Some of my interests include: {` `}
                 <chakra.span
