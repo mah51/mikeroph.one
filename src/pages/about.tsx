@@ -1,8 +1,8 @@
 import React from 'react';
 import WIP from '../../Components/WIP';
 
-function Bookmarks() {
+function About() {
   return <WIP />;
 }
 
-export default Bookmarks;
+export default About;
