@@ -1,4 +1,11 @@
-import { Flex, Heading, Image } from '@chakra-ui/react';
+import {
+  Flex,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import React from 'react';
 import { SongCard, ArtistCard } from './MusicCards';
 
@@ -13,17 +20,33 @@ export const TopSongs = ({ songs }: any) => (
 
 export const TopArtists = ({ artists }: any) => (
   <Flex direction="column" maxW="xl" width="full" mx="auto">
-    <Heading alignSelf="center">Top Artists</Heading>
-    <Flex>
+    <Heading alignSelf="center" mb="4">
+      Top Artists
+    </Heading>
+    <SimpleGrid
+      columns={{ sm: 1, md: 3 }}
+      spacing={5}
+      my={5}
+      p={5}
+      width="full"
+      height="full"
+      border="1px solid"
+      borderColor={useColorModeValue(`gray.100`, `gray.700`)}
+      boxShadow="lg"
+      transition="all 0.25s"
+      borderRadius="xl"
+      transition-timing-function="spring(1 100 10 10)"
+      _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
+    >
       {artists.map((artist: any) => (
         <ArtistCard artist={artist} key={artist.id} />
       ))}
-    </Flex>
+    </SimpleGrid>
   </Flex>
 );
 
 export const RecentSongs = ({ songs }: any) => (
-  <Flex direction="column" width="full" mx="auto">
+  <Flex direction="column" width="full" maxW="xl" mx="auto">
     <Heading alignSelf="center">Recently Played Songs</Heading>
     {songs.map((song: any) => (
       <SongCard song={song.track} key={song.track.id} />
@@ -39,53 +62,9 @@ interface CurrentlyPlayingProps {
 export const CurrentlyPlaying = ({
   song,
   isPlaying,
-}: CurrentlyPlayingProps) => {
-  if (!song) {
-    return (
-      <Flex
-        direction="column"
-        alignItems="center"
-        maxW="xl"
-        width="full"
-        mx="auto"
-      >
-        <Heading>I'm not listening to music</Heading>
-        <Flex>
-          <Image
-            boxSize="150px"
-            src={
-              song.album.images
-                .filter((image: any) => image.height >= 150)
-                .slice(-1)[0].url
-            }
-          />
-          {song.name}
-        </Flex>
-      </Flex>
-    );
-  }
-  return (
-    <Flex
-      direction="column"
-      alignItems="center"
-      maxW="xl"
-      width="full"
-      mx="auto"
-    >
-      <Heading mb="4">Currently playing</Heading>
-      <Flex>
-        <Image
-          mr={4}
-          boxSize="150px"
-          src={
-            song.album.images
-              .filter((image: any) => image.height >= 150)
-              .slice(-1)[0].url
-          }
-        />
-        {song.name}
-        {isPlaying ? `` : `paused`}
-      </Flex>
-    </Flex>
-  );
-};
+}: CurrentlyPlayingProps) => (
+  <Flex direction="column" alignItems="center" maxW="xl" width="full" mx="auto">
+    <Heading mb="4">Currently playing</Heading>
+    <SongCard song={song} titleCard isPlaying={isPlaying} />
+  </Flex>
+);

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Box, Flex, SimpleGrid } from '@chakra-ui/react';
+import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { Fade } from 'react-awesome-reveal';
 import {
   RecentSongs,
   TopArtists,
@@ -14,24 +15,47 @@ interface SpotifyProps {
 }
 
 function Spotify({ data, error }: SpotifyProps) {
+  console.log(data);
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
   return (
-    <Box width="full" maxW={{ base: `full`, lg: `7xl`, xl: `8xl` }} mx="auto">
+    <Box
+      width="full"
+      maxW={{ base: `full`, lg: `7xl`, xl: `8xl` }}
+      px={{ base: 2, md: 5 }}
+      pb={{ base: 16, md: 28 }}
+      mx="auto"
+    >
+      <Fade direction="up" triggerOnce cascade>
+        <Heading
+          pt="28"
+          fontSize={{ base: `3xl`, sm: `4xl`, md: `5xl`, lg: `6xl` }}
+          textAlign="center"
+        >
+          Here's what I'm listening to at the moment
+        </Heading>
+        <Text textAlign="center" pt="5">
+          *Top Songs and Artists over the past 6 months
+        </Text>
+      </Fade>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         height="full"
         width="full"
+        spacingY={10}
+        spacingX={5}
         pt={20}
       >
-        <TopArtists artists={data.artists.items} />
-        <CurrentlyPlaying
-          song={data.currentlyPlaying?.item}
-          isPlaying={data.currentlyPlaying?.context?.is_playing}
-        />
-        <TopSongs songs={data.songs.items} />
-        <RecentSongs songs={data.recentlyPlayed.items} />
+        <Fade cascade delay={1000} triggerOnce>
+          <TopArtists artists={data.artists.items} />
+          <CurrentlyPlaying
+            song={data.currentlyPlaying?.item}
+            isPlaying={data.currentlyPlaying?.is_playing}
+          />
+          <TopSongs songs={data.songs.items} />
+          <RecentSongs songs={data.recentlyPlayed.items} />
+        </Fade>
       </SimpleGrid>
     </Box>
   );
