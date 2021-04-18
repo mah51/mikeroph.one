@@ -1,21 +1,39 @@
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/global.css';
-import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
+import { useRouter } from 'next/router';
+import { Head } from 'next/document';
 import AppLayout from '../../Components/AppLayout';
 import theme from '../../theme';
 
+const meta = {
+  title: `Michael Hall`,
+  description: `My personal website, where I test stuff and show off my projects`,
+};
+
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   return (
     <>
       <ChakraProvider theme={theme}>
-        <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
-
+        <DefaultSeo
+          additionalMetaTags={[
+            {
+              name: `viewport`,
+              content: `width=device-width, initial-scale=1`,
+            },
+          ]}
+          defaultTitle={meta.title}
+          titleTemplate="%s | Michael Hall"
+          description={meta.description}
+          canonical={router.pathname}
+          openGraph={{
+            url: `${process.env.VERCEL_URL}${router.pathname}`,
+            title: meta.title,
+            description: meta.description,
+          }}
+        />
         <AppLayout>
           <Component {...pageProps} />
         </AppLayout>

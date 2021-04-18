@@ -58,7 +58,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
           fontWeight="semibold"
         >
           {`${
-            song.name.length > 30 ? `${song.name.slice(0, 30)}...` : song.name
+            song.name.length > 25 ? `${song.name.slice(0, 25)}...` : song.name
           }${titleCard && !isPlaying ? ` - Paused` : ``}`}
         </Text>
         <Flex
@@ -70,7 +70,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
           <Text>
             Album •{` `}
             {song.album.name.length > 30
-              ? `${song.album.name.slice(0, 25)}...`
+              ? `${song.album.name.slice(0, 30)}...`
               : song.album.name}
           </Text>
           <Text display="inline">Artist • {song.artists[0].name}</Text>
@@ -84,16 +84,29 @@ export const ArtistCard = ({ artist }: any) => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
     <Box position="relative">
-      <Image
-        borderRadius="full"
-        filter="brightness(25%)"
+      <SkeletonCircle
+        maxWidth="150px"
+        maxHeight="150px"
+        boxSize="full"
         mx="auto"
-        boxSize="150px"
-        src={
-          artist.images.filter((image: any) => image.height >= 150).slice(-1)[0]
-            .url
-        }
-      />
+        isLoaded={imageLoad}
+      >
+        <Image
+          borderRadius="full"
+          filter="brightness(25%)"
+          mx="auto"
+          maxWidth="150px"
+          maxHeight="150px"
+          boxSize="full"
+          onLoad={() => setImageLoad(true)}
+          src={
+            artist.images
+              .filter((image: any) => image.height >= 150)
+              .slice(-1)[0].url
+          }
+        />
+      </SkeletonCircle>
+
       <Text
         position="absolute"
         top="50%"
@@ -104,42 +117,11 @@ export const ArtistCard = ({ artist }: any) => {
         display="inline"
         maxWidth="150px"
         width="full"
+        color="white"
         textAlign="center"
       >
         {artist.name}
       </Text>
     </Box>
-
-    // <chakra.div
-    //   borderRadius="full"
-    //   onLoad={() => setImageLoad(true)}
-    //   backgroundImage={`linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(${
-    //     artist.images.filter((image: any) => image.height >= 150).slice(-1)[0]
-    //       .url
-    //   })`}
-    //   backgroundSize="cover"
-    //   backgroundRepeat="no-repeat"
-    //   backgroundPosition="center"
-    //   maxWidth="150px"
-    //   maxHeight="150px"
-    //   width="full"
-    //   height="full"
-    //   mx="auto"
-    //   display="flex"
-    //   justifyContent="center"
-    //   alignContent="center"
-    //   textAlign="center"
-    //   backgroundBlendMode="darken"
-    // >
-    //   <Text
-    //     alignSelf="center"
-    //     fontWeight="semibold"
-    //     fontSize="lg"
-    //     display="inline"
-    //     textAlign="center"
-    //   >
-    //     {artist.name}
-    //   </Text>
-    // </chakra.div>
   );
 };

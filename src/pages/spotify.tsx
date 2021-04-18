@@ -1,6 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  List,
+  SimpleGrid,
+  Text,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal';
 import {
   RecentSongs,
@@ -13,6 +20,36 @@ interface SpotifyProps {
   data: any;
   error?: any;
 }
+
+interface ListFadeProps {
+  children: React.ReactNode;
+}
+const ListFade = ({ children }: ListFadeProps): any => {
+  const bp = useBreakpointValue({ base: false, md: true });
+  if (!bp) {
+    return children;
+  }
+  return (
+    <Fade cascade delay={1000} triggerOnce>
+      {children}
+    </Fade>
+  );
+};
+
+interface HeadingFadeProps {
+  children: React.ReactNode;
+}
+const HeadingFade = ({ children }: HeadingFadeProps): any => {
+  const bp = useBreakpointValue({ base: false, md: true });
+  if (!bp) {
+    return children;
+  }
+  return (
+    <Fade direction="up" triggerOnce cascade>
+      {children}
+    </Fade>
+  );
+};
 
 function Spotify({ data, error }: SpotifyProps) {
   console.log(data);
@@ -27,18 +64,18 @@ function Spotify({ data, error }: SpotifyProps) {
       pb={{ base: 16, md: 28 }}
       mx="auto"
     >
-      <Fade direction="up" triggerOnce cascade>
+      <HeadingFade>
         <Heading
           pt="28"
           fontSize={{ base: `3xl`, sm: `4xl`, md: `5xl`, lg: `6xl` }}
           textAlign="center"
         >
-          Here's what I'm listening to at the moment
+          Here&apos;s what I&apos;m listening to at the moment
         </Heading>
         <Text textAlign="center" pt="5">
           *Top Songs and Artists over the past 6 months
         </Text>
-      </Fade>
+      </HeadingFade>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         height="full"
@@ -47,7 +84,7 @@ function Spotify({ data, error }: SpotifyProps) {
         spacingX={5}
         pt={20}
       >
-        <Fade cascade delay={1000} triggerOnce>
+        <ListFade>
           <TopArtists artists={data.artists.items} />
           <CurrentlyPlaying
             song={data.currentlyPlaying?.item}
@@ -55,7 +92,7 @@ function Spotify({ data, error }: SpotifyProps) {
           />
           <TopSongs songs={data.songs.items} />
           <RecentSongs songs={data.recentlyPlayed.items} />
-        </Fade>
+        </ListFade>
       </SimpleGrid>
     </Box>
   );
