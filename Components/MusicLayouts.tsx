@@ -1,31 +1,7 @@
-import {
-  Flex,
-  Heading,
-  SimpleGrid,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Flex, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
+import LineHeading from './LineHeading';
 import { SongCard, ArtistCard } from './MusicCards';
-
-const LineHeading = ({ children, ...props }: any) => (
-  <Heading
-    position="relative"
-    _before={{
-      content: `''`,
-      position: `absolute`,
-      bottom: 1,
-      left: 0,
-      height: `30%`,
-      width: `100%`,
-      bgColor: `brand.500`,
-      zIndex: -1,
-    }}
-    {...props}
-  >
-    {children}
-  </Heading>
-);
 
 export const TopSongs = ({ songs }: any) => (
   <Flex

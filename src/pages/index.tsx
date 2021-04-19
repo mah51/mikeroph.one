@@ -7,11 +7,9 @@ import {
   chakra,
   useColorModeValue,
   useBreakpointValue,
-  MenuButton,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
-import Head from 'next/head';
 
 const interests = [
   `photography`,
@@ -97,7 +95,7 @@ export default function Home() {
           }}
           p={{ base: 0, sm: 16 }}
           direction={{ base: `column`, lg: `row` }}
-          mt="calc(50vh - 250px)"
+          mt="calc(50vh - 200px)"
           mx="auto"
         >
           <SkeletonCircle isLoaded={imageLoad} boxSize="250px" margin="auto">
@@ -117,19 +115,24 @@ export default function Home() {
             my={{ base: 10, lg: 0 }}
           >
             <Heading
-              fontSize={{ base: `4xl`, md: `4xl`, lg: `6xl` }}
+              bgGradient={`linear(to-r, ${useColorModeValue(
+                `brand.600`,
+                `brand.400`,
+              )}, ${useColorModeValue(`blue.600`, `blue.300`)})`}
+              bgClip="text"
+              fontSize={{ base: `4xl`, md: `5xl`, lg: `7xl` }}
               textAlign={{ base: `center`, lg: `left` }}
             >
-              Hi, I'm Michael!
+              Hi, I&apos;m Michael!
             </Heading>
             <chakra.p
               maxW="650px"
               textAlign={{ base: `center`, lg: `left` }}
               fontSize="xl"
-              mt={7}
+              mt={2}
             >
               Welcome to my website! The purpose of this site is for me to test
-              things out & maybe show some things off. I'm a uni student
+              things out & maybe show some things off. I&apos;m a uni student
               studying biochemistry in the UK.
               <br />
               Some of my interests include: {` `}
