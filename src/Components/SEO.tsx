@@ -1,9 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 function SEO({ children, ...customMeta }: any) {
-  const router = useRouter();
   const meta = {
     title: `Michael Hall`,
     description: `My personal website, where I test stuff and show off my projects`,
@@ -19,14 +17,6 @@ function SEO({ children, ...customMeta }: any) {
         <meta name="robots" content="follow, index" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta content={meta.description} name="description" />
-        <meta
-          property="og:url"
-          content={`${process.env.VERCEL_URL}${router.asPath}`}
-        />
-        <link
-          rel="canonical"
-          href={`${process.env.VERCEL_URL}${router.asPath}`}
-        />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Michael Hall" />
         <meta property="og:description" content={meta.description} />
