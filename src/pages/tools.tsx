@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
-import ToolCard from '../../Components/ToolCard';
+import ToolCard from '../Components/ToolCard';
 import tools, { ToolType } from '../../data/tools';
 
 function Tools() {

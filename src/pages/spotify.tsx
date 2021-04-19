@@ -15,7 +15,7 @@ import {
   TopArtists,
   TopSongs,
   CurrentlyPlaying,
-} from '../../Components/MusicLayouts';
+} from '../Components/MusicLayouts';
 
 interface SpotifyProps {
   data: any;
@@ -103,7 +103,7 @@ function Spotify({ data, error, currentlyPlaying }: SpotifyProps) {
         width="full"
         maxWidth="full"
         spacingY={10}
-        spacingX={5}
+        spacingX={10}
         pt={16}
       >
         <ListFade>

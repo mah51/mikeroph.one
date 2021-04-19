@@ -9,7 +9,7 @@ import {
   LinkOverlay,
 } from '@chakra-ui/react';
 import { formatDistance } from 'date-fns';
-import { ToolType } from '../data/tools';
+import { ToolType } from '../../data/tools';
 
 function ToolCard({ image, title, labels, date, link }: ToolType) {
   return (
