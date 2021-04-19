@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Container,
   Stack,
   Text,
   useColorModeValue,
@@ -10,6 +9,7 @@ import {
   Icon,
   Tooltip,
   Flex,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { useQuery } from 'react-query';
@@ -25,16 +25,22 @@ function Footer() {
       bg={useColorModeValue(`gray.50`, `gray.900`)}
       color={useColorModeValue(`gray.700`, `gray.200`)}
     >
-      <Container
-        as={Stack}
+      <SimpleGrid
+        columns={3}
+        gridTemplate="1fr 1fr 1fr"
+        mx="auto"
         maxW="6xl"
         py={4}
         direction={{ base: `column`, md: `row` }}
         spacing={4}
         justify={{ base: `center`, md: `space-between` }}
-        align={{ base: `center`, md: `center` }}
+        align="center"
       >
-        <Flex direction={{ base: `row-reverse`, md: `row` }} maxW="30%">
+        <Flex
+          direction={{ base: `row-reverse`, md: `row` }}
+          maxW="full"
+          mx="auto"
+        >
           <Icon ml="auto" mt={1} h={4} w={4} viewBox="0 0 168 168">
             <path
               fill="#1ED760"
@@ -53,7 +59,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {currentlyPlaying.title}
+                {currentlyPlaying.name}
               </chakra.a>
             ) : (
               <chakra.p
@@ -75,7 +81,7 @@ function Footer() {
             </chakra.p>
           </Flex>
         </Flex>
-        <Text display="flex">
+        <Text display="flex" alignSelf="center" mx="auto">
           Built with:
           <Tooltip label="NextJS">
             <ChakraLink href="https://nextjs.org/" display="flex">
@@ -131,7 +137,7 @@ function Footer() {
             </ChakraLink>
           </Tooltip>
         </Text>
-        <Stack direction="row" spacing={6}>
+        <Stack direction="row" spacing={6} mx="auto">
           <SocialIcons label="GitHub" href="https://github.com/mah51/">
             <FaGithub />
           </SocialIcons>
@@ -149,7 +155,7 @@ function Footer() {
             <FaInstagram />
           </SocialIcons>
         </Stack>
-      </Container>
+      </SimpleGrid>
     </Box>
   );
 }

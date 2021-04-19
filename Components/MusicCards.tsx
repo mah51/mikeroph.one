@@ -1,11 +1,8 @@
 import {
   Box,
-  chakra,
   Flex,
-  Heading,
   Image,
   SimpleGrid,
-  Skeleton,
   SkeletonCircle,
   Text,
   useColorModeValue,
@@ -24,8 +21,9 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
     <SimpleGrid
       my={5}
       p={5}
+      overflow="visible"
       width="full"
-      maxWidth="full"
+      maxWidth="2xl"
       templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
       border="1px solid"
       borderColor={useColorModeValue(`gray.100`, `gray.700`)}
@@ -44,8 +42,9 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
           boxSize={titleCard ? `150px` : `110px`}
           onLoad={() => setImageLoad(true)}
           src={
+            song.albumImageUrl ||
             song.album.images
-              .filter((image: any) => image.height > 100)
+              .filter((image: any) => image.height > 109)
               .slice(-1)[0].url
           }
         />
@@ -71,10 +70,12 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
           fontSize={{ base: `sm`, sm: `md` }}
         >
           <Text isTruncated maxWidth="full">
-            Album • {song.album.name}
+            Album • {song.album.name || song.album}
           </Text>
           <Text isTruncated maxWidth="full">
-            Artist • {song.artists[0].name}
+            Artist{song.artists?.length > 1 && `s`} •{` `}
+            {song.artist ||
+              song.artists?.map((artist: any) => artist.name).join(`, `)}
           </Text>
         </Flex>
       </Flex>
@@ -85,7 +86,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
 export const ArtistCard = ({ artist }: any) => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
-    <Box position="relative">
+    <Box position="relative" maxHeight="150px">
       <SkeletonCircle
         maxWidth="150px"
         maxHeight="150px"
@@ -121,6 +122,7 @@ export const ArtistCard = ({ artist }: any) => {
         width="full"
         color="white"
         textAlign="center"
+        zIndex={100}
       >
         {artist.name}
       </Text>

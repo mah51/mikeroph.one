@@ -13,12 +13,14 @@ export default async function handler(
 
   const song = await response.json();
   const isPlaying = song.is_playing;
-  const title = song.item.name;
+  const { name } = song.item;
   const artist = song.item.artists
     .map((_artist: any) => _artist.name)
     .join(`, `);
   const album = song.item.album.name;
-  const albumImageUrl = song.item.album.images[0].url;
+  const albumImageUrl = song.item.album.images
+    .filter((image: any) => image.height > 109)
+    .slice(-1)[0].url;
   const songUrl = song.item.external_urls.spotify;
 
   res.setHeader(
@@ -32,6 +34,6 @@ export default async function handler(
     artist,
     isPlaying,
     songUrl,
-    title,
+    name,
   });
 }

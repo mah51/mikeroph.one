@@ -4,7 +4,6 @@ import {
   Heading,
   SimpleGrid,
   Text,
-  Link,
   useBreakpointValue,
   Button,
   Icon,
@@ -20,6 +19,7 @@ import {
 
 interface SpotifyProps {
   data: any;
+  currentlyPlaying: any;
   error?: any;
 }
 
@@ -53,7 +53,7 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
   );
 };
 
-function Spotify({ data, error }: SpotifyProps) {
+function Spotify({ data, error, currentlyPlaying }: SpotifyProps) {
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
@@ -93,7 +93,7 @@ function Spotify({ data, error }: SpotifyProps) {
               </Icon>
             }
           >
-            Follow me
+            View My Profile
           </Button>
         </Flex>
       </HeadingFade>
@@ -108,10 +108,7 @@ function Spotify({ data, error }: SpotifyProps) {
       >
         <ListFade>
           <TopArtists artists={data.artists.items} />
-          <CurrentlyPlaying
-            song={data.currentlyPlaying?.item}
-            isPlaying={data.currentlyPlaying?.is_playing}
-          />
+          <CurrentlyPlaying song={currentlyPlaying} />
           <TopSongs songs={data.songs.items} />
           <RecentSongs songs={data.recentlyPlayed.items} />
         </ListFade>
@@ -128,15 +125,22 @@ export async function getServerSideProps() {
         : `http://localhost:3000/api/get-spotify-data`,
     );
     const data = await response.json();
+    const responseCurrent = await fetch(
+      process.env.NEXT_PUBLIC_VERCEL_ENV
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-now-playing`
+        : `http://localhost:3000/api/get-now-playing`,
+    );
+    const currentlyPlaying = await responseCurrent.json();
     return {
       props: {
         data,
+        currentlyPlaying,
       },
     };
   } catch (e) {
     return {
       props: {
-        error: true,
+        error: e,
       },
     };
   }
