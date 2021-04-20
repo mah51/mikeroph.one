@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, useTheme } from '@chakra-ui/react';
 import '@/styles/global.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
@@ -16,6 +16,11 @@ const meta = {
 
 const queryClient = new QueryClient();
 export default function MyApp({ Component, pageProps }: AppProps) {
+  React.useEffect(() => {
+    document.documentElement.lang = `en-GB`;
+  }, []);
+
+  useTheme();
   return (
     <>
       <DefaultSeo

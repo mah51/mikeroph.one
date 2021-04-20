@@ -50,8 +50,9 @@ function Footer() {
           <Flex ml={2} isTruncated>
             {currentlyPlaying?.songUrl ? (
               <chakra.a
-                color={useColorModeValue(`gray.800`, `gray.200`)}
+                color={useColorModeValue(`gray.900`, `gray.200`)}
                 fontSize="md"
+                fontWeight="semibold"
                 maxW="60%"
                 isTruncated
                 href={currentlyPlaying.songUrl}
@@ -62,20 +63,23 @@ function Footer() {
               </chakra.a>
             ) : (
               <chakra.p
-                color={useColorModeValue(`gray.800`, `gray.200`)}
+                color={useColorModeValue(`gray.900`, `gray.200`)}
                 fontSize="md"
+                maxW="60%"
+                isTruncated
+                fontWeight="semibold"
               >
                 {error ? `There was an error` : `Not Playing`}
               </chakra.p>
             )}
             <chakra.span
               mx={2}
-              color={useColorModeValue(`gray.500`, `gray.300`)}
+              color={useColorModeValue(`gray.600`, `gray.300`)}
               display={{ base: `hidden`, sm: `block` }}
             >
               {` – `}
             </chakra.span>
-            <chakra.p color="gray.500" isTruncated maxW="full">
+            <chakra.p color="gray.600" isTruncated maxW="full">
               {currentlyPlaying?.artist ?? `Spotify`}
             </chakra.p>
           </Flex>
