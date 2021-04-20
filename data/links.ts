@@ -8,6 +8,62 @@ export interface LinkType {
 
 export const links: LinkType[] = [
   {
+    id: `avataaarsgenerator`,
+    link: `https://getavataaars.com/`,
+    name: `Avataaars generator`,
+    label: `Avatar Generator`,
+    date: new Date(`2021-04-20T13:35`),
+  },
+  {
+    id: `draftbit`,
+    link: `https://personas.draftbit.com/`,
+    name: `Draft Bit`,
+    label: `Avatar Generator`,
+    date: new Date(`2021-04-20T13:33`),
+  },
+  {
+    id: `opendoodles`,
+    link: `https://www.opendoodles.com/`,
+    name: `Open Doodles`,
+    label: `Free Illustrations`,
+    date: new Date(`2021-04-20T13:30`),
+  },
+  {
+    id: `humaaans`,
+    link: `https://www.humaaans.com/`,
+    name: `Humaaans`,
+    label: `Free Illustrations`,
+    date: new Date(`2021-04-20T13:29`),
+  },
+  {
+    id: `manypixels`,
+    link: `https://www.manypixels.co/gallery`,
+    name: `Manypixels`,
+    label: `Free Illustrations`,
+    date: new Date(`2021-04-20T13:27`),
+  },
+  {
+    id: `illustrations`,
+    link: `https://illlustrations.co/`,
+    name: `Illustrations`,
+    label: `Free Illustrations`,
+    date: new Date(`2021-04-20T13:27`),
+  },
+  {
+    id: `isometric`,
+    link: `https://isometric.online/`,
+    name: `Isometric`,
+    label: `Free Illustrations`,
+    date: new Date(`2021-04-20T13:26`),
+  },
+  {
+    id: `undraw`,
+    link: `https://undraw.co/illustrations`,
+    name: `unDraw`,
+    label: `Free Illustrations`,
+    date: new Date(`2021-04-20T13:25`),
+  },
+  {
     id: `nextjs`,
     link: `https://nextjs.org/`,
     name: `Next.JS`,
