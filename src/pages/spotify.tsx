@@ -17,7 +17,7 @@ import {
   TopArtists,
   TopSongs,
   CurrentlyPlaying,
-} from '../Components/MusicLayouts';
+} from '@/Components/MusicLayouts';
 
 interface ListFadeProps {
   children: React.ReactNode;
@@ -50,10 +50,7 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
 };
 
 function Spotify() {
-  const {
-    error: errorCurrently,
-    data: currentlyPlaying,
-  } = useQuery(`currentlyPlaying`, () =>
+  const { data: currentlyPlaying } = useQuery(`currentlyPlaying`, () =>
     fetch(`/api/get-now-playing`).then((res) => res.json()),
   );
   const { error, data, isLoading } = useQuery(`spotifyData`, () =>
