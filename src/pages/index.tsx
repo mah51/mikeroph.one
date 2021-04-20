@@ -11,6 +11,8 @@ import {
 import React, { useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 import SEO from '@/Components/SEO';
+import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 
 const interests = [
   `photography`,
@@ -38,7 +40,8 @@ export default function Home() {
   }, []);
 
   return (
-    <SEO>
+    <>
+      <NextSeo title="Home" />
       <Box minH="100vh" width="full">
         <Flex
           position="relative"
@@ -189,6 +192,6 @@ export default function Home() {
           />
         </svg>
       </Box>
-    </SEO>
+    </>
   );
 }

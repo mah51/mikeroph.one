@@ -1,4 +1,4 @@
-import { Heading } from '@chakra-ui/react';
+import { Heading, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
 const LineHeading = ({ children, ...props }: any) => (
@@ -11,7 +11,7 @@ const LineHeading = ({ children, ...props }: any) => (
       left: 0,
       height: `30%`,
       width: `100%`,
-      bgColor: `brand.500`,
+      bgColor: useColorModeValue(`brand.200`, `brand.900`),
       zIndex: -1,
     }}
     {...props}

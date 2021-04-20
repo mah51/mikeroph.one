@@ -37,8 +37,12 @@ const links = [
         link: `/spotify`,
       },
       {
-        name: `Bookmarks`,
-        link: `/bookmarks`,
+        name: `Tools`,
+        link: `/tools`,
+      },
+      {
+        name: `Links`,
+        link: `/links`,
       },
     ],
   },

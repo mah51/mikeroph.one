@@ -10,18 +10,14 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal';
+import { useQuery } from 'react-query';
+import Loader from '@/Components/Loader';
 import {
   RecentSongs,
   TopArtists,
   TopSongs,
   CurrentlyPlaying,
 } from '../Components/MusicLayouts';
-
-interface SpotifyProps {
-  data: any;
-  currentlyPlaying: any;
-  error?: any;
-}
 
 interface ListFadeProps {
   children: React.ReactNode;
@@ -53,7 +49,21 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
   );
 };
 
-function Spotify({ data, error, currentlyPlaying }: SpotifyProps) {
+function Spotify() {
+  const {
+    error: errorCurrently,
+    data: currentlyPlaying,
+  } = useQuery(`currentlyPlaying`, () =>
+    fetch(`/api/get-now-playing`).then((res) => res.json()),
+  );
+  const { error, data, isLoading } = useQuery(`spotifyData`, () =>
+    fetch(`/api/get-spotify-data`).then((res) => res.json()),
+  );
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
@@ -117,32 +127,4 @@ function Spotify({ data, error, currentlyPlaying }: SpotifyProps) {
   );
 }
 
-export async function getServerSideProps() {
-  try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-spotify-data`
-        : `http://localhost:3000/api/get-spotify-data`,
-    );
-    const data = await response.json();
-    const responseCurrent = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-now-playing`
-        : `http://localhost:3000/api/get-now-playing`,
-    );
-    const currentlyPlaying = await responseCurrent.json();
-    return {
-      props: {
-        data,
-        currentlyPlaying,
-      },
-    };
-  } catch (e) {
-    return {
-      props: {
-        error: e,
-      },
-    };
-  }
-}
 export default Spotify;

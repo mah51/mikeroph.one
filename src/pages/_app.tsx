@@ -2,9 +2,8 @@ import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/global.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Head from 'next/head';
 import React from 'react';
-import SEO from '@/Components/SEO';
+import { DefaultSeo } from 'next-seo';
 import AppLayout from '../Components/AppLayout';
 import theme from '../../theme';
 
@@ -19,15 +18,18 @@ const queryClient = new QueryClient();
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <SEO>
-        <ChakraProvider theme={theme}>
-          <QueryClientProvider client={queryClient}>
-            <AppLayout>
-              <Component {...pageProps} />
-            </AppLayout>
-          </QueryClientProvider>
-        </ChakraProvider>
-      </SEO>
+      <DefaultSeo
+        defaultTitle={meta.title}
+        titleTemplate="%s | Michael Hall"
+        description={meta.description}
+      />
+      <ChakraProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </QueryClientProvider>
+      </ChakraProvider>
     </>
   );
 }
