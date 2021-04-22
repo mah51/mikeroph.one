@@ -16,8 +16,10 @@ import { useQuery } from 'react-query';
 import SocialIcons from './SocialIcons';
 
 function Footer() {
-  const { error, data: currentlyPlaying } = useQuery(`currentlyPlaying`, () =>
-    fetch(`/api/get-now-playing`).then((res) => res.json()),
+  const { error, data: currentlyPlaying } = useQuery(
+    `currentlyPlaying`,
+    () => fetch(`/api/get-now-playing`).then((res) => res.json()),
+    { refetchOnMount: true },
   );
 
   return (

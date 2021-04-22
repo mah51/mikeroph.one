@@ -48,14 +48,17 @@ const securityHeaders = [
   },
 ];
 
-module.exports = {
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+});
+
+module.exports = withMDX({
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   future: {
     webpack5: true,
   },
   images: {
-    domains: [
-      'i.scdn.co', // Spotify Album Art
-    ],
+    domains: ['i.scdn.co'],
   },
   async headers() {
     return [
@@ -65,4 +68,4 @@ module.exports = {
       },
     ];
   },
-};
+});
