@@ -6,6 +6,7 @@ import {
   chakra,
   useColorModeValue,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 
 import MobileNav from './MobileNav';
 import DesktopNav from './DesktopNav';
@@ -68,35 +69,36 @@ function Nav() {
           width="full"
         >
           <Box display="flex" alignContent="center">
-            <ChakraLink
-              href="/"
-              fontSize="lg"
-              margin="auto"
-              fontWeight="semibold"
-              position="relative"
-              textTransform="capitalize"
-              _after={{
-                transition: `all 0.25s ease-in-out`,
-                content: `''`,
-                /* Fixes anti-aliasing issue in chrome that leaves one pixel' */
-                outline: `1px solid transparent`,
-                width: `0%`,
-                height: `30%`,
-                position: `absolute`,
-                bottom: 1,
-                left: 0,
-                bg: useColorModeValue(`brand.200`, `gray.600`),
-                zIndex: -1,
-              }}
-              _hover={{
-                _after: {
-                  width: `100%`,
-                },
-                color: useColorModeValue(`gray.900`, `brand.primary`),
-              }}
-            >
-              Michael Hall
-            </ChakraLink>
+            <Link href="/">
+              <ChakraLink
+                fontSize="lg"
+                margin="auto"
+                fontWeight="semibold"
+                position="relative"
+                textTransform="capitalize"
+                _after={{
+                  transition: `all 0.25s ease-in-out`,
+                  content: `''`,
+                  /* Fixes anti-aliasing issue in chrome that leaves one pixel' */
+                  outline: `1px solid transparent`,
+                  width: `0%`,
+                  height: `30%`,
+                  position: `absolute`,
+                  bottom: 1,
+                  left: 0,
+                  bg: useColorModeValue(`brand.200`, `gray.600`),
+                  zIndex: -1,
+                }}
+                _hover={{
+                  _after: {
+                    width: `100%`,
+                  },
+                  color: useColorModeValue(`gray.900`, `brand.primary`),
+                }}
+              >
+                Michael Hall
+              </ChakraLink>
+            </Link>
           </Box>
           <MobileNav links={links} />
           <DesktopNav links={links} />

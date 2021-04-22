@@ -9,6 +9,7 @@ import {
   VStack,
   Link as ChakraLink,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 function MobileNav({ links }: any) {
@@ -47,35 +48,40 @@ function MobileNav({ links }: any) {
         rounded="sm"
         shadow="sm"
       >
-        <Button as={ChakraLink} href="/" w="full" mt={16} variant="ghost">
-          Home
-        </Button>
+        <Link href="/">
+          <Button as={ChakraLink} w="full" mt={16} variant="ghost">
+            Home
+          </Button>
+        </Link>
+
         {links.map((link: any, index: number) => {
           if (link.type === `dropdown`) {
             return link.links.map((item: any, i: number) => (
+              <Link href={item.link}>
+                <Button
+                  key={i.toString()}
+                  as={ChakraLink}
+                  w="full"
+                  mx={2}
+                  variant="ghost"
+                >
+                  {item.name}
+                </Button>
+              </Link>
+            ));
+          }
+          return (
+            <Link href={link.link}>
               <Button
-                key={i.toString()}
+                key={index.toString()}
                 as={ChakraLink}
-                href={item.link}
                 w="full"
                 mx={2}
                 variant="ghost"
               >
-                {item.name}
+                {link.name}
               </Button>
-            ));
-          }
-          return (
-            <Button
-              key={index.toString()}
-              as={ChakraLink}
-              href={link.link}
-              w="full"
-              mx={2}
-              variant="ghost"
-            >
-              {link.name}
-            </Button>
+            </Link>
           );
         })}
       </VStack>
