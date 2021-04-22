@@ -116,12 +116,14 @@ function Spotify({ currentlyPlaying, data, error }: any) {
 export async function getServerSideProps() {
   const response = await fetch(
     `${
-      process.env.NEXT_PUBLIC_HOST || process.env.NEXT_PUBLIC_VERCEL_URL
+      process.env.NEXT_PUBLIC_HOST ||
+      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     }/api/get-spotify-data`,
   );
   const currentResponse = await fetch(
     `${
-      process.env.NEXT_PUBLIC_HOST || process.env.NEXT_PUBLIC_VERCEL_URL
+      process.env.NEXT_PUBLIC_HOST ||
+      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     }/api/get-now-playing`,
   );
   let error = null;
