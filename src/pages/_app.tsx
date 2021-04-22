@@ -1,55 +1,59 @@
 import { AppProps } from 'next/app';
-import { ChakraProvider, useTheme } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import '@/styles/global.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import React, { useState } from 'react';
-import { DefaultSeo } from 'next-seo';
-import Router from 'next/router';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Loader from '@/Components/Loader';
 import AppLayout from '../Components/AppLayout';
 import theme from '../../theme';
 
-const meta = {
-  title: `Michael Hall`,
-  description: `My personal website, where I test stuff and show off my projects`,
-  image: `${process.env.VERCEL_URL}/profile.jpeg`,
-  type: `website`,
-};
-
 const queryClient = new QueryClient();
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
-  React.useEffect(() => {
+  const router = useRouter();
+  useEffect(() => {
     document.documentElement.lang = `en-GB`;
     const start = () => {
+      console.log(`start`);
       setLoading(true);
     };
     const end = () => {
+      console.log(`findished`);
       setLoading(false);
     };
-    Router.events.on(`routeChangeStart`, start);
-    Router.events.on(`routeChangeComplete`, end);
-    Router.events.on(`routeChangeError`, end);
+    router.events.on(`routeChangeStart`, start);
+    router.events.on(`routeChangeComplete`, end);
+    router.events.on(`routeChangeError`, end);
     return () => {
-      Router.events.off(`routeChangeStart`, start);
-      Router.events.off(`routeChangeComplete`, end);
-      Router.events.off(`routeChangeError`, end);
+      router.events.off(`routeChangeStart`, start);
+      router.events.off(`routeChangeComplete`, end);
+      router.events.off(`routeChangeError`, end);
     };
   }, []);
 
-  useTheme();
-  if (loading) {
-    return <Loader />;
-  }
   return (
     <>
-      <ChakraProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          <AppLayout>
-            <Component {...pageProps} />
-          </AppLayout>
-        </QueryClientProvider>
-      </ChakraProvider>
+      {loading ? (
+        <h1
+          style={{
+            marginTop: `30vh`,
+            zIndex: 9999,
+            textAlign: `center`,
+            fontSize: `5em`,
+          }}
+        >
+          Loading!
+        </h1>
+      ) : (
+        <ChakraProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            <AppLayout>
+              <Component {...pageProps} />
+            </AppLayout>
+          </QueryClientProvider>
+        </ChakraProvider>
+      )}
     </>
   );
 }
