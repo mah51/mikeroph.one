@@ -13,9 +13,9 @@ function Links() {
       minH="100vh"
       mx="auto"
       maxW="6xl"
+      my="28"
     >
       <LineHeading
-        mt="28"
         fontSize={{ base: `3xl`, sm: `4xl`, md: `5xl`, lg: `6xl` }}
         textAlign="center"
       >
