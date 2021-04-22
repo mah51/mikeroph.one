@@ -43,11 +43,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }
   return (
     <>
-      <DefaultSeo
-        defaultTitle={meta.title}
-        titleTemplate="%s | Michael Hall"
-        description={meta.description}
-      />
       <ChakraProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <AppLayout>
