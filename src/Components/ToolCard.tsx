@@ -35,8 +35,8 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
             maxWidth="100%"
             overflow="hidden"
             boxShadow={`inset 0 0 20px 5px ${useColorModeValue(
-              `${data.darkVibrant}33`,
-              `${data.lightVibrant}55`,
+              `${data.darkVibrant}19`,
+              `${data.lightVibrant}19`,
             )}`}
             borderRadius="full"
           >
