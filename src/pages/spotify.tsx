@@ -49,18 +49,7 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
   );
 };
 
-function Spotify() {
-  const { data: currentlyPlaying } = useQuery(`currentlyPlaying`, () =>
-    fetch(`/api/get-now-playing`).then((res) => res.json()),
-  );
-  const { error, data, isLoading } = useQuery(`spotifyData`, () =>
-    fetch(`/api/get-spotify-data`).then((res) => res.json()),
-  );
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
+function Spotify({ currentlyPlaying, data, error }: any) {
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
@@ -122,6 +111,26 @@ function Spotify() {
       </SimpleGrid>
     </Box>
   );
+}
+
+export async function getServerSideProps() {
+  const response = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_HOST || process.env.NEXT_PUBLIC_VERCEL_URL
+    }/api/get-spotify-data`,
+  );
+  const currentResponse = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_HOST || process.env.NEXT_PUBLIC_VERCEL_URL
+    }/api/get-now-playing`,
+  );
+  let error = null;
+  if (response.status !== 200) {
+    error = `There was an error: ${response.status}`;
+  }
+  const currentlyPlaying = await currentResponse.json();
+  const data = await response.json();
+  return { props: { data, currentlyPlaying, error } };
 }
 
 export default Spotify;

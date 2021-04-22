@@ -2,7 +2,7 @@ import React from 'react';
 import WIP from '../Components/WIP';
 
 function Projects() {
-  return <WIP />;
+  return <div>Test!</div>;
 }
 
 export default Projects;
