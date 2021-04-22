@@ -2,7 +2,7 @@ import React from 'react';
 import WIP from '../Components/WIP';
 
 function Projects() {
-  return <div>Test!</div>;
+  return <WIP />;
 }
 
 export async function getServerSideProps() {
