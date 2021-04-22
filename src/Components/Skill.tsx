@@ -1,53 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import { Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import {
+  Flex,
+  SimpleGrid,
+  Text,
+  VStack,
+  chakra,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 function Skill({ number, label }: { number: number; label: string }) {
-  const [highlighted, setHighlighted] = useState(1);
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  useEffect(() => {}, [highlighted]);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
-    <VStack alignItems="flex-start">
+    <VStack alignItems="flex-start" width="100%">
       <Text fontWeight="semibold" fontSize="xl">
         {label}
       </Text>
-      <Flex width="500px" height="10px" mx="auto">
-        <SimpleGrid columns={5} width="100%" spacingX={3} height="100%">
-          <AnimatePresence exitBeforeEnter>
-            {new Array(5)
-              .fill(
-                <div
-                  style={{
-                    width: `100%`,
-                    height: `100%`,
-                    border: `1px solid var(--chakra-colors-brand-500)`,
-                  }}
+      <Flex position="relative" width="100%" height="10px" mx="auto">
+        {mounted && (
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${100 * (number / 5)}%` }}
+            transition={{ duration: 2 }}
+            style={{
+              backgroundColor: useColorModeValue(
+                `var(--chakra-colors-brand-600)`,
+                `var(--chakra-colors-brand-200)`,
+              ),
+              height: `10px`,
+            }}
+          >
+            <Flex
+              position="absolute"
+              width="100%"
+              height="100%"
+              justifyContent="space-evenly"
+            >
+              {new Array(4).fill(
+                <chakra.div
+                  bgColor={useColorModeValue(`white`, `gray.800`)}
+                  zIndex={5}
+                  width="10px"
+                  height="100%"
                 />,
-              )
-              .map((div: any, index: number) => {
-                console.log(div);
-                if (index > highlighted) {
-                  return div;
-                }
-                return (
-                  <motion.div
-                    style={{
-                      width: `0%`,
-                      border: `1px solid var(--chakra-colors-brand-500)`,
-                      backgroundColor: `var(--chakra-colors-brand-500)`,
-                    }}
-                    animate={{ width: `100%` }}
-                    onAnimationComplete={() => {
-                      if (number !== highlighted) {
-                        setHighlighted(highlighted + 1);
-                      }
-                    }}
-                    transition={{ duration: 0.5 }}
-                  />
-                );
-              })}
-          </AnimatePresence>
-        </SimpleGrid>
+              )}
+            </Flex>
+          </motion.div>
+        )}
       </Flex>
     </VStack>
   );

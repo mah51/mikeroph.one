@@ -78,3 +78,80 @@ body, #__next {
     transform: translateY(-30px);
   }
 }
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.bar,
+.empty-bar {
+  animation-name: fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  height: 10px;
+  margin: 0 auto 0 0;
+  width: 0;
+}
+
+.bar {
+  background-color:  var(--chakra-colors-brand-500);
+}
+
+
+.empty-bar {
+  border: 1px solid transparent;
+  animation-name: border;
+
+}
+
+
+.bar-1 {
+  animation-timing-function: ease-in;
+  animation-duration: 0.25s;
+}
+
+.bar-2 {
+  animation-delay: 0.15s;
+  animation-duration: 0.25s;
+}
+
+.bar-3 {
+  animation-delay: calc(0.15s + 0.20s);
+  animation-duration: 0.25s;
+}
+
+.bar-4 {
+  animation-delay: calc(0.15s + 0.25s + 0.20s);
+  animation-duration: 0.20s;
+
+}
+
+.bar-5 {
+  animation-timing-function: ease-out;
+  animation-delay:calc(0.15s + 0.25s + 0.20s + 0.20s);
+  animation-duration: 0.15s;
+}
+
+@keyframes fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes border {
+  from {
+    border: 1px solid transparent;
+    width: 0
+  }
+  to {
+    border: 1px solid var(--chakra-colors-brand-500);
+    width: 90%
+      }
+}
+
