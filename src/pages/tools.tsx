@@ -38,7 +38,7 @@ function Tools() {
       >
         Tools
       </LineHeading>
-      <Text mt={3}>Some tools that are useful :).</Text>
+      <Text mt={3}>Some tools that I find useful :).</Text>
       <Tabs
         variant="soft-rounded"
         colorScheme="blue"

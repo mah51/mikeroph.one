@@ -1,9 +1,9 @@
 import React from 'react';
 
-function AboutSection(props) {
+function AboutSection() {
   return (
     <div>
-      I'm a university student studying biochemistry at the university of kent.
+      I am a university student studying biochemistry at the university of kent.
     </div>
   );
 }

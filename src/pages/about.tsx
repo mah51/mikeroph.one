@@ -2,7 +2,6 @@ import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import LineHeading from '@/Components/LineHeading';
 import Skills from '@/Components/Skills';
-import { Fade } from 'react-awesome-reveal';
 
 function About() {
   return (
