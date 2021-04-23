@@ -1,6 +1,6 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.plausible.io;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' plausible.io;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
