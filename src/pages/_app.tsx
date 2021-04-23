@@ -35,10 +35,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <DefaultSeo />
       <ChakraProvider theme={theme}>
-        <PlausibleProvider
-          domain="michael-hall.me"
-          enabled={process.env.NODE_ENV === `production`}
-        >
+        <PlausibleProvider domain="michael-hall.me">
           {loading ? (
             <Loader />
           ) : (

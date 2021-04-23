@@ -11,7 +11,6 @@ import {
 import React, { useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 import { NextSeo } from 'next-seo';
-import Head from 'next/head';
 
 const interests = [
   `photography`,
