@@ -3,6 +3,7 @@ import {
   Flex,
   Image,
   SimpleGrid,
+  Skeleton,
   SkeletonCircle,
   Text,
   useColorModeValue,
@@ -33,12 +34,13 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
       transitionTimingFunction="spring(1 100 10 10)"
       _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
     >
-      <SkeletonCircle
+      <Skeleton
+        borderRadius="2xl"
         boxSize={titleCard ? `150px` : `110px`}
         isLoaded={imageLoad}
       >
         <Image
-          borderRadius="full"
+          borderRadius="2xl"
           boxSize={titleCard ? `150px` : `110px`}
           onLoad={() => setImageLoad(true)}
           src={
@@ -48,7 +50,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
               .slice(-1)[0].url
           }
         />
-      </SkeletonCircle>
+      </Skeleton>
 
       <Flex direction="column" ml={5} maxWidth="full" isTruncated>
         <Text
@@ -86,16 +88,29 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
 export const ArtistCard = ({ artist }: any) => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
-    <Box position="relative" maxHeight="150px">
-      <SkeletonCircle
+    <Box
+      position="relative"
+      maxHeight="150px"
+      maxWidth="150px"
+      mx="auto"
+      boxShadow="lg"
+      transition="all 0.25s"
+      borderRadius="xl"
+      transitionTimingFunction="spring(1 100 10 10)"
+      border="1px solid"
+      borderColor={useColorModeValue(`gray.100`, `gray.700`)}
+      _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
+    >
+      <Skeleton
         maxWidth="150px"
+        borderRadius="2xl"
         maxHeight="150px"
         boxSize="full"
         mx="auto"
         isLoaded={imageLoad}
       >
         <Image
-          borderRadius="full"
+          borderRadius="2xl"
           filter="brightness(25%)"
           mx="auto"
           maxWidth="150px"
@@ -108,7 +123,7 @@ export const ArtistCard = ({ artist }: any) => {
               .slice(-1)[0].url
           }
         />
-      </SkeletonCircle>
+      </Skeleton>
 
       <Text
         position="absolute"

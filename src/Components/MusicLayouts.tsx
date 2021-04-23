@@ -21,7 +21,7 @@ export const TopSongs = ({ songs }: any) => (
 );
 
 export const TopArtists = ({ artists }: any) => (
-  <Flex direction="column" maxW="2xl" width="full" mx="auto">
+  <Flex direction="column" maxW="xl" width="full" mx="auto">
     <LineHeading alignSelf="center" mb="4">
       Top Artists
     </LineHeading>
@@ -32,13 +32,6 @@ export const TopArtists = ({ artists }: any) => (
       p={5}
       width="full"
       height="full"
-      border="1px solid"
-      borderColor={useColorModeValue(`gray.100`, `gray.700`)}
-      boxShadow="lg"
-      transition="all 0.25s"
-      borderRadius="xl"
-      transitionTimingFunction="spring(1 100 10 10)"
-      _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
     >
       {artists.map((artist: any) => (
         <ArtistCard artist={artist} key={artist.id} />
