@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Nav from './NavBar/Nav';
 import Footer from './Footer/Footer';
-import { initGA, logPageView } from '../../utils/analytics';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -14,13 +13,6 @@ declare global {
 }
 
 function AppLayout({ children }: AppLayoutProps) {
-  useEffect(() => {
-    if (!window.GA_INITIALISED) {
-      initGA();
-      window.GA_INITIALISED = true;
-    }
-    logPageView();
-  }, []);
   return (
     <>
       <Nav />

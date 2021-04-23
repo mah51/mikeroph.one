@@ -13,7 +13,7 @@ import { usePalette } from 'react-palette';
 import { ToolType } from '../../data/tools';
 
 function ToolCard({ name, description, link, id, labels }: ToolType) {
-  const { data } = usePalette(`./toolImages/${id}.png`);
+  const { data } = usePalette(`./static/images/toolImages/${id}.png`);
   return (
     <Box as="a" href={link} height="100%">
       <SimpleGrid
@@ -62,10 +62,10 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
               src={
                 id === `biorender`
                   ? useColorModeValue(
-                      `./toolImages/${id}.png`,
-                      `./toolImages/${id}dark.png`,
+                      `./static/images/toolImages/${id}.png`,
+                      `./static/images/toolImages/${id}dark.png`,
                     )
-                  : `./toolImages/${id}.png`
+                  : `./static/images/toolImages/${id}.png`
               }
               maxHeight="70%"
               maxWidth="70%"

@@ -47,7 +47,7 @@ export default function Home() {
           position="relative"
           _after={{
             content: `""`,
-            background: `url(torus.png)`,
+            background: `url(./static/images/torus.png)`,
             top: `20vh`,
             left: `7vw`,
             minWidth: `150px`,
@@ -64,7 +64,7 @@ export default function Home() {
           }}
           _before={{
             content: `""`,
-            background: `url(boi.png)`,
+            background: `url(./static/images/boi.png)`,
             top: `13vh`,
             right: `8vw`,
             minWidth: `100px`,
@@ -83,7 +83,7 @@ export default function Home() {
           <Flex
             _before={{
               content: `""`,
-              background: `url(helix.png)`,
+              background: `url(./static/images/helix.png)`,
               top: breakpoint === `base` ? `75vh` : `60vh`,
               right: `30vw`,
               minWidth: `300px`,
@@ -107,7 +107,7 @@ export default function Home() {
               <Image
                 borderRadius="full"
                 boxSize="250px"
-                src="profile.jpeg"
+                src="./static/images/profile.jpeg"
                 objectFit="cover"
                 alt="Michael Hall"
                 onLoad={() => setImageLoad(true)}
@@ -172,25 +172,6 @@ export default function Home() {
             </Flex>
           </Flex>
         </Flex>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          width="full"
-          style={{
-            alignSelf: `flex-end`,
-            position: `absolute`,
-            bottom: 0,
-            left: 0,
-            zIndex: -3,
-            filter: `blur(10px)`,
-          }}
-        >
-          <path
-            fill="url(#grad1)"
-            fillOpacity={useColorModeValue(`0.5`, `0.15`)}
-            d="M0,288L40,266.7C80,245,160,203,240,170.7C320,139,400,117,480,133.3C560,149,640,203,720,240C800,277,880,299,960,272C1040,245,1120,171,1200,160C1280,149,1360,203,1400,229.3L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-          />
-        </svg>
       </Box>
     </>
   );

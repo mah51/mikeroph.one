@@ -33,6 +33,7 @@ function Footer() {
         mx="auto"
         maxW="7xl"
         py={4}
+        px={5}
         spacing={4}
         align="center"
       >

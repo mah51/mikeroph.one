@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import Loader from '@/Components/Loader';
+import { DefaultSeo } from 'next-seo';
+import PlausibleProvider from 'next-plausible';
 import AppLayout from '../Components/AppLayout';
 import theme from '../../theme';
 
@@ -31,16 +33,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <DefaultSeo />
       <ChakraProvider theme={theme}>
-        {loading ? (
-          <Loader />
-        ) : (
-          <QueryClientProvider client={queryClient}>
-            <AppLayout>
-              <Component {...pageProps} />
-            </AppLayout>
-          </QueryClientProvider>
-        )}
+        <PlausibleProvider domain="michael-hall.me">
+          {loading ? (
+            <Loader />
+          ) : (
+            <QueryClientProvider client={queryClient}>
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
+            </QueryClientProvider>
+          )}
+        </PlausibleProvider>
       </ChakraProvider>
     </>
   );
