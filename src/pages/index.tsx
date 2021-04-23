@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
-import SEO from '@/Components/SEO';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 
