@@ -21,16 +21,18 @@ export const TopSongs = ({ songs }: any) => (
 );
 
 export const TopArtists = ({ artists }: any) => (
-  <Flex direction="column" maxW="xl" width="full" mx="auto">
+  <Flex direction="column" maxW="xl" width="full" mx="auto" overflow="visible">
     <LineHeading alignSelf="center" mb="4">
       Top Artists
     </LineHeading>
     <SimpleGrid
+      bg="transparent"
       columns={{ sm: 1, md: 3 }}
       spacing={5}
       my={5}
       p={5}
       width="full"
+      overflow="visible"
       height="full"
     >
       {artists.map((artist: any) => (
