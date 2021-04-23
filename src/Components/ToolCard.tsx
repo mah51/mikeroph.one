@@ -19,7 +19,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
       <SimpleGrid
         p={3}
         height="100%"
-        gridTemplateColumns="100px 1fr"
+        gridTemplateColumns="80px 1fr"
         border="1px solid"
         borderColor={useColorModeValue(`gray.100`, `gray.700`)}
         borderRadius="lg"
@@ -28,7 +28,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
         transitionTimingFunction="spring(1 100 10 10)"
         _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
       >
-        <AspectRatio ratio={1} maxHeight="100px">
+        <AspectRatio ratio={1} boxSize="80px">
           <Box
             position="relative"
             maxHeight="100%"
@@ -38,7 +38,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
               `${data.darkVibrant}19`,
               `${data.lightVibrant}19`,
             )}`}
-            borderRadius="full"
+            borderRadius="2xl"
           >
             <Box
               bg={useColorModeValue(data.darkVibrant, data.lightVibrant)}
@@ -67,8 +67,8 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
                     )
                   : `./static/images/toolImages/${id}.png`
               }
-              maxHeight="70%"
-              maxWidth="70%"
+              maxHeight="80%"
+              maxWidth="80%"
             />
           </Box>
         </AspectRatio>

@@ -103,7 +103,7 @@ export default function Home() {
           >
             <SkeletonCircle isLoaded={imageLoad} boxSize="250px" margin="auto">
               <Image
-                borderRadius="full"
+                borderRadius="2xl"
                 boxSize="250px"
                 src="./static/images/profile.jpeg"
                 objectFit="cover"
@@ -112,7 +112,7 @@ export default function Home() {
               />
             </SkeletonCircle>
             <Flex
-              alignSelf="center"
+              alignSelf="space-between"
               direction="column"
               pl={{ base: 0, lg: 10 }}
               my={{ base: 10, lg: 0 }}
