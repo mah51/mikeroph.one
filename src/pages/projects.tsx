@@ -23,6 +23,7 @@ function Projects({
       width="full"
       px={3}
       minH="100vh"
+      height="full"
       mx="auto"
       maxW="6xl"
       my="28"
@@ -35,8 +36,8 @@ function Projects({
         direction="column"
         my={16}
         width="full"
+        height="full"
         maxWidth="4xl"
-        gridAutoRows="1fr"
         spacingX={10}
         spacingY={8}
       >
@@ -78,11 +79,12 @@ function Projects({
         maxWidth="full"
         columns={{ base: 1, md: 2 }}
         width="full"
+        height="full"
+        maxH="full"
         gridAutoRows="1fr"
         spacingX={10}
         spacingY={8}
         isTruncated
-        overflow="visible"
       >
         {repos
           .sort(

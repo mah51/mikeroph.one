@@ -4,7 +4,7 @@ import { repoType } from '@/pages/api/github';
 
 function RepoCard({ repo, i }: { repo: repoType; i: number }) {
   return (
-    <Box
+    <Flex
       as="a"
       href={repo.html_url}
       h="full"
@@ -23,7 +23,7 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
         borderRadius="lg"
         boxShadow="lg"
         transition="all 0.25s"
-        transition-timing-function="spring(1 100 10 10)"
+        transitionTimingFunction="spring(1 100 10 10)"
         _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
         textAlign="left"
         direction="column"
@@ -54,7 +54,7 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
           {repo.description}
         </Text>
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 

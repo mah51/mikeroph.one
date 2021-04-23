@@ -29,7 +29,7 @@ function PinnedProjects({
         borderRadius="lg"
         boxShadow="lg"
         transition="all 0.25s"
-        transition-timing-function="spring(1 100 10 10)"
+        transitionTimingFunction="spring(1 100 10 10)"
         _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
         textAlign="left"
         direction="column"

@@ -30,7 +30,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
       boxShadow="lg"
       transition="all 0.25s"
       borderRadius="xl"
-      transition-timing-function="spring(1 100 10 10)"
+      transitionTimingFunction="spring(1 100 10 10)"
       _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
     >
       <SkeletonCircle

@@ -21,7 +21,7 @@ function LinkCard({ name, link, date, label }: LinkType) {
         borderWidth="1px"
         borderColor={useColorModeValue(`gray.100`, `gray.700`)}
         transition="all 0.25s"
-        transition-timing-function="spring(1 100 10 10)"
+        transitionTimingFunction="spring(1 100 10 10)"
         boxShadow="lg"
         _hover={{
           transform: `translateY(-4px)`,

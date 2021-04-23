@@ -25,7 +25,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
         borderRadius="lg"
         boxShadow="lg"
         transition="all 0.25s"
-        transition-timing-function="spring(1 100 10 10)"
+        transitionTimingFunction="spring(1 100 10 10)"
         _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
       >
         <AspectRatio ratio={1} maxHeight="100px">
