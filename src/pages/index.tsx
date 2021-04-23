@@ -7,6 +7,7 @@ import {
   chakra,
   useColorModeValue,
   useBreakpointValue,
+  Skeleton,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
@@ -101,7 +102,13 @@ export default function Home() {
             mt="calc(50vh - 200px)"
             mx="auto"
           >
-            <SkeletonCircle isLoaded={imageLoad} boxSize="250px" margin="auto">
+            <Skeleton
+              isLoaded={imageLoad}
+              boxSize="250px"
+              margin="auto"
+              borderRadius="2xl"
+              ml={10}
+            >
               <Image
                 borderRadius="2xl"
                 boxSize="250px"
@@ -110,7 +117,7 @@ export default function Home() {
                 alt="Michael Hall"
                 onLoad={() => setImageLoad(true)}
               />
-            </SkeletonCircle>
+            </Skeleton>
             <Flex
               alignSelf="space-between"
               direction="column"
