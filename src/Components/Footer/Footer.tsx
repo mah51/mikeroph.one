@@ -52,7 +52,7 @@ function Footer() {
               />
             </Icon>
           ) : (
-            <BsPauseFill />
+            <Icon color="brand.500" boxSize="1.4em" as={BsPauseFill} />
           )}
 
           <Flex ml={2} isTruncated>
