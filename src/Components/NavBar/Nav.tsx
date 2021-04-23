@@ -13,22 +13,9 @@ import DesktopNav from './DesktopNav';
 
 const links = [
   {
-    name: `Blog`,
-    link: `/blog`,
-  },
-  {
     name: `Projects`,
     link: `/projects`,
   },
-  {
-    name: `stats`,
-    link: `/stats`,
-  },
-  {
-    name: `About`,
-    link: `/about`,
-  },
-
   {
     type: `dropdown`,
     name: `Other`,
