@@ -89,19 +89,20 @@ export const ArtistCard = ({ artist }: any) => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
     <Box
+      overflow="visible"
       position="relative"
       maxHeight="150px"
       maxWidth="150px"
       mx="auto"
-      boxShadow="lg"
+      boxShadow="dark-lg"
+      outline="none"
       transition="all 0.25s"
-      borderRadius="xl"
+      borderRadius="2xl"
       transitionTimingFunction="spring(1 100 10 10)"
-      border="1px solid"
-      borderColor={useColorModeValue(`gray.100`, `gray.700`)}
-      _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
+      _hover={{ transform: `translateY(-4px)`, shadow: `dark-xl` }}
     >
       <Skeleton
+        overflow="visible"
         maxWidth="150px"
         borderRadius="2xl"
         maxHeight="150px"
@@ -110,6 +111,7 @@ export const ArtistCard = ({ artist }: any) => {
         isLoaded={imageLoad}
       >
         <Image
+          overflow="visible"
           borderRadius="2xl"
           filter="brightness(25%)"
           mx="auto"
