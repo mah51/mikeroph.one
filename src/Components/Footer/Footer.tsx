@@ -44,7 +44,7 @@ function Footer() {
           mx={{ base: `auto`, md: 5 }}
           alignItems="center"
         >
-          {currentlyPlaying.isPlaying ? (
+          {currentlyPlaying?.isPlaying ? (
             <Icon h={4} w={4} viewBox="0 0 168 168" color="brand.500">
               <path
                 fill="currentColor"
