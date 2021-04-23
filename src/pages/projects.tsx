@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Flex, Icon, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, SimpleGrid, Text } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import LineHeading from '../Components/LineHeading';
 import RepoCard from '../Components/RepoCard';
@@ -17,9 +17,7 @@ function Projects({
   followers: number;
 }) {
   return (
-    <Flex
-      direction="column"
-      alignItems="center"
+    <Box
       width="full"
       px={3}
       minH="100vh"
@@ -28,52 +26,68 @@ function Projects({
       maxW="6xl"
       my="28"
     >
-      <LineHeading fontSize={{ base: `5xl`, md: `6xl` }} textAlign="center">
-        My projects
-      </LineHeading>
-      <Text mt={3}>A quick collection of my projects.</Text>
       <Flex
         direction="column"
-        my={16}
+        alignItems="center"
         width="full"
+        px={3}
         height="full"
-        maxWidth="4xl"
-        spacingX={10}
-        spacingY={8}
+        mx="auto"
       >
-        {pinnedRepos
-          .sort(
-            (a: pinnedRepoType, b: pinnedRepoType) =>
-              new Date(
-                repos.filter((x: repoType) => x.name === a.id)[0].created_at,
-              ).getTime() -
-              new Date(
-                repos.filter((y: repoType) => y.name === b.id)[0].created_at,
-              ).getTime(),
-          )
-          .reverse()
-          .map((data: pinnedRepoType) => (
-            <PinnedProjects
-              repo={repos.filter((x: repoType) => x.name === data.id)[0]}
-              projectData={data}
-            />
-          ))}
+        <LineHeading
+          fontSize={{ base: `5xl`, md: `6xl` }}
+          mx="auto"
+          textAlign="center"
+        >
+          My projects
+        </LineHeading>
+        <Text mt={3}>A quick collection of my projects.</Text>
+        <Flex
+          direction="column"
+          my={16}
+          width="full"
+          height="full"
+          maxWidth="4xl"
+          spacingX={10}
+          spacingY={8}
+        >
+          {pinnedRepos
+            .sort(
+              (a: pinnedRepoType, b: pinnedRepoType) =>
+                new Date(
+                  repos.filter((x: repoType) => x.name === a.id)[0].created_at,
+                ).getTime() -
+                new Date(
+                  repos.filter((y: repoType) => y.name === b.id)[0].created_at,
+                ).getTime(),
+            )
+            .reverse()
+            .map((data: pinnedRepoType) => (
+              <PinnedProjects
+                repo={repos.filter((x: repoType) => x.name === data.id)[0]}
+                projectData={data}
+              />
+            ))}
+        </Flex>
+        <LineHeading fontSize={{ base: `5xl`, lg: `5xl` }} textAlign="center">
+          Repositories
+        </LineHeading>
+        <Text mt={3}>
+          A list of all of the public repositories on my GitHub.
+        </Text>
+        <Button
+          as="a"
+          href="https://github.com/mah51"
+          variant="ghost"
+          colorScheme="brand"
+          size="lg"
+          mt={5}
+          leftIcon={<FaGithub />}
+        >
+          View My Profile
+        </Button>
       </Flex>
-      <LineHeading fontSize={{ base: `5xl`, lg: `5xl` }} textAlign="center">
-        Repositories
-      </LineHeading>
-      <Text mt={3}>A list of all of the public repositories on my GitHub.</Text>
-      <Button
-        as="a"
-        href="https://github.com/mah51"
-        variant="ghost"
-        colorScheme="brand"
-        size="lg"
-        mt={5}
-        leftIcon={<FaGithub />}
-      >
-        View My Profile
-      </Button>
+
       <SimpleGrid
         mt={10}
         maxWidth="full"
@@ -85,6 +99,7 @@ function Projects({
         spacingX={10}
         spacingY={8}
         isTruncated
+        overflow="visible"
       >
         {repos
           .sort(
@@ -96,7 +111,7 @@ function Projects({
             <RepoCard repo={repo} i={index} />
           ))}
       </SimpleGrid>
-    </Flex>
+    </Box>
   );
 }
 

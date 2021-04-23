@@ -4,7 +4,7 @@ import { repoType } from '@/pages/api/github';
 
 function RepoCard({ repo, i }: { repo: repoType; i: number }) {
   return (
-    <Flex
+    <Box
       as="a"
       href={repo.html_url}
       h="full"
@@ -14,7 +14,6 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
     >
       <Flex
         p={3}
-        overflow="visible"
         height="100%"
         width="100%"
         maxWidth="100%"
@@ -54,7 +53,7 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
           {repo.description}
         </Text>
       </Flex>
-    </Flex>
+    </Box>
   );
 }
 
