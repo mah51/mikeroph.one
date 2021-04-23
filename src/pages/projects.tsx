@@ -86,6 +86,7 @@ function Projects({
         >
           View My Profile
         </Button>
+        {/* Flex ends before SimpleGrid. See Issue #1 https://github.com/mah51/personal-web/issues/1 */}
       </Flex>
 
       <SimpleGrid
