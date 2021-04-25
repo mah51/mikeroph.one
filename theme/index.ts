@@ -1,6 +1,16 @@
 import { extendTheme } from '@chakra-ui/react';
 // 2. Call `extendTheme` and pass your custom values
 const theme = extendTheme({
+  styles: {
+    global: (props: any) => ({
+      '*': {
+        _selection: {
+          color: props.colorMode === `dark` ? `black` : `white`,
+          bg: props.colorMode === `dark` ? `brand.300` : `brand.600`,
+        },
+      },
+    }),
+  },
   colors: {
     brand: {
       primary: `#47d185`,
