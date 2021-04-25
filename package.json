@@ -75,9 +75,15 @@
         "eslint-plugin-prettier": "3.3.1",
         "eslint-plugin-react": "7.23.2",
         "eslint-plugin-react-hooks": "4.2.0",
+        "husky": "6.0.0",
+        "husky-git-emoji": "1.0.1",
         "lint-staged": "10.5.4",
         "prettier": "2.2.1",
         "typescript": "4.2.4"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "npx hge-commit"
+        }
     }
-
 }
