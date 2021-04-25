@@ -43,8 +43,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           images: [
             {
               url: `https://www.michael-hall.me/static/images/profile.jpeg`,
-              width: 1089,
-              height: 722,
+              width: 800,
+              height: 600,
               alt: `Profile Picture`,
             },
           ],
