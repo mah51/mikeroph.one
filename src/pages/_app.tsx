@@ -42,7 +42,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           site_name: `Michael Hall`,
           images: [
             {
-              url: `https://www.michael-hall.dev/static/images/profile.jpeg`,
+              url: `https://www.michael-hall.me/static/images/profile.jpeg`,
               width: 1089,
               height: 722,
               alt: `Profile Picture`,
