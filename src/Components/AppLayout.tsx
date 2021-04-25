@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 import UpDown from '@/Components/Animations';
 import SVG from '@/Components/SVG';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import Nav from './NavBar/Nav';
 import Footer from './Footer/Footer';
 
@@ -16,8 +18,14 @@ declare global {
 }
 
 function AppLayout({ children }: AppLayoutProps) {
+  const router = useRouter();
+
   return (
     <>
+      <NextSeo
+        canonical={`https://www.michael-hall.me/${router.asPath}`}
+        openGraph={{ url: `https://www.michael-hall.me/${router.asPath}` }}
+      />
       <UpDown type="normal">
         <SVG icon="triangle" width={48} stroke left="10%" top="20%" />
         <SVG icon="hexa" width={48} stroke left="60%" top="70%" />

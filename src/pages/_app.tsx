@@ -33,7 +33,24 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <DefaultSeo />
+      <DefaultSeo
+        defaultTitle="Michael Hall"
+        titleTemplate="%s | Michael Hall"
+        openGraph={{
+          title: `Michael Hall`,
+          type: `website`,
+          site_name: `Michael Hall`,
+          images: [
+            {
+              url: `https://www.michael-hall.dev/static/images/profile.jpeg`,
+              width: 1089,
+              height: 722,
+              alt: `Profile Picture`,
+            },
+          ],
+        }}
+        description="The purpose of this site is for me to test things out & maybe show some things off."
+      />
       <ChakraProvider theme={theme}>
         <PlausibleProvider domain="michael-hall.me">
           {loading ? (

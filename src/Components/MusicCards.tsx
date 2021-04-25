@@ -4,7 +4,6 @@ import {
   Image,
   SimpleGrid,
   Skeleton,
-  SkeletonCircle,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';

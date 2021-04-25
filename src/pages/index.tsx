@@ -9,8 +9,6 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { NextSeo } from 'next-seo';
-import UpDown from '@/Components/Animations';
-import SVG from '@/Components/SVG';
 
 export default function Home() {
   const [imageLoad, setImageLoad] = useState(false);
