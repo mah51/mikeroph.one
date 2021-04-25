@@ -31,8 +31,7 @@ export default function Home() {
               isLoaded={imageLoad}
               boxSize="250px"
               borderRadius="2xl"
-              my="auto"
-              ml="auto"
+              m="auto"
             >
               <Image
                 borderRadius="2xl"
