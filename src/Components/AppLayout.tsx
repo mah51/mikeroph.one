@@ -38,11 +38,10 @@ function AppLayout({ children }: AppLayoutProps) {
         <SVG icon="triangle" width={12} stroke left="90%" top="50%" />
 
         <SVG icon="triangle" width={16} stroke left="30%" top="65%" />
-
-        <SVG icon="circle" width={6} left="75%" top="10%" />
       </UpDown>
       <UpDown type="slow">
-        <SVG icon="circle" hiddenMobile width={24} left="5%" top="70%" />
+        <SVG icon="circle" width={20} hiddenMobile left="85%" top="25%" />
+        <SVG icon="circle" hiddenMobile stroke width={24} left="5%" top="70%" />
         <SVG icon="circle" width={6} left="4%" top="20%" />
         <SVG icon="circle" width={12} left="50%" top="60%" color="gray.100" />
       </UpDown>
