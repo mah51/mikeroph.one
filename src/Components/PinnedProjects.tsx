@@ -6,6 +6,7 @@ import {
   Text,
   useColorModeValue,
   chakra,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import { formatDistance, format } from 'date-fns';
 import { repoType } from '@/pages/api/github';
@@ -20,6 +21,7 @@ function PinnedProjects({
   return (
     <Box as="a" href={repo.html_url} h="full" w="full" mb={10}>
       <Flex
+        bg={useColorModeValue(`white`, `gray.800`)}
         px={8}
         py={5}
         height="100%"

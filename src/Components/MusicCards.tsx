@@ -27,6 +27,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
       maxWidth="2xl"
       templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
       border="1px solid"
+      bg={useColorModeValue(`white`, `gray.800`)}
       borderColor={useColorModeValue(`gray.100`, `gray.700`)}
       boxShadow="lg"
       transition="all 0.25s"

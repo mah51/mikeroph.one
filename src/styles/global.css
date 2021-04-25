@@ -151,3 +151,46 @@ body, #__next {
       }
 }
 
+
+/*icons*/
+
+@keyframes UpDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(30px);
+  }
+}
+@keyframes UpDownWide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(200px);
+  }
+}
+
+.UpDownAnimation > svg {
+  animation-name: UpDown;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.UpDownSlowAnimation > svg {
+  animation-name: UpDown;
+  animation-duration: 11s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.UpDownWideAnimation > svg {
+  animation-name: UpDownWide;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}

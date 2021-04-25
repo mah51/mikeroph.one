@@ -1,5 +1,12 @@
 import React from 'react';
-import { Badge, Box, Flex, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  Flex,
+  SimpleGrid,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { repoType } from '@/pages/api/github';
 
 function RepoCard({ repo, i }: { repo: repoType; i: number }) {
@@ -14,6 +21,7 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
     >
       <Flex
         p={3}
+        bg={useColorModeValue(`white`, `gray.800`)}
         height="100%"
         width="100%"
         maxWidth="100%"

@@ -5,6 +5,7 @@ import {
   Box,
   Flex,
   Image,
+  SimpleGrid,
   Text,
   useColorModeValue,
   VStack,
@@ -17,6 +18,7 @@ function LinkCard({ name, link, date, label }: LinkType) {
     <Box as="a" href={link} height="100%">
       <VStack
         w="100%"
+        bg={useColorModeValue(`white`, `gray.800`)}
         rounded="xl"
         borderWidth="1px"
         borderColor={useColorModeValue(`gray.100`, `gray.700`)}

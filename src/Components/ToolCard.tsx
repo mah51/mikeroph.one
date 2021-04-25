@@ -17,6 +17,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
   return (
     <Box as="a" href={link} height="100%">
       <SimpleGrid
+        bg={useColorModeValue(`white`, `gray.800`)}
         p={3}
         height="100%"
         gridTemplateColumns="85px 1fr"

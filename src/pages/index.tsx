@@ -3,40 +3,17 @@ import {
   Flex,
   Heading,
   Image,
-  SkeletonCircle,
   chakra,
   useColorModeValue,
-  useBreakpointValue,
   Skeleton,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import TextTransition, { presets } from 'react-text-transition';
 import { NextSeo } from 'next-seo';
-
-const interests = [
-  `photography`,
-  `programming`,
-  `web development`,
-  `sailing`,
-  `biology`,
-  `immunology`,
-  `gaming`,
-].sort(() => 0.5 - Math.random());
+import UpDown from '@/Components/Animations';
+import SVG from '@/Components/SVG';
 
 export default function Home() {
-  const breakpoint = useBreakpointValue({ base: `base`, md: `md` });
-
   const [imageLoad, setImageLoad] = useState(false);
-
-  const [index, setIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex((i) => i + 1),
-      7000, // every 10 seconds the interest changes
-    );
-    return () => clearTimeout(intervalId);
-  }, []);
 
   return (
     <>
@@ -49,14 +26,15 @@ export default function Home() {
             p={{ base: 0, sm: 16 }}
             direction={{ base: `column`, lg: `row` }}
             mt="calc(50vh - 200px)"
+            alignItems="center"
             mx="auto"
           >
             <Skeleton
               isLoaded={imageLoad}
               boxSize="250px"
-              margin="auto"
               borderRadius="2xl"
-              ml={10}
+              my="auto"
+              ml="auto"
             >
               <Image
                 borderRadius="2xl"
@@ -68,7 +46,7 @@ export default function Home() {
               />
             </Skeleton>
             <Flex
-              alignSelf="space-between"
+              alignSelf="center"
               direction="column"
               pl={{ base: 0, lg: 10 }}
               my={{ base: 10, lg: 0 }}
@@ -79,7 +57,7 @@ export default function Home() {
                   `brand.400`,
                 )}, ${useColorModeValue(`blue.600`, `blue.300`)})`}
                 bgClip="text"
-                fontSize={{ base: `4xl`, md: `5xl`, lg: `7xl` }}
+                fontSize={{ base: `5xl`, lg: `7xl` }}
                 textAlign={{ base: `center`, lg: `left` }}
               >
                 Hi, I&apos;m Michael!
@@ -93,7 +71,7 @@ export default function Home() {
                 Welcome to my website! The purpose of this site is for me to
                 test things out & maybe show some things off. I&apos;m a uni
                 student studying biochemistry in the UK.
-                <br />
+                {/* <br />
                 Some of my interests include: {` `}
                 <chakra.span
                   ml={3}
@@ -104,7 +82,7 @@ export default function Home() {
                   _after={{
                     transition: `all 0.25s ease-in-out`,
                     content: `''`,
-                    /* Fixes anti-aliasing issue in chrome that leaves one pixel' */
+                     Fixes anti-aliasing issue in chrome that leaves one pixel'
                     outline: `1px solid transparent`,
                     width: `100%`,
                     height: `30%`,
@@ -121,7 +99,7 @@ export default function Home() {
                     className="transition"
                     text={interests[index % interests.length]}
                   />
-                </chakra.span>
+                </chakra.span> */}
               </chakra.p>
             </Flex>
           </Flex>

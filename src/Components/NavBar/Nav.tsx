@@ -44,7 +44,10 @@ function Nav() {
       top={0}
       left={0}
       zIndex={10}
-      bg={useColorModeValue(`rgba(255, 255, 255, 0.8)`, `gray.800`)}
+      bg={useColorModeValue(
+        `rgba(255, 255, 255, 0.8)`,
+        `rgba(26, 33, 42, 0.8)`,
+      )}
       sx={{ backdropFilter: `saturate(180%) blur(5px)` }}
     >
       <chakra.nav mx="auto" p={3}>
