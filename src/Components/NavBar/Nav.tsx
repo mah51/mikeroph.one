@@ -76,14 +76,14 @@ function Nav() {
                   position: `absolute`,
                   bottom: 1,
                   left: 0,
-                  bg: useColorModeValue(`brand.200`, `gray.600`),
+                  bg: useColorModeValue(`brand.200`, `brand.700`),
                   zIndex: -1,
                 }}
                 _hover={{
                   _after: {
                     width: `100%`,
                   },
-                  color: useColorModeValue(`gray.900`, `brand.primary`),
+                  color: useColorModeValue(`gray.900`, `white`),
                 }}
               >
                 Michael Hall

@@ -91,7 +91,7 @@ function DesktopNav({ links }: any) {
               </MenuButton>
               <MenuList>
                 {linkItem.links.map((item: any, i: number) => (
-                  <Link href={item.link}>
+                  <Link href={item.link} key={`${i.toString()}MenuLink`}>
                     <MenuItem
                       as="a"
                       sx={{ cursor: `pointer` }}

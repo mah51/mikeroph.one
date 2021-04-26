@@ -215,6 +215,6 @@ body, #__next {
 .moving-grad {
   background-size: 300%;
   animation: movingGradient;
-  animation-duration: 6s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
 }
