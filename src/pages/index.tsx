@@ -23,7 +23,7 @@ export default function Home() {
           <Flex
             p={{ base: 0, sm: 16 }}
             direction={{ base: `column`, lg: `row` }}
-            mt="calc(50vh - 200px)"
+            mt="max(calc(50vh - 200px), 100px)"
             alignItems="center"
             mx="auto"
           >
@@ -52,7 +52,11 @@ export default function Home() {
                 bgGradient={`linear(to-r, ${useColorModeValue(
                   `brand.600`,
                   `brand.400`,
+                )}, ${useColorModeValue(
+                  `teal.600`,
+                  `teal.400`,
                 )}, ${useColorModeValue(`blue.600`, `blue.300`)})`}
+                className="moving-grad"
                 bgClip="text"
                 fontSize={{ base: `5xl`, lg: `7xl` }}
                 textAlign={{ base: `center`, lg: `left` }}
