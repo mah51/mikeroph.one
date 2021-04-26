@@ -56,7 +56,7 @@ function Spotify({ currentlyPlaying, data, error }: any) {
   }
   return (
     <>
-      <NextSeo title="Projects" />
+      <NextSeo title="Music" />
       {` `}
       <Box
         width="full"
