@@ -1,13 +1,14 @@
 import {
   Box,
   Flex,
-  Image,
   SimpleGrid,
   Skeleton,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import Image from 'next/image';
 import React, { useState } from 'react';
+import styles from '../styles/styles.module.css';
 
 interface SongCardProps {
   song: any;
@@ -18,70 +19,80 @@ interface SongCardProps {
 export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
-    <SimpleGrid
-      my={5}
-      p={5}
+    <Box
+      as="a"
+      href={song.external_urls?.spotify}
+      h="full"
+      w="full"
+      isTruncated
       overflow="visible"
-      width="full"
-      maxWidth="2xl"
-      templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
-      border="1px solid"
-      bg={useColorModeValue(`white`, `gray.800`)}
-      borderColor={useColorModeValue(`gray.100`, `gray.700`)}
-      boxShadow="lg"
-      transition="all 0.25s"
-      borderRadius="xl"
-      transitionTimingFunction="spring(1 100 10 10)"
-      _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
     >
-      <Skeleton
-        borderRadius="2xl"
-        boxSize={titleCard ? `150px` : `110px`}
-        isLoaded={imageLoad}
+      <SimpleGrid
+        my={5}
+        p={5}
+        overflow="visible"
+        width="full"
+        maxWidth="2xl"
+        templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
+        border="1px solid"
+        bg={useColorModeValue(`white`, `gray.800`)}
+        borderColor={useColorModeValue(`gray.100`, `gray.700`)}
+        boxShadow="lg"
+        transition="all 0.25s"
+        borderRadius="xl"
+        transitionTimingFunction="spring(1 100 10 10)"
+        _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
       >
-        <Image
+        <Skeleton
           borderRadius="2xl"
           boxSize={titleCard ? `150px` : `110px`}
-          onLoad={() => setImageLoad(true)}
-          src={
-            song.albumImageUrl ||
-            song.album.images
-              .filter((image: any) => image.height > 109)
-              .slice(-1)[0].url
-          }
-        />
-      </Skeleton>
+          isLoaded={imageLoad}
+        >
+          <Image
+            className={styles.image}
+            width={titleCard ? `150px` : `110px`}
+            height={titleCard ? `150px` : `110px`}
+            onLoad={() => setImageLoad(true)}
+            src={
+              song.albumImageUrl ||
+              song.album.images
+                .filter((image: any) => image.height > 109)
+                .slice(-1)[0].url
+            }
+          />
+        </Skeleton>
 
-      <Flex direction="column" ml={5} maxWidth="full" isTruncated>
-        <Text
-          isTruncated
-          maxWidth="full"
-          fontSize={
-            titleCard ? { base: `2xl`, md: `3xl` } : { base: `xl`, md: `2xl` }
-          }
-          fontWeight="semibold"
-        >
-          {`${song.name}${titleCard && !isPlaying ? ` - Paused` : ``}`}
-        </Text>
-        <Flex
-          direction="column"
-          color={useColorModeValue(`gray.600`, `gray.400`)}
-          mt={2}
-          isTruncated
-          width="full"
-          fontSize={{ base: `sm`, sm: `md` }}
-        >
-          <Text isTruncated maxWidth="full">
-            Album • {song.album.name || song.album}
+        <Flex direction="column" ml={5} maxWidth="full" isTruncated>
+          <Text
+            isTruncated
+            maxWidth="full"
+            fontSize={
+              titleCard ? { base: `2xl`, md: `3xl` } : { base: `xl`, md: `2xl` }
+            }
+            fontWeight="semibold"
+          >
+            {`${song.name}${titleCard && !isPlaying ? ` - Paused` : ``}`}
           </Text>
-          <Text isTruncated maxWidth="full">
-            Artist{song.artists?.length > 1 && `s`} •{` `}
-            {song.artist ||
-              song.artists?.map((artist: any) => artist.name).join(`, `)}
-          </Text>
+          <Flex
+            direction="column"
+            color={useColorModeValue(`gray.600`, `gray.400`)}
+            mt={2}
+            isTruncated
+            width="full"
+            fontSize={{ base: `sm`, sm: `md` }}
+          >
+            <Text isTruncated maxWidth="full">
+              Album • {song.album.name || song.album}
+            </Text>
+            <Text isTruncated maxWidth="full">
+              Artist{song.artists?.length > 1 && `s`} •{` `}
+              {song.artist ||
+                song.artists?.map((artist: any) => artist.name).join(`, `)}
+            </Text>
+          </Flex>
         </Flex>
-      </Flex>
-    </SimpleGrid>
+      </SimpleGrid>
+    </Box>
   );
 };
 
@@ -111,13 +122,9 @@ export const ArtistCard = ({ artist }: any) => {
         isLoaded={imageLoad}
       >
         <Image
-          overflow="visible"
-          borderRadius="2xl"
-          filter="brightness(25%)"
-          mx="auto"
-          maxWidth="150px"
-          maxHeight="150px"
-          boxSize="full"
+          className={styles.artistImage}
+          width="150px"
+          height="150px"
           onLoad={() => setImageLoad(true)}
           src={
             artist.images

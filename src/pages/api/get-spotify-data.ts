@@ -32,6 +32,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const songs = await responseTracks.json();
       const recentlyPlayed = await responseRecently.json();
 
+      res.setHeader(
+        `Cache-Control`,
+        `public, s-maxage=60, stale-while-revalidate=30`,
+      );
+
       return res.status(200).json({ artists, songs, recentlyPlayed });
     } catch (e) {
       // eslint-disable-next-line no-console

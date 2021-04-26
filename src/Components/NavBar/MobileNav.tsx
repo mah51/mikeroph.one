@@ -57,7 +57,7 @@ function MobileNav({ links }: any) {
         {links.map((link: any, index: number) => {
           if (link.type === `dropdown`) {
             return link.links.map((item: any, i: number) => (
-              <Link href={item.link}>
+              <Link href={item.link} key={`${i.toString()}link`}>
                 <Button
                   key={i.toString()}
                   as={ChakraLink}
@@ -71,7 +71,7 @@ function MobileNav({ links }: any) {
             ));
           }
           return (
-            <Link href={link.link}>
+            <Link href={link.link} key={`${index.toString()}link`}>
               <Button
                 key={index.toString()}
                 as={ChakraLink}

@@ -22,7 +22,6 @@ body, #__next {
   border-radius: 5px;
   min-height: 300px;
   min-width: 400px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -31,8 +30,8 @@ body, #__next {
   position: relative;
   margin: 50px;
   display: inline-block;
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
 }
 
 .loading-loader span{
@@ -192,5 +191,30 @@ body, #__next {
   animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes movingGradient {
+  0% {
+    background-position: 0 50%;
+  }
+  25% {
+    background-position: 50% 75%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 75%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.moving-grad {
+  background-size: 300%;
+  animation: movingGradient;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
 }
