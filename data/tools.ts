@@ -151,7 +151,7 @@ const Tools: ToolType[] = [
     id: `raycast`,
     category: [`mac`],
     link: `https://raycast.com/`,
-    labels: [`Screenshots`],
+    labels: [`Spotlight Replacement`],
     name: `Raycast`,
     description: `Spotlight, but its good.`,
   },
