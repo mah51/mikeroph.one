@@ -11,12 +11,6 @@ interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-declare global {
-  interface Window {
-    GA_INITIALISED: boolean;
-  }
-}
-
 function AppLayout({ children }: AppLayoutProps) {
   const router = useRouter();
 
@@ -51,7 +45,7 @@ function AppLayout({ children }: AppLayoutProps) {
           `rgba(255, 255, 255, 0.8)`,
           `rgba(26, 33, 42, 0.8)`,
         )}
-        sx={{ backdropFilter: `saturate(180%) blur(5px)` }}
+        className="blurred-background-global"
       >
         {children}
       </Box>

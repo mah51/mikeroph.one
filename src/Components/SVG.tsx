@@ -73,6 +73,7 @@ const SVG = ({
       stroke: stroke ? `currentColor` : `none`,
       fill: stroke ? `none` : `currentColor`,
       display: hiddenMobile ? { base: `none`, md: `block` } : `block`,
+      overflow: `visible`,
       color,
       zIndex,
       width,
