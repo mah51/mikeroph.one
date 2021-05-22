@@ -80,8 +80,17 @@ function LinkCard({ name, link, date, label }: LinkType) {
           </AspectRatio>
         </Box>
 
-        <VStack py={2} px={4} spacing={0} align="start" width="100%">
-          <Flex justifyContent="space-between" width="100%">
+        <VStack
+          py={1}
+          px={4}
+          spacing={0}
+          align="start"
+          width="100%"
+          bg={useColorModeValue('white', 'gray.700')}
+          border={'1px solid'}
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+        >
+          <Flex justifyContent="space-between" width="100%" py={2}>
             <Text fontSize="sm" noOfLines={1} fontWeight="500">
               {name}
             </Text>

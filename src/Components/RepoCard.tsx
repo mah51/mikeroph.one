@@ -21,12 +21,12 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
     >
       <Flex
         p={3}
-        bg={useColorModeValue(`white`, `gray.800`)}
+        bg={useColorModeValue(`white`, `gray.700`)}
         height="100%"
         width="100%"
         maxWidth="100%"
         border="1px solid"
-        borderColor={useColorModeValue(`gray.100`, `gray.700`)}
+        borderColor={useColorModeValue(`gray.200`, `gray.700`)}
         borderRadius="lg"
         boxShadow="lg"
         transition="all 0.25s"

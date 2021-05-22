@@ -8,6 +8,8 @@ export const pinnedRepos: pinnedRepoType[] = [
   {
     id: `personal-web`,
     name: `My Website`,
+    image:
+      'https://user-images.githubusercontent.com/47287285/118502427-9b2aa880-b721-11eb-9155-d7ebdfc1770e.png',
     longDescription: `This here website you are reading this content from. The inspiration for this website started when I saw Lee Rob's and Daniel Wirtz's websites (you might see a few similarities 🙃 ). I decided I wanted to try out ChakraUI and so I started developing this website; I learnt a lot about NextJS and Chakra, and had a great time making it.`,
   },
   {
@@ -20,5 +22,6 @@ export const pinnedRepos: pinnedRepoType[] = [
 export interface pinnedRepoType {
   id: string;
   name: string;
+  image?: string;
   longDescription: string;
 }

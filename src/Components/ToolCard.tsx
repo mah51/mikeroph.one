@@ -17,13 +17,13 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
   return (
     <Box as="a" href={link} height="100%">
       <SimpleGrid
-        bg={useColorModeValue(`white`, `gray.800`)}
+        bg={useColorModeValue(`white`, `gray.700`)}
         p={3}
         height="100%"
         gridTemplateColumns="85px 1fr"
         border="1px solid"
-        borderColor={useColorModeValue(`gray.100`, `gray.700`)}
-        borderRadius="lg"
+        borderColor={useColorModeValue(`gray.200`, `gray.700`)}
+        borderRadius="2xl"
         boxShadow="lg"
         transition="all 0.25s"
         transitionTimingFunction="spring(1 100 10 10)"
