@@ -27,6 +27,7 @@ function DesktopNav({ links }: any) {
             <Link href={linkItem.link} key={index.toString()}>
               <ChakraLink
                 key={index.toString()}
+                color={useColorModeValue(`gray.800`, `white`)}
                 fontSize="lg"
                 fontWeight="semibold"
                 position="relative"
@@ -48,7 +49,6 @@ function DesktopNav({ links }: any) {
                   _after: {
                     width: `100%`,
                   },
-                  color: useColorModeValue(`gray.800`, `white`),
                 }}
               >
                 {linkItem.name}

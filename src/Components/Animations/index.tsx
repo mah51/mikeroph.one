@@ -10,6 +10,7 @@ function UpDown({
 }) {
   return (
     <chakra.div
+      filter={`saturate(180%) blur(5px)`}
       overflow="hidden"
       position="absolute"
       className={

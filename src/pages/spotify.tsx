@@ -118,7 +118,7 @@ function Spotify({ currentlyPlaying, data, error }: any) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const response = await fetch(
     `${
       process.env.NEXT_PUBLIC_HOST ||
@@ -131,13 +131,15 @@ export async function getServerSideProps() {
       `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     }/api/get-now-playing`,
   );
+  console.log(currentResponse);
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
   let error = null;
   if (response.status !== 200) {
     error = `There was an error: ${response.status}`;
   }
   const currentlyPlaying = await currentResponse.json();
   const data = await response.json();
-  return { props: { data, currentlyPlaying, error } };
+  return { props: { data, currentlyPlaying, error, revalidate: 60 } };
 }
 
 export default Spotify;
