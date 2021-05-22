@@ -1,5 +1,13 @@
 import React from 'react';
-import { Box, Button, Flex, Icon, SimpleGrid, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  SimpleGrid,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import { NextSeo } from 'next-seo';
 import LineHeading from '../Components/LineHeading';
@@ -45,14 +53,13 @@ function Projects({
             My projects
           </LineHeading>
           <Text mt={3}>A quick collection of my projects.</Text>
-          <Flex
+          <VStack
             direction="column"
             my={16}
             width="full"
             height="full"
             maxWidth="4xl"
-            spacingX={10}
-            spacingY={8}
+            spacing={10}
           >
             {pinnedRepos
               .sort(
@@ -75,7 +82,7 @@ function Projects({
                   projectData={data}
                 />
               ))}
-          </Flex>
+          </VStack>
           <LineHeading fontSize={{ base: `5xl`, lg: `5xl` }} textAlign="center">
             Repositories
           </LineHeading>
@@ -125,7 +132,7 @@ function Projects({
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const response = await fetch(
     `${
       process.env.NEXT_PUBLIC_HOST ||
@@ -134,7 +141,7 @@ export async function getServerSideProps() {
   );
 
   const { stars, repos, followers } = await response.json();
-  return { props: { stars, repos, followers } };
+  return { props: { stars, repos, followers, revalidate: 600 } };
 }
 
 export default Projects;

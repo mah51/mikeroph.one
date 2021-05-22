@@ -85,8 +85,8 @@ function Tools() {
               bg={useColorModeValue(`white`, `gray.800`)}
               color={useColorModeValue(`gray.600`, `gray.500`)}
               _selected={{
-                color: `green.800`,
-                bg: `green.100`,
+                color: `purple.800`,
+                bg: `purple.100`,
               }}
               mr={2}
               mt={2}
@@ -101,8 +101,8 @@ function Tools() {
               bg={useColorModeValue(`white`, `gray.800`)}
               color={useColorModeValue(`gray.600`, `gray.500`)}
               _selected={{
-                color: `teal.800`,
-                bg: `teal.100`,
+                color: `blue.800`,
+                bg: `blue.100`,
               }}
               mr={2}
               mt={2}
@@ -116,8 +116,8 @@ function Tools() {
               bg={useColorModeValue(`white`, `gray.800`)}
               color={useColorModeValue(`gray.600`, `gray.500`)}
               _selected={{
-                color: `blue.800`,
-                bg: `blue.100`,
+                color: `teal.800`,
+                bg: `teal.100`,
               }}
               mr={2}
               mt={2}

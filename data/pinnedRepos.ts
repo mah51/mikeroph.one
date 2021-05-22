@@ -15,6 +15,8 @@ export const pinnedRepos: pinnedRepoType[] = [
   {
     id: `movie-web-typescript`,
     name: `ScuffedMDB`,
+    image:
+      'https://user-images.githubusercontent.com/47287285/119243076-915ad800-bb5b-11eb-96c3-a943db35e4ea.png',
     longDescription: `The first version of this website I built in the latter half of quarantine to rate movies that me and my friends had watched over discord. It went great until I accidentally deleted the database, and then decided it needed a remodel as well. Producing ScuffedMDB (Movie-rating V2.0), made with NextJS and ChakraUI.`,
   },
 ];

@@ -35,7 +35,7 @@ function PinnedProjects({
         border="1px solid"
         borderColor={useColorModeValue(`gray.200`, `gray.700`)}
         borderRadius="2xl"
-        boxShadow="lg"
+        boxShadow="xl"
         textAlign="left"
         direction="column"
         justifyContent="flex-start"
@@ -43,6 +43,7 @@ function PinnedProjects({
         isTruncated
       >
         <Flex
+          direction={{ base: 'column', sm: 'row' }}
           maxWidth="full"
           width="full"
           isTruncated
@@ -56,17 +57,22 @@ function PinnedProjects({
             maxW="100%"
           >
             {projectData.name}
-            <chakra.span ml={2} fontSize="md" color="gray.600">
+            <chakra.span
+              ml={2}
+              fontSize="md"
+              color={useColorModeValue('gray.500', 'gray.500')}
+            >
               {format(new Date(repo.created_at), `dd/MM/yy`)}
             </chakra.span>
           </Text>
           <Button
+            mt={[2, 0]}
+            isTruncated
             as="a"
             href={repo.html_url}
             leftIcon={<VscGithub />}
             colorScheme="brand"
-            variant="ghost"
-            mr={2}
+            variant="ghostAlwaysOn"
           >
             View on GitHub
           </Button>
@@ -74,7 +80,7 @@ function PinnedProjects({
         <Text
           mb={3}
           maxWidth="100%"
-          color={useColorModeValue(`gray.500`, `gray.500`)}
+          color={useColorModeValue(`gray.600`, `gray.500`)}
           isTruncated
         >
           <chakra.span mr={2}>
@@ -89,7 +95,7 @@ function PinnedProjects({
           </Badge>
         </Text>
         <Text
-          color={useColorModeValue(`gray.600`, `gray.400`)}
+          color={useColorModeValue(`gray.600`, `gray.300`)}
           justifySelf="center"
           height="100%"
           width="100%"
