@@ -27,7 +27,7 @@ function Projects({
         height="full"
         mx="auto"
         maxW="6xl"
-        my="28"
+        py="28"
       >
         <Flex
           direction="column"
