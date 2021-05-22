@@ -131,6 +131,8 @@ export async function getStaticProps() {
       `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     }/api/get-now-playing`,
   );
+  console.log(currentResponse);
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
   let error = null;
   if (response.status !== 200) {
     error = `There was an error: ${response.status}`;
