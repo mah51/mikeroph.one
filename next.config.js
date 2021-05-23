@@ -1,6 +1,6 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' plausible.io;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' stats.michael-hall.me;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
@@ -58,7 +58,7 @@ module.exports = withMDX({
     webpack5: true,
   },
   images: {
-    domains: ['i.scdn.co', 'user-images.githubusercontent.com', 'github.com'],
+    domains: ['i.scdn.co', 'user-images.githubusercontent.com'],
   },
   async headers() {
     return [
