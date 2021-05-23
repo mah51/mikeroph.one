@@ -50,7 +50,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         description="The purpose of this site is for me to test things out & maybe show some things off."
       />
       <ChakraProvider theme={theme}>
-        <PlausibleProvider domain="michael-hall.me">
+        <PlausibleProvider
+          domain="michael-hall.me"
+          selfHosted
+          trackOutboundLinks
+          enabled={process.env.NODE_ENV === 'production'}
+          customDomain={'http://stats.michael-hall.me/js/plausible.js'}
+        >
           {loading ? (
             <Loader />
           ) : (
