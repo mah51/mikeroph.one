@@ -55,7 +55,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           selfHosted
           trackOutboundLinks
           enabled={process.env.NODE_ENV === 'production'}
-          customDomain={'http://stats.michael-hall.me:8000'}
+          customDomain={'https://stats.michael-hall.me'}
         >
           {loading ? (
             <Loader />

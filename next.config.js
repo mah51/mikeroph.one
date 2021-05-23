@@ -1,6 +1,6 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.michael-hall.me http://stats.michael-hall.me http://stats.michael-hall.me:8000;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.michael-hall.me;
   child-src *.youtube.com *.google.com *.twitter.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
