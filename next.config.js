@@ -60,4 +60,12 @@ module.exports = withMDX({
   images: {
     domains: ['i.scdn.co', 'user-images.githubusercontent.com'],
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ];
+  },
 });
