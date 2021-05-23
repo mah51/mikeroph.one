@@ -5,11 +5,8 @@ import { getSpotifyData } from '../../../utils/spotify';
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === `GET`) {
     try {
-      const {
-        responseTracks,
-        responseArtists,
-        responseRecently,
-      } = await getSpotifyData();
+      const { responseTracks, responseArtists, responseRecently } =
+        await getSpotifyData();
 
       if (responseRecently.status !== 200) {
         return res
@@ -34,7 +31,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
       res.setHeader(
         `Cache-Control`,
-        `public, s-maxage=60, stale-while-revalidate=30`,
+        `public, s-maxage=60, stale-while-revalidate=60`,
       );
 
       return res.status(200).json({ artists, songs, recentlyPlayed });
