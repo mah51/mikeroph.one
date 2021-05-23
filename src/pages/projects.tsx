@@ -58,7 +58,7 @@ function Projects({
             my={16}
             width="full"
             height="full"
-            maxWidth="4xl"
+            maxWidth="5xl"
             spacing={10}
           >
             {pinnedRepos
@@ -76,9 +76,10 @@ function Projects({
                   ).getTime(),
               )
               .reverse()
-              .map((data: pinnedRepoType) => (
+              .map((data: pinnedRepoType, index) => (
                 <PinnedProjects
                   repo={repos.filter((x: repoType) => x.name === data.id)[0]}
+                  left={index % 2 === 0}
                   projectData={data}
                 />
               ))}
@@ -105,11 +106,11 @@ function Projects({
 
         <SimpleGrid
           mt={10}
-          maxWidth="full"
           columns={{ base: 1, md: 2 }}
           width="full"
           height="full"
           maxH="full"
+          mx="auto"
           gridAutoRows="1fr"
           spacingX={10}
           spacingY={8}

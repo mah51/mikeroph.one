@@ -16,12 +16,12 @@ import Image from 'next/image';
 import React from 'react';
 import ImageCard from './ImageCard';
 
-export default function PinnedImageProjects({ projectData, repo }: any) {
+export default function PinnedImageProjects({ projectData, repo, left }: any) {
   const bp = useBreakpointValue({ base: 'base', lg: 'lg' });
   if (bp === 'lg') {
     return (
       <Box position="relative" width="100%" mb={10}>
-        <Box maxWidth="90%">
+        <Box maxWidth={{ lg: '83%', xl: '90%' }} ml={left ? 'auto' : 0}>
           <AspectRatio ratio={16 / 9}>
             <Box
               boxShadow="xl"
@@ -37,7 +37,8 @@ export default function PinnedImageProjects({ projectData, repo }: any) {
           maxHeight="full"
           boxShadow="lg"
           position="absolute"
-          right={'-5%'}
+          left={left ? { lg: '0', xl: '-10%' } : ''}
+          right={left ? '' : { lg: '0', xl: '-10%' }}
           top={'50%'}
           transform={'translate(0, -50%)'}
           borderRadius={'2xl'}
@@ -76,7 +77,9 @@ export default function PinnedImageProjects({ projectData, repo }: any) {
                 {repo.language}
               </Badge>
             </Text>
-            <Text height="full">{projectData.longDescription}</Text>
+            <Text height="full" pt={2} pb={5}>
+              {projectData.longDescription}
+            </Text>
             <Button
               as="a"
               href={repo.html_url}

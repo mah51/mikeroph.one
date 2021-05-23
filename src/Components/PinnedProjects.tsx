@@ -17,12 +17,16 @@ import { pinnedRepoType } from '@/../data/pinnedRepos';
 function PinnedProjects({
   repo,
   projectData,
+  left,
 }: {
   repo: repoType;
   projectData: pinnedRepoType;
+  left: boolean;
 }) {
   if (projectData && projectData?.image) {
-    return <PinnedImageProjects repo={repo} projectData={projectData} />;
+    return (
+      <PinnedImageProjects left={left} repo={repo} projectData={projectData} />
+    );
   }
   return (
     <Box h="full" w="full" mb={10}>
