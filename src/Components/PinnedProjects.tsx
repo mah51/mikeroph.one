@@ -12,7 +12,7 @@ import { VscGithub } from 'react-icons/vsc';
 import { formatDistance, format } from 'date-fns';
 import { repoType } from '@/pages/api/github';
 import PinnedImageProjects from './PinnedImageProjects';
-import { pinnedRepoType } from '@/../data/pinnedRepos';
+import { pinnedRepoType } from '../../data/pinnedRepos';
 
 function PinnedProjects({
   repo,
@@ -29,7 +29,7 @@ function PinnedProjects({
     );
   }
   return (
-    <Box h="full" w="full" mb={10}>
+    <Box h="full" w="full" my={5}>
       <Flex
         bg={useColorModeValue(`white`, `gray.700`)}
         px={8}

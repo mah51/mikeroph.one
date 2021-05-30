@@ -20,8 +20,8 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
   const bp = useBreakpointValue({ base: `base`, lg: `lg` });
   if (bp === `lg`) {
     return (
-      <Box position="relative" width="100%">
-        <Box maxWidth={{ lg: `83%`, xl: `90%` }} ml={left ? `auto` : 0} mb={10}>
+      <Box position="relative" width="100%" py={5}>
+        <Box maxWidth={{ lg: `83%`, xl: `90%` }} ml={left ? `auto` : 0}>
           <AspectRatio ratio={16 / 9}>
             <Box
               boxShadow="xl"
