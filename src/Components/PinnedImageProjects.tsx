@@ -1,9 +1,9 @@
-import { Button } from '@chakra-ui/button';
-import { useColorModeValue } from '@chakra-ui/color-mode';
 import { VscGithub } from 'react-icons/vsc';
 import { format, formatDistance } from 'date-fns';
 import {
+  Button,
   AspectRatio,
+  useColorModeValue,
   Box,
   Heading,
   Text,
@@ -17,19 +17,19 @@ import React from 'react';
 import ImageCard from './ImageCard';
 
 export default function PinnedImageProjects({ projectData, repo, left }: any) {
-  const bp = useBreakpointValue({ base: 'base', lg: 'lg' });
-  if (bp === 'lg') {
+  const bp = useBreakpointValue({ base: `base`, lg: `lg` });
+  if (bp === `lg`) {
     return (
-      <Box position="relative" width="100%" mb={10}>
-        <Box maxWidth={{ lg: '83%', xl: '90%' }} ml={left ? 'auto' : 0}>
+      <Box position="relative" width="100%">
+        <Box maxWidth={{ lg: `83%`, xl: `90%` }} ml={left ? `auto` : 0} mb={10}>
           <AspectRatio ratio={16 / 9}>
             <Box
               boxShadow="xl"
               borderRadius="2xl"
-              border={'1px solid'}
-              borderColor={useColorModeValue('gray.200', 'gray.600')}
+              border="1px solid"
+              borderColor={useColorModeValue(`gray.200`, `gray.600`)}
             >
-              <Image src={projectData.image} layout={'fill'} />
+              <Image src={projectData.image} layout="fill" />
             </Box>
           </AspectRatio>
         </Box>
@@ -37,23 +37,24 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
           maxHeight="full"
           boxShadow="lg"
           position="absolute"
-          left={left ? { lg: '0', xl: '-10%' } : ''}
-          right={left ? '' : { lg: '0', xl: '-10%' }}
-          top={'50%'}
-          transform={'translate(0, -50%)'}
-          borderRadius={'2xl'}
-          bg={useColorModeValue('white', 'gray.700')}
+          left={left ? { lg: `0`, xl: `-10%` } : ``}
+          right={left ? `` : { lg: `0`, xl: `-10%` }}
+          top="50%"
+          transform="translate(0, -50%)"
+          borderRadius="2xl"
+          bg={useColorModeValue(`white`, `gray.700`)}
           p={5}
           width="45%"
           maxWidth="600px"
           whiteSpace="normal"
           minHeight="35%"
-          border={'1px solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          border="1px solid"
+          borderColor={useColorModeValue(`gray.200`, `gray.700`)}
         >
           <VStack maxHeight="full" height="full" width="full" maxWidth="full">
             <Heading isTruncated>
-              {projectData.name}{' '}
+              {projectData.name}
+              {` `}
               <chakra.span ml={2} fontSize="md" color="gray.500">
                 {format(new Date(repo.created_at), `dd/MM/yy`)}
               </chakra.span>
@@ -93,7 +94,6 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
         </Box>
       </Box>
     );
-  } else {
-    return <ImageCard {...{ projectData, repo }} />;
   }
+  return <ImageCard {...{ projectData, repo }} />;
 }

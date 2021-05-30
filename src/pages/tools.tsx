@@ -55,8 +55,8 @@ function Tools() {
               bg={useColorModeValue(`white.100`, `gray.800`)}
               color={useColorModeValue(`gray.600`, `gray.500`)}
               _selected={{
-                color: `purple.800`,
-                bg: `purple.100`,
+                color: `red.800`,
+                bg: `red.100`,
               }}
               mr={2}
               mt={2}
