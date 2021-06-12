@@ -79,6 +79,7 @@ const SVG = ({
       width,
       left,
       top,
+      filter: `blur(8px) saturate(160%)`,
     }}
     viewBox={icons[icon].viewBox}
   >

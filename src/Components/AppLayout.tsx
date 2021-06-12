@@ -45,7 +45,6 @@ function AppLayout({ children }: AppLayoutProps) {
           `rgba(255, 255, 255, 0.8)`,
           `rgba(26, 33, 42, 0.8)`,
         )}
-        className="blurred-background-global"
       >
         {children}
       </Box>

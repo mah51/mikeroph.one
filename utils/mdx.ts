@@ -42,12 +42,12 @@ export async function getFileBySlug(type: string, slug: number) {
   };
 }
 
-export async function getAllFilesFrontMatter(type: string) {
-  const files = fs.readdirSync(path.join(process.cwd(), `data`, type));
+export async function getAllFilesFrontMatter() {
+  const files = fs.readdirSync(path.join(process.cwd(), `data`, `blog`));
 
   return files.reduce((allPosts: any, postSlug: string) => {
     const source = fs.readFileSync(
-      path.join(process.cwd(), `data`, type, postSlug),
+      path.join(process.cwd(), `data`, `blog`, postSlug),
       `utf8`,
     );
     const { data } = matter(source);

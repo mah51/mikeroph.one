@@ -216,9 +216,9 @@ body,
 }
 
 .blurred-background-global {
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  -moz-backdrop-filter: blur(10px) saturate(180%);
-  -o-backdrop-filter: blur(10px) saturate(180%);
-  -ms-backdrop-filter: blur(10px) saturate(180%);
+  filter: blur(10px) saturate(180%);
+  -webkit-filter: blur(10px) saturate(180%);
+  -moz-filter: blur(10px) saturate(180%);
+  -o-filter: blur(10px) saturate(180%);
+  -ms-filter: blur(10px) saturate(180%);
 }
