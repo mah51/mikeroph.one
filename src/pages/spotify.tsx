@@ -10,8 +10,6 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal';
-import { useQuery } from 'react-query';
-import Loader from '@/Components/Loader';
 import {
   RecentSongs,
   TopArtists,
@@ -50,7 +48,7 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
   );
 };
 
-function Spotify({ currentlyPlaying, data, error }: any) {
+function Spotify({ currentlyPlaying, data, error }: any): React.ReactElement {
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
@@ -123,13 +121,13 @@ export async function getStaticProps() {
     `${
       process.env.NEXT_PUBLIC_HOST ||
       `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    }/api/get-spotify-data`,
+    }/api/get-spotify-data`
   );
   const currentResponse = await fetch(
     `${
       process.env.NEXT_PUBLIC_HOST ||
       `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    }/api/get-now-playing`,
+    }/api/get-now-playing`
   );
   let error = null;
   if (response.status !== 200) {

@@ -4,14 +4,15 @@ import { getAllFilesFrontMatter } from '../../utils/mdx';
 import BlogPost from '../Components/BlogPost';
 import LineHeading from '../Components/LineHeading';
 
-function Blog({ posts }: any) {
+function Blog({ posts }: any): React.ReactElement {
   const filteredBlogPosts = posts.sort(
     (a: any, b: any) =>
-      Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
+      Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
   );
 
-  return filteredBlogPosts.map((frontMatter: any) => (
+  return filteredBlogPosts.map((frontMatter: any, i) => (
     <Flex
+      key={i.toString()}
       direction="column"
       alignItems="center"
       width="full"
@@ -27,8 +28,8 @@ function Blog({ posts }: any) {
         Blog Posts
       </LineHeading>
       <Text mt={3}>
-        Here are a collection of my blog posts, totalling {posts.length} blogs
-        :).
+        Here are a collection of my blog posts, with {posts.length} blog
+        {posts.length && 's'} :).
       </Text>
       <Box mt="16" width="70%" mx="auto">
         <BlogPost key={frontMatter.title} {...frontMatter} />
@@ -37,7 +38,7 @@ function Blog({ posts }: any) {
   ));
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<{ props: { posts: any } }> {
   const posts = await getAllFilesFrontMatter();
   return { props: { posts } };
 }
