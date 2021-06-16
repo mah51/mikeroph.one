@@ -13,10 +13,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "src/",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["*"]
     }
   },
   "exclude": ["node_modules"],
