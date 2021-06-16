@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import styles from '../styles/styles.module.css';
+import styles from '@/styles/styles.module.css';
 
 interface SongCardProps {
   song: any;
