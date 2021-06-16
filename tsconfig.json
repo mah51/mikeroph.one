@@ -15,14 +15,7 @@
     "jsx": "preserve",
 
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
-    },
+
     "skipLibCheck": true
   },
   "exclude": ["node_modules"],
