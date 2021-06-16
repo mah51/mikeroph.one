@@ -11,8 +11,8 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import LineHeading from '@/components/LineHeading';
-import ToolGrid from '@/components/ToolGrid';
+import LineHeading from '../components/LineHeading';
+import ToolGrid from '../components/ToolGrid';
 import {
   AiFillApple,
   AiFillChrome,

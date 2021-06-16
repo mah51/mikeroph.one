@@ -1,10 +1,10 @@
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
-import '@/styles/global.css';
+import '../styles/global.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
-import Loader from '@/components/Loader';
+import Loader from '../components/Loader';
 import { DefaultSeo } from 'next-seo';
 import PlausibleProvider from 'next-plausible';
 import AppLayout from '../components/AppLayout';

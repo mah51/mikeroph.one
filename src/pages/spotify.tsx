@@ -15,7 +15,7 @@ import {
   TopArtists,
   TopSongs,
   CurrentlyPlaying,
-} from '@/components/MusicLayouts';
+} from '../components/MusicLayouts';
 import { NextSeo } from 'next-seo';
 
 interface ListFadeProps {
