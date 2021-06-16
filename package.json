@@ -51,6 +51,8 @@
     "remark-slug": "6.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "7.14.5",
+    "@babel/preset-react": "7.14.5",
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
     "@types/node": "15.12.2",
