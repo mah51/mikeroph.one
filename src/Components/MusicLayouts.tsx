@@ -1,4 +1,4 @@
-import { Flex, SimpleGrid, Text, useColorModeValue } from '@chakra-ui/react';
+import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 import LineHeading from './LineHeading';
 import { SongCard, ArtistCard } from './MusicCards';
@@ -13,7 +13,9 @@ export const TopSongs = ({ songs }: any) => (
     // fixes bug that cut shadow off
     overflow="visible"
   >
-    <LineHeading alignSelf="center">Top Songs</LineHeading>
+    <LineHeading alignSelf="center" mb={5}>
+      Top Songs
+    </LineHeading>
     {songs.map((song: any) => (
       <SongCard song={song} key={song.id} />
     ))}
@@ -44,7 +46,9 @@ export const TopArtists = ({ artists }: any) => (
 
 export const RecentSongs = ({ songs }: any) => (
   <Flex direction="column" width="full" maxW="2xl" mx="auto" overflow="visible">
-    <LineHeading alignSelf="center">Recently Played Songs</LineHeading>
+    <LineHeading alignSelf="center" mb={5}>
+      Recently Played Songs
+    </LineHeading>
     {songs.map((song: any, index: number) => (
       <SongCard song={song.track} key={index.toString() + song.track.id} />
     ))}

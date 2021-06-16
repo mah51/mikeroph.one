@@ -1,18 +1,46 @@
-import React from 'react';
-import { Box, Flex, Text } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { getAllFilesFrontMatter } from '../../utils/mdx';
 import BlogPost from '../Components/BlogPost';
 import LineHeading from '../Components/LineHeading';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { BiChevronDown } from 'react-icons/bi';
 
 function Blog({ posts }: any): React.ReactElement {
-  const filteredBlogPosts = posts.sort(
-    (a: any, b: any) =>
-      Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-  );
+  const [filter, setFilter] = useState('');
+  const [sort, setSort] = useState('recent');
 
-  return filteredBlogPosts.map((frontMatter: any, i) => (
+  const filteredBlogPosts = posts
+    .filter((frontMatter: any) =>
+      frontMatter.title.toLowerCase().includes(filter)
+    )
+    .sort((a: any, b: any) => {
+      if (sort === 'recent' || sort === 'old') {
+        return (
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+      }
+    });
+
+  if (sort === 'recent') {
+    filteredBlogPosts.reverse();
+  }
+
+  return (
     <Flex
-      key={i.toString()}
       direction="column"
       alignItems="center"
       width="full"
@@ -29,13 +57,66 @@ function Blog({ posts }: any): React.ReactElement {
       </LineHeading>
       <Text mt={3}>
         Here are a collection of my blog posts, with {posts.length} blog
-        {posts.length && 's'} :).
+        {posts.length > 1 && 's'} :).
       </Text>
       <Box mt="16" width="70%" mx="auto">
-        <BlogPost key={frontMatter.title} {...frontMatter} />
+        <Flex
+          width="full"
+          direction={{ base: 'column', md: 'row' }}
+          my={7}
+          justifyContent="space-between"
+        >
+          <InputGroup
+            maxWidth={{ base: 'full', md: '200px' }}
+            mb={{ base: 5, md: 0 }}
+          >
+            <InputLeftElement pointerEvents="none">
+              <AiOutlineSearch color="gray.300" />
+            </InputLeftElement>
+            <Input
+              variant="filled"
+              type="text"
+              placeholder="Search"
+              _placeholder={{
+                color: useColorModeValue('gray.800', 'whiteAlpha.800'),
+              }}
+              onChange={(e) => setFilter(e.target.value.toLowerCase())}
+            />
+          </InputGroup>
+
+          <Menu>
+            <MenuButton as={Button} rightIcon={<BiChevronDown />}>
+              Sort by...
+            </MenuButton>
+            <MenuList zIndex={998}>
+              <MenuItem
+                zIndex={999}
+                isDisabled={sort === 'recent'}
+                onClick={() => setSort('recent')}
+              >
+                Recent
+              </MenuItem>
+              <MenuItem
+                zIndex={999}
+                isDisabled={sort === 'old'}
+                onClick={() => setSort('old')}
+              >
+                Oldest
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+        {filteredBlogPosts.length === 0 && (
+          <Text fontSize="2xl" textAlign="center">
+            No Results :(
+          </Text>
+        )}
+        {filteredBlogPosts.map((frontMatter: any, i: number) => (
+          <BlogPost key={frontMatter.title} {...frontMatter} />
+        ))}
       </Box>
     </Flex>
-  ));
+  );
 }
 
 export async function getStaticProps(): Promise<{ props: { posts: any } }> {

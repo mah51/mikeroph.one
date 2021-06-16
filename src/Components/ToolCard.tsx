@@ -12,7 +12,13 @@ import {
 import { usePalette } from 'react-palette';
 import { ToolType } from '../../data/tools';
 
-function ToolCard({ name, description, link, id, labels }: ToolType) {
+function ToolCard({
+  name,
+  description,
+  link,
+  id,
+  labels,
+}: ToolType): React.ReactElement {
   const { data } = usePalette(`./static/images/toolImages/${id}.png`);
   return (
     <Box as="a" href={link} height="100%">
@@ -37,7 +43,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
             overflow="hidden"
             boxShadow={`inset 0 0 20px 5px ${useColorModeValue(
               `${data.darkVibrant}19`,
-              `${data.lightVibrant}19`,
+              `${data.lightVibrant}19`
             )}`}
             borderRadius="2xl"
           >
@@ -47,7 +53,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
               position="absolute"
               borderColor={useColorModeValue(
                 `${data.darkVibrant}`,
-                `${data.lightVibrant}`,
+                `${data.lightVibrant}`
               )}
               top={0}
               bottom={0}
@@ -64,7 +70,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
                 id === `biorender`
                   ? useColorModeValue(
                       `./static/images/toolImages/${id}.png`,
-                      `./static/images/toolImages/${id}dark.png`,
+                      `./static/images/toolImages/${id}dark.png`
                     )
                   : `./static/images/toolImages/${id}.png`
               }
@@ -91,7 +97,7 @@ function ToolCard({ name, description, link, id, labels }: ToolType) {
                 color={useColorModeValue(data.darkVibrant, data.lightVibrant)}
                 bg={`${useColorModeValue(
                   data.darkVibrant,
-                  data.lightVibrant,
+                  data.lightVibrant
                 )}22`}
                 mb={1}
                 ml={2}

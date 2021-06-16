@@ -2,8 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import readingTime from 'reading-time';
 import matter from 'gray-matter';
-import renderToString from 'next-mdx-remote/render-to-string';
-import MDXComponents from '@/Components/MDXComponents';
+import { serialize } from 'next-mdx-remote/serialize';
 
 export const getFiles = (type: string) =>
   fs.readdirSync(path.join(process.cwd(), `data`, type));
@@ -12,21 +11,17 @@ export async function getFileBySlug(type: string, slug: number) {
   const source = slug
     ? fs.readFileSync(
         path.join(process.cwd(), `data`, type, `${slug}.mdx`),
-        `utf8`,
+        `utf8`
       )
     : fs.readFileSync(path.join(process.cwd(), `data`, `${type}.mdx`), `utf8`);
 
   const { data, content } = matter(source);
-  const mdxSource = await renderToString(content, {
-    components: MDXComponents,
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [
-        // eslint-disable-next-line global-require
-        require(`remark-autolink-headings`),
-        // eslint-disable-next-line global-require
-        require(`remark-slug`),
-        // eslint-disable-next-line global-require
-        require(`remark-code-titles`),
+        require('remark-slug'),
+        [require('remark-autolink-headings')],
+        require('remark-code-titles'),
       ],
     },
   });
@@ -48,7 +43,7 @@ export async function getAllFilesFrontMatter() {
   return files.reduce((allPosts: any, postSlug: string) => {
     const source = fs.readFileSync(
       path.join(process.cwd(), `data`, `blog`, postSlug),
-      `utf8`,
+      `utf8`
     );
     const { data } = matter(source);
 

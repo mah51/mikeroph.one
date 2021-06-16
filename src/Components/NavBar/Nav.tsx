@@ -13,6 +13,10 @@ import DesktopNav from './DesktopNav';
 
 const links = [
   {
+    name: 'Blog',
+    link: '/blog',
+  },
+  {
     name: `Projects`,
     link: `/projects`,
   },
@@ -46,7 +50,7 @@ function Nav() {
       zIndex={10}
       bg={useColorModeValue(
         `rgba(255, 255, 255, 0.8)`,
-        `rgba(26, 33, 42, 0.8)`,
+        `rgba(26, 33, 42, 0.8)`
       )}
       sx={{ backdropFilter: `saturate(180%) blur(5px)` }}
     >
