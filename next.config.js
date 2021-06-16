@@ -55,10 +55,6 @@ const withMDX = require('@next/mdx')({
 });
 
 module.exports = withMDX({
-  webpack(config) {
-    config.resolve.modules.push(__dirname);
-    return config;
-  },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   webpack5: true,
   images: {
