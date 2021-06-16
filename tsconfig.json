@@ -13,8 +13,9 @@
     "isolatedModules": true,
 
     "jsx": "preserve",
-    "baseUrl": ".",
+
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
