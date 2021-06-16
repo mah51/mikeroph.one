@@ -11,7 +11,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react';
 import { usePalette } from 'react-palette';
-import { ToolType } from '../../../data/tools';
+import { ToolType } from '../../data/tools';
 
 export const ToolCard: React.FC<ToolType> = ({
   name,

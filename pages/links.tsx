@@ -3,7 +3,7 @@ import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
 import LineHeading from '../components/LineHeading';
 import LinkCard from '../components/LinkCard';
 import { NextSeo } from 'next-seo';
-import links, { LinkType } from '../../data/links';
+import links, { LinkType } from '../data/links';
 
 function Links(): React.ReactElement {
   return (

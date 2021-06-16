@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import formatDistance from 'date-fns/formatDistance';
-import { LinkType } from '../../../data/links';
+import { LinkType } from '../../data/links';
 
 export const LinkCard: React.FC<LinkType> = ({
   name,

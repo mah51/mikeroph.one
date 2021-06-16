@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { getSpotifyData } from '../../../utils/spotify';
+import { getSpotifyData } from '../../utils/spotify';
 
 async function handler(
   req: NextApiRequest,

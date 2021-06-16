@@ -14,7 +14,7 @@ import { format, formatDistance } from 'date-fns';
 import { VscGithub } from 'react-icons/vsc';
 import Image from 'next/image';
 import React from 'react';
-import { pinnedRepoType } from '../../../data/pinnedRepos';
+import { pinnedRepoType } from '../../data/pinnedRepos';
 import { repoType } from '../../pages/api/github';
 
 interface ImageCardProps {

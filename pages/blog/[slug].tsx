@@ -1,7 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote';
 import MDXComponents from '../../components/MDXComponents';
 import BlogLayout from '../../components/BlogLayout';
-import { getFileBySlug, getFiles } from '../../../utils/mdx';
+import { getFileBySlug, getFiles } from '../../utils/mdx';
 
 export default function Blog({
   mdxSource,

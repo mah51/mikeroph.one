@@ -13,7 +13,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { getAllFilesFrontMatter } from '../../utils/mdx';
+import { getAllFilesFrontMatter } from '../utils/mdx';
 import BlogPost from '../components/BlogPost';
 import LineHeading from '../components/LineHeading';
 import { AiOutlineSearch } from 'react-icons/ai';

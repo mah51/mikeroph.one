@@ -11,7 +11,7 @@ import {
 import { VscGithub } from 'react-icons/vsc';
 import { formatDistance, format } from 'date-fns';
 import { repoType } from '../../pages/api/github';
-import { pinnedRepoType } from '../../../data/pinnedRepos';
+import { pinnedRepoType } from '../../data/pinnedRepos';
 import PinnedImageProjects from '../PinnedImageProjects';
 
 interface PinnedProjectsProps {

@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo';
 import LineHeading from '../components/LineHeading';
 import RepoCard from '../components/RepoCard';
 import PinnedProjects from '../components/PinnedProjects';
-import { pinnedRepos, pinnedRepoType } from '../../data/pinnedRepos';
+import { pinnedRepos, pinnedRepoType } from '../data/pinnedRepos';
 import { repoType } from './api/github';
 
 interface ProjectsProps {

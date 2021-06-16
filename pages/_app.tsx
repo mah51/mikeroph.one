@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 import { DefaultSeo } from 'next-seo';
 import PlausibleProvider from 'next-plausible';
 import AppLayout from '../components/AppLayout';
-import theme from '../../theme';
+import theme from '../theme';
 
 const queryClient = new QueryClient();
 export default function MyApp({
