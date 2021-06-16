@@ -11,11 +11,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-
     "jsx": "preserve",
-
     "allowSyntheticDefaultImports": true,
-
     "skipLibCheck": true
   },
   "exclude": ["node_modules"],

@@ -1,5 +1,3 @@
-const path = require('path');
-
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.michael-hall.me;
