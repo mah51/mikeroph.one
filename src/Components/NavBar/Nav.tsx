@@ -40,7 +40,7 @@ const links = [
   },
 ];
 
-function Nav() {
+function Nav(): React.ReactElement {
   return (
     <chakra.header
       width="full"
@@ -63,7 +63,7 @@ function Nav() {
           width="full"
         >
           <Box display="flex" alignContent="center">
-            <Link href="/">
+            <Link href="/" passHref>
               <ChakraLink
                 fontSize="lg"
                 margin="auto"

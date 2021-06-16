@@ -5,15 +5,19 @@ import {
   Box,
   Flex,
   Image,
-  SimpleGrid,
   Text,
   useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 import formatDistance from 'date-fns/formatDistance';
-import { LinkType } from '../../data/links';
+import { LinkType } from '../../../data/links';
 
-function LinkCard({ name, link, date, label }: LinkType) {
+export const LinkCard: React.FC<LinkType> = ({
+  name,
+  link,
+  date,
+  label,
+}): React.ReactElement => {
   return (
     <Box as="a" href={link} height="100%">
       <VStack
@@ -58,6 +62,7 @@ function LinkCard({ name, link, date, label }: LinkType) {
             <Image
               src={`https://rdl.ink/render/${encodeURIComponent(link)}`}
               objectFit="cover"
+              alt={name + ' screenshot'}
               objectPosition="0px 0px"
               fallback={
                 <Box
@@ -105,6 +110,4 @@ function LinkCard({ name, link, date, label }: LinkType) {
       </VStack>
     </Box>
   );
-}
-
-export default LinkCard;
+};

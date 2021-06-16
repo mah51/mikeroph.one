@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
-export const ViewCounter = ({ slug }: { slug: any }): React.ReactElement => {
+export const ViewCounter = ({
+  slug,
+}: {
+  slug: string | null;
+}): React.ReactElement => {
   const { data } = useQuery(`views${slug}`, () => {
     return fetch(`/api/views/${slug}`).then((res) => res.json());
   });

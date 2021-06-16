@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Box,
   Link as ChakraLink,
   Text,
   useColorModeValue,
@@ -21,13 +20,13 @@ interface BlogPostProps {
   publishedAt: string;
 }
 
-function BlogPost({
+export const BlogPost: React.FC<BlogPostProps> = ({
   title,
   summary,
   slug,
   tags,
   publishedAt,
-}: BlogPostProps): React.ReactElement {
+}): React.ReactElement => {
   const { data } = useQuery(`views${slug}`, () => {
     return fetch(`/api/views/${slug}`).then((res) => res.json());
   });
@@ -116,6 +115,4 @@ function BlogPost({
       </ChakraLink>
     </Link>
   );
-}
-
-export default BlogPost;
+};

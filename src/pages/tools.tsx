@@ -11,8 +11,8 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import LineHeading from '@/Components/LineHeading';
-import ToolGrid from '@/Components/ToolGrid';
+import LineHeading from '@/components/LineHeading';
+import ToolGrid from '@/components/ToolGrid';
 import {
   AiFillApple,
   AiFillChrome,
@@ -22,7 +22,7 @@ import {
 import { BsPhone } from 'react-icons/bs';
 import { NextSeo } from 'next-seo';
 
-function Tools() {
+function Tools(): React.ReactElement {
   return (
     <>
       <NextSeo title="Tools" />

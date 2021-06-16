@@ -50,14 +50,15 @@ type SVGProps = {
   hiddenMobile?: boolean;
 };
 
-const SVG = ({
+export const SVG: React.FC<SVGProps> = ({
   stroke = false,
   color = `${
     [`gray`, `brand`, `teal`, `blue`, `green`][Math.floor(Math.random() * 6)]
   }.${
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useColorModeValue(
       [`500`, `600`, `700`, `800`, `900`],
-      [`50`, `100`, `200`, `300`, `400`],
+      [`50`, `100`, `200`, `300`, `400`]
     )[Math.floor(Math.random() * 5)]
   }`,
   zIndex = -500,
@@ -66,7 +67,7 @@ const SVG = ({
   left,
   top,
   hiddenMobile = false,
-}: SVGProps) => (
+}): React.ReactElement => (
   <chakra.svg
     sx={{
       position: `absolute`,
@@ -86,5 +87,3 @@ const SVG = ({
     {icons[icon].shape}
   </chakra.svg>
 );
-
-export default SVG;

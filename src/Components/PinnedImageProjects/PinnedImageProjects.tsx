@@ -3,7 +3,6 @@ import { format, formatDistance } from 'date-fns';
 import {
   Button,
   AspectRatio,
-  useColorModeValue,
   Box,
   Heading,
   Text,
@@ -11,12 +10,26 @@ import {
   chakra,
   Badge,
   useBreakpointValue,
+  useColorMode,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
-import ImageCard from './ImageCard';
+import ImageCard from '../ImageCard';
+import { repoType } from '@/pages/api/github';
+import { pinnedRepoType } from '@/../data/pinnedRepos';
 
-export default function PinnedImageProjects({ projectData, repo, left }: any) {
+interface PinnedImageProjectsProps {
+  repo: repoType;
+  projectData: pinnedRepoType;
+  left: boolean;
+}
+
+export const PinnedImageProjects: React.FC<PinnedImageProjectsProps> = ({
+  projectData,
+  repo,
+  left,
+}): React.ReactElement => {
+  const { colorMode } = useColorMode();
   const bp = useBreakpointValue({ base: `base`, lg: `lg` });
   if (bp === `lg`) {
     return (
@@ -27,9 +40,13 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
               boxShadow="xl"
               borderRadius="2xl"
               border="1px solid"
-              borderColor={useColorModeValue(`gray.200`, `gray.600`)}
+              borderColor={colorMode === 'light' ? `gray.200` : `gray.600`}
             >
-              <Image src={projectData.image} layout="fill" />
+              <Image
+                alt={projectData?.name + 'screenshot'}
+                src={projectData?.image || ''}
+                layout="fill"
+              />
             </Box>
           </AspectRatio>
         </Box>
@@ -42,14 +59,14 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
           top="50%"
           transform="translate(0, -50%)"
           borderRadius="2xl"
-          bg={useColorModeValue(`white`, `gray.700`)}
+          bg={colorMode === 'light' ? `white` : `gray.700`}
           p={5}
           width="45%"
           maxWidth="600px"
           whiteSpace="normal"
           minHeight="35%"
           border="1px solid"
-          borderColor={useColorModeValue(`gray.200`, `gray.700`)}
+          borderColor={colorMode === 'light' ? `gray.200` : `gray.700`}
         >
           <VStack maxHeight="full" height="full" width="full" maxWidth="full">
             <Heading isTruncated>
@@ -65,7 +82,7 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
               height="100%"
               width="100%"
               textAlign="center"
-              color={useColorModeValue(`gray.500`, `gray.500`)}
+              color={colorMode === 'light' ? `gray.500` : `gray.500`}
             >
               <chakra.span mr={2}>
                 Last edited{` `}
@@ -96,4 +113,4 @@ export default function PinnedImageProjects({ projectData, repo, left }: any) {
     );
   }
   return <ImageCard {...{ projectData, repo }} />;
-}
+};

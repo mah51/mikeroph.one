@@ -3,8 +3,8 @@ import { getNowPlaying } from '../../../utils/spotify';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
-) {
+  res: NextApiResponse
+): Promise<void> {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400) {
@@ -25,7 +25,7 @@ export default async function handler(
 
   res.setHeader(
     `Cache-Control`,
-    `public, s-maxage=60, stale-while-revalidate=30`,
+    `public, s-maxage=60, stale-while-revalidate=30`
   );
 
   return res.status(200).json({

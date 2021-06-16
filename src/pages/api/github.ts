@@ -12,10 +12,13 @@ export interface repoType {
   fork: boolean;
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   const userResponse = await fetch(`https://api.github.com/users/mah51`);
   const userReposResponse = await fetch(
-    `https://api.github.com/users/mah51/repos?per_page=100`,
+    `https://api.github.com/users/mah51/repos?per_page=100`
   );
 
   const user = await userResponse.json();
@@ -26,12 +29,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const stars =
     notForked.reduce(
       (a: number, r: { stargazers_count: number }) => a + r.stargazers_count,
-      0,
+      0
     ) || null;
 
   res.setHeader(
     `Cache-Control`,
-    `public, s-maxage=1200, stale-while-revalidate=600`,
+    `public, s-maxage=1200, stale-while-revalidate=600`
   );
 
   const sendRepos = notForked.map(
@@ -55,11 +58,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       description,
       fork,
       stargazers_count,
-    }),
+    })
   );
   return res.status(200).json({
     followers: user.followers,
     repos: sendRepos,
     stars,
   });
-};
+}

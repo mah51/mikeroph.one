@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 
-function WIP() {
+export const WIP = (): React.ReactElement => {
   return (
     <Flex
       direction="column"
@@ -14,6 +14,4 @@ function WIP() {
       <Text color="gray.500">Check back later :)</Text>
     </Flex>
   );
-}
-
-export default WIP;
+};

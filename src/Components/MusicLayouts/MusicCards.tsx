@@ -16,7 +16,11 @@ interface SongCardProps {
   isPlaying?: boolean;
 }
 
-export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
+export const SongCard: React.FC<SongCardProps> = ({
+  song,
+  titleCard,
+  isPlaying,
+}): React.ReactElement => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
     <Box
@@ -49,6 +53,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
           isLoaded={imageLoad}
         >
           <Image
+            alt={song?.name + ' album cover'}
             className={styles.image}
             width={titleCard ? `150px` : `110px`}
             height={titleCard ? `150px` : `110px`}
@@ -96,7 +101,9 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps) => {
   );
 };
 
-export const ArtistCard = ({ artist }: any) => {
+export const ArtistCard: React.FC<{ artist: any }> = ({
+  artist,
+}): React.ReactElement => {
   const [imageLoad, setImageLoad] = useState(false);
   return (
     <Box
@@ -123,6 +130,7 @@ export const ArtistCard = ({ artist }: any) => {
       >
         <Image
           className={styles.artistImage}
+          alt={artist?.name + ' artist image'}
           width="150px"
           height="150px"
           onLoad={() => setImageLoad(true)}

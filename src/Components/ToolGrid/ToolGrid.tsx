@@ -1,9 +1,11 @@
 import React from 'react';
-import { Flex, SimpleGrid } from '@chakra-ui/react';
-import ToolCard from '@/Components/ToolCard';
-import tools, { categories, ToolType } from '../../data/tools';
+import { SimpleGrid } from '@chakra-ui/react';
+import ToolCard from '@/components/ToolCard';
+import tools, { categories, ToolType } from '../../../data/tools';
 
-function ToolGrid({ filter }: { filter: categories }) {
+export const ToolGrid: React.FC<{ filter: categories }> = ({
+  filter,
+}): React.ReactElement => {
   return (
     <SimpleGrid pt={10} columns={{ base: 1, md: 2 }} spacingX={10} spacingY={5}>
       {tools
@@ -22,6 +24,6 @@ function ToolGrid({ filter }: { filter: categories }) {
         ))}
     </SimpleGrid>
   );
-}
+};
 
 export default ToolGrid;

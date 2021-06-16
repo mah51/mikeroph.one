@@ -4,14 +4,17 @@ import '@/styles/global.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
-import Loader from '@/Components/Loader';
+import Loader from '@/components/Loader';
 import { DefaultSeo } from 'next-seo';
 import PlausibleProvider from 'next-plausible';
-import AppLayout from '../Components/AppLayout';
+import AppLayout from '../components/AppLayout';
 import theme from '../../theme';
 
 const queryClient = new QueryClient();
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppProps): React.ReactElement {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     document.documentElement.lang = `en-GB`;

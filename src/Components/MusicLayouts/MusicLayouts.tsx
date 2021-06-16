@@ -1,9 +1,9 @@
 import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
-import LineHeading from './LineHeading';
+import LineHeading from '../LineHeading';
 import { SongCard, ArtistCard } from './MusicCards';
 
-export const TopSongs = ({ songs }: any) => (
+export const TopSongs = ({ songs }: { songs: any }): React.ReactElement => (
   <Flex
     direction="column"
     maxW="2xl"
@@ -22,7 +22,11 @@ export const TopSongs = ({ songs }: any) => (
   </Flex>
 );
 
-export const TopArtists = ({ artists }: any) => (
+export const TopArtists = ({
+  artists,
+}: {
+  artists: any;
+}): React.ReactElement => (
   <Flex direction="column" maxW="xl" width="full" mx="auto" overflow="visible">
     <LineHeading alignSelf="center" mb="4">
       Top Artists
@@ -44,7 +48,7 @@ export const TopArtists = ({ artists }: any) => (
   </Flex>
 );
 
-export const RecentSongs = ({ songs }: any) => (
+export const RecentSongs = ({ songs }: { songs: any }): React.ReactElement => (
   <Flex direction="column" width="full" maxW="2xl" mx="auto" overflow="visible">
     <LineHeading alignSelf="center" mb={5}>
       Recently Played Songs
@@ -59,7 +63,9 @@ interface CurrentlyPlayingProps {
   song: any;
 }
 
-export const CurrentlyPlaying = ({ song }: CurrentlyPlayingProps) => (
+export const CurrentlyPlaying = ({
+  song,
+}: CurrentlyPlayingProps): React.ReactElement => (
   <Flex direction="column" alignItems="center" width="full" mx="auto">
     <LineHeading mb="4">Currently playing</LineHeading>
     {song?.isPlaying ? (

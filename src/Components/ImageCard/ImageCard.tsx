@@ -14,8 +14,18 @@ import { format, formatDistance } from 'date-fns';
 import { VscGithub } from 'react-icons/vsc';
 import Image from 'next/image';
 import React from 'react';
+import { pinnedRepoType } from '@/../data/pinnedRepos';
+import { repoType } from '@/pages/api/github';
 
-export default function ImageCard({ projectData, repo }: any) {
+interface ImageCardProps {
+  projectData: pinnedRepoType;
+  repo: repoType;
+}
+
+export const ImageCard: React.FC<ImageCardProps> = ({
+  projectData,
+  repo,
+}): React.ReactElement => {
   return (
     <Flex
       direction="column"
@@ -28,7 +38,11 @@ export default function ImageCard({ projectData, repo }: any) {
     >
       <AspectRatio ratio={16 / 9} border="none">
         <Box borderTopRadius="2xl">
-          <Image src={projectData.image} layout={'fill'} />
+          <Image
+            alt={projectData.name + ' screenshot'}
+            src={projectData.image || ''}
+            layout={'fill'}
+          />
         </Box>
       </AspectRatio>
       <VStack borderBottomRadius={'2xl'} py={5} px={8}>
@@ -80,4 +94,4 @@ export default function ImageCard({ projectData, repo }: any) {
       </VStack>
     </Flex>
   );
-}
+};

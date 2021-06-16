@@ -1,17 +1,19 @@
 import React from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
-import UpDown from '@/Components/Animations/index';
-import SVG from '@/Components/SVG';
+import UpDown from '@/components/Animations/index';
+import SVG from '@/components/SVG';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import Nav from './NavBar/Nav';
-import Footer from './Footer/Footer';
+import Nav from '../NavBar/Nav';
+import Footer from '../Footer/Footer';
 
 interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-function AppLayout({ children }: AppLayoutProps) {
+export const AppLayout: React.FC<AppLayoutProps> = ({
+  children,
+}): React.ReactElement => {
   const router = useRouter();
 
   return (
@@ -43,7 +45,7 @@ function AppLayout({ children }: AppLayoutProps) {
       <Box
         bg={useColorModeValue(
           `rgba(255, 255, 255, 0.8)`,
-          `rgba(26, 33, 42, 0.8)`,
+          `rgba(26, 33, 42, 0.8)`
         )}
       >
         {children}
@@ -51,6 +53,4 @@ function AppLayout({ children }: AppLayoutProps) {
       <Footer />
     </>
   );
-}
-
-export default AppLayout;
+};

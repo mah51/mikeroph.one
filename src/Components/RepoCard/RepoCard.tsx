@@ -2,9 +2,18 @@ import React from 'react';
 import { Badge, Box, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import { repoType } from '@/pages/api/github';
 
-function RepoCard({ repo, i }: { repo: repoType; i: number }) {
+interface RepoCardProps {
+  repo: repoType;
+  i: number;
+}
+
+export const RepoCard: React.FC<RepoCardProps> = ({
+  repo,
+  i,
+}): React.ReactElement => {
   return (
     <Box
+      key={i.toString()}
       as="a"
       href={repo.html_url}
       h="full"
@@ -56,6 +65,4 @@ function RepoCard({ repo, i }: { repo: repoType; i: number }) {
       </Flex>
     </Box>
   );
-}
-
-export default RepoCard;
+};

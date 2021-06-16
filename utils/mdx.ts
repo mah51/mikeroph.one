@@ -56,3 +56,16 @@ export async function getAllFilesFrontMatter() {
     ];
   }, []);
 }
+
+export interface frontMatterType {
+  title: string;
+  publishedAt: string;
+  summary: string;
+  tags?: string[];
+  by?: string;
+  readingTime?: {
+    text: string;
+  };
+  wordCount: number;
+  slug: string | null;
+}

@@ -10,7 +10,7 @@ import {
 import React, { useState } from 'react';
 import { NextSeo } from 'next-seo';
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   const [imageLoad, setImageLoad] = useState(false);
 
   return (
@@ -51,10 +51,10 @@ export default function Home() {
               <Heading
                 bgGradient={`linear(to-r, ${useColorModeValue(
                   `brand.600`,
-                  `brand.400`,
+                  `brand.400`
                 )}, ${useColorModeValue(
                   `teal.600`,
-                  `teal.400`,
+                  `teal.400`
                 )}, ${useColorModeValue(`blue.600`, `blue.300`)})`}
                 className="moving-grad"
                 bgClip="text"

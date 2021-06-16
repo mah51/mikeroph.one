@@ -15,19 +15,20 @@ import { BiMoon, BiSun } from 'react-icons/bi';
 import Link from 'next/link';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-function DesktopNav({ links }: any) {
+function DesktopNav({ links }: { links: any }): React.ReactElement {
+  const { colorMode } = useColorMode();
+  const text = useColorModeValue('dark', 'light');
   const SwitchIcon = useColorModeValue(BiMoon, BiSun);
-  const text = useColorModeValue(`dark`, `light`);
   const { toggleColorMode: toggleMode } = useColorMode();
   return (
     <HStack spacing={8} display={{ base: `none`, md: `flex` }}>
       {links.map((linkItem: any, index: number) => {
         if (linkItem.type !== `dropdown`) {
           return (
-            <Link href={linkItem.link} key={index.toString()}>
+            <Link href={linkItem.link} key={index.toString()} passHref>
               <ChakraLink
                 key={index.toString()}
-                color={useColorModeValue(`gray.800`, `white`)}
+                color={colorMode === 'light' ? `gray.800` : `white`}
                 fontSize="lg"
                 fontWeight="semibold"
                 position="relative"
@@ -42,7 +43,7 @@ function DesktopNav({ links }: any) {
                   position: `absolute`,
                   bottom: 1,
                   left: 0,
-                  bg: useColorModeValue(`brand.200`, `brand.700`),
+                  bg: colorMode === 'light' ? `brand.200` : `brand.700`,
                   zIndex: -1,
                 }}
                 _hover={{
@@ -61,7 +62,7 @@ function DesktopNav({ links }: any) {
             <Menu key={index.toString()}>
               <MenuButton
                 key={index.toString()}
-                color={useColorModeValue(`gray.800`, `white`)}
+                color={colorMode === 'light' ? `gray.800` : `white`}
                 fontSize="lg"
                 fontWeight="semibold"
                 position="relative"
@@ -76,14 +77,14 @@ function DesktopNav({ links }: any) {
                   position: `absolute`,
                   bottom: 1,
                   left: 0,
-                  bg: useColorModeValue(`brand.200`, `brand.900`),
+                  bg: colorMode === 'light' ? `brand.200` : `brand.900`,
                   zIndex: -1,
                 }}
                 _hover={{
                   _after: {
                     width: `100%`,
                   },
-                  color: useColorModeValue(`gray.800`, `white`),
+                  color: colorMode === 'light' ? `gray.800` : `white`,
                 }}
               >
                 {linkItem.name}
@@ -91,7 +92,11 @@ function DesktopNav({ links }: any) {
               </MenuButton>
               <MenuList>
                 {linkItem.links.map((item: any, i: number) => (
-                  <Link href={item.link} key={`${i.toString()}MenuLink`}>
+                  <Link
+                    href={item.link}
+                    key={`${i.toString()}MenuLink`}
+                    passHref
+                  >
                     <MenuItem
                       as="a"
                       sx={{ cursor: `pointer` }}

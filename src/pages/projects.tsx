@@ -1,30 +1,21 @@
 import React from 'react';
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  SimpleGrid,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import { NextSeo } from 'next-seo';
-import LineHeading from '../Components/LineHeading';
-import RepoCard from '../Components/RepoCard';
-import PinnedProjects from '../Components/PinnedProjects';
+import LineHeading from '../components/LineHeading';
+import RepoCard from '../components/RepoCard';
+import PinnedProjects from '../components/PinnedProjects';
 import { pinnedRepos, pinnedRepoType } from '../../data/pinnedRepos';
 import { repoType } from './api/github';
 
-function Projects({
-  stars,
-  repos,
-  followers,
-}: {
+interface ProjectsProps {
   stars: number;
   repos: repoType[];
   followers: number;
-}) {
+  revalidate?: number;
+}
+
+function Projects({ repos }: ProjectsProps): React.ReactElement {
   return (
     <>
       <NextSeo title="Projects" />
@@ -65,19 +56,16 @@ function Projects({
               .sort(
                 (a: pinnedRepoType, b: pinnedRepoType) =>
                   new Date(
-                    repos.filter(
-                      (x: repoType) => x.name === a.id,
-                    )[0].created_at,
+                    repos.filter((x: repoType) => x.name === a.id)[0].created_at
                   ).getTime() -
                   new Date(
-                    repos.filter(
-                      (y: repoType) => y.name === b.id,
-                    )[0].created_at,
-                  ).getTime(),
+                    repos.filter((y: repoType) => y.name === b.id)[0].created_at
+                  ).getTime()
               )
               .reverse()
               .map((data: pinnedRepoType, index) => (
                 <PinnedProjects
+                  key={index.toString()}
                   repo={repos.filter((x: repoType) => x.name === data.id)[0]}
                   left={index % 2 === 0}
                   projectData={data}
@@ -121,11 +109,11 @@ function Projects({
             .sort(
               (a: any, b: any) =>
                 new Date(a.pushed_at).getTime() -
-                new Date(b.pushed_at).getTime(),
+                new Date(b.pushed_at).getTime()
             )
             .reverse()
             .map((repo: repoType, index: number) => (
-              <RepoCard repo={repo} i={index} />
+              <RepoCard key={index.toString()} repo={repo} i={index} />
             ))}
         </SimpleGrid>
       </Box>
@@ -133,12 +121,12 @@ function Projects({
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<{ props: ProjectsProps }> {
   const response = await fetch(
     `${
       process.env.NEXT_PUBLIC_HOST ||
       `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    }/api/github`,
+    }/api/github`
   );
 
   const { stars, repos, followers } = await response.json();

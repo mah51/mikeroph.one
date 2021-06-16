@@ -7,7 +7,7 @@ function UpDown({
 }: {
   children: React.ReactNode;
   type: 'normal' | 'wide' | 'slow';
-}) {
+}): React.ReactElement {
   return (
     <chakra.div
       overflow="hidden"

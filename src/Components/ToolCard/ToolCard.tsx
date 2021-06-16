@@ -8,18 +8,21 @@ import {
   SimpleGrid,
   AspectRatio,
   Badge,
+  useColorMode,
 } from '@chakra-ui/react';
 import { usePalette } from 'react-palette';
-import { ToolType } from '../../data/tools';
+import { ToolType } from '../../../data/tools';
 
-function ToolCard({
+export const ToolCard: React.FC<ToolType> = ({
   name,
   description,
   link,
   id,
   labels,
-}: ToolType): React.ReactElement {
+}): React.ReactElement => {
   const { data } = usePalette(`./static/images/toolImages/${id}.png`);
+  const { colorMode } = useColorMode();
+
   return (
     <Box as="a" href={link} height="100%">
       <SimpleGrid
@@ -62,16 +65,16 @@ function ToolCard({
               opacity={useColorModeValue(0.15, 0.25)}
             />
             <Image
+              alt={`${name} logo`}
               top="50%"
               left="50%"
               transform="translate(-50%, -50%)"
               position="absolute"
               src={
                 id === `biorender`
-                  ? useColorModeValue(
-                      `./static/images/toolImages/${id}.png`,
-                      `./static/images/toolImages/${id}dark.png`
-                    )
+                  ? colorMode === 'light'
+                    ? `./static/images/toolImages/${id}.png`
+                    : `./static/images/toolImages/${id}dark.png`
                   : `./static/images/toolImages/${id}.png`
               }
               maxHeight="80%"
@@ -94,11 +97,12 @@ function ToolCard({
             {labels?.map((label, index) => (
               <Badge
                 key={index.toString() + id}
-                color={useColorModeValue(data.darkVibrant, data.lightVibrant)}
-                bg={`${useColorModeValue(
-                  data.darkVibrant,
-                  data.lightVibrant
-                )}22`}
+                color={
+                  colorMode === 'light' ? data.darkVibrant : data.lightVibrant
+                }
+                bg={`${
+                  colorMode === 'light' ? data.darkVibrant : data.lightVibrant
+                }22`}
                 mb={1}
                 ml={2}
               >
@@ -117,6 +121,4 @@ function ToolCard({
       </SimpleGrid>
     </Box>
   );
-}
-
-export default ToolCard;
+};

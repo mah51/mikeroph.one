@@ -15,13 +15,13 @@ import {
   TopArtists,
   TopSongs,
   CurrentlyPlaying,
-} from '@/Components/MusicLayouts';
+} from '@/components/MusicLayouts';
 import { NextSeo } from 'next-seo';
 
 interface ListFadeProps {
-  children: React.ReactNode;
+  children: any;
 }
-const ListFade = ({ children }: ListFadeProps): any => {
+const ListFade = ({ children }: ListFadeProps): React.ReactElement => {
   const bp = useBreakpointValue({ base: false, md: true });
   if (!bp) {
     return children;
@@ -34,9 +34,9 @@ const ListFade = ({ children }: ListFadeProps): any => {
 };
 
 interface HeadingFadeProps {
-  children: React.ReactNode;
+  children: any;
 }
-const HeadingFade = ({ children }: HeadingFadeProps): any => {
+const HeadingFade = ({ children }: HeadingFadeProps): React.ReactElement => {
   const bp = useBreakpointValue({ base: false, md: true });
   if (!bp) {
     return children;
@@ -48,7 +48,18 @@ const HeadingFade = ({ children }: HeadingFadeProps): any => {
   );
 };
 
-function Spotify({ currentlyPlaying, data, error }: any): React.ReactElement {
+interface SpotifyProps {
+  data: any;
+  currentlyPlaying: any;
+  error: string | null;
+  revalidate?: number;
+}
+
+function Spotify({
+  currentlyPlaying,
+  data,
+  error,
+}: SpotifyProps): React.ReactElement {
   if (error) {
     return <div>There was an error fetching data from spotify</div>;
   }
@@ -116,7 +127,7 @@ function Spotify({ currentlyPlaying, data, error }: any): React.ReactElement {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<{ props: SpotifyProps }> {
   const response = await fetch(
     `${
       process.env.NEXT_PUBLIC_HOST ||

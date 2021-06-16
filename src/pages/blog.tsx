@@ -14,12 +14,12 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { getAllFilesFrontMatter } from '../../utils/mdx';
-import BlogPost from '../Components/BlogPost';
-import LineHeading from '../Components/LineHeading';
+import BlogPost from '../components/BlogPost';
+import LineHeading from '../components/LineHeading';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiChevronDown } from 'react-icons/bi';
 
-function Blog({ posts }: any): React.ReactElement {
+function Blog({ posts }: { posts: any }): React.ReactElement {
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('recent');
 
@@ -111,7 +111,7 @@ function Blog({ posts }: any): React.ReactElement {
             No Results :(
           </Text>
         )}
-        {filteredBlogPosts.map((frontMatter: any, i: number) => (
+        {filteredBlogPosts.map((frontMatter: any) => (
           <BlogPost key={frontMatter.title} {...frontMatter} />
         ))}
       </Box>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
-import LineHeading from '@/Components/LineHeading';
-import LinkCard from '@/Components/LinkCard';
+import LineHeading from '@/components/LineHeading';
+import LinkCard from '@/components/LinkCard';
 import { NextSeo } from 'next-seo';
 import links, { LinkType } from '../../data/links';
 
-function Links() {
+function Links(): React.ReactElement {
   return (
     <>
       <NextSeo title="Links" />
@@ -34,11 +34,11 @@ function Links() {
         >
           {links
             .sort(
-              (a: LinkType, b: LinkType) => a.date.getTime() - b.date.getTime(),
+              (a: LinkType, b: LinkType) => a.date.getTime() - b.date.getTime()
             )
             .reverse()
-            .map((link: LinkType) => (
-              <LinkCard {...link} />
+            .map((link: LinkType, i: number) => (
+              <LinkCard key={i.toString()} {...link} />
             ))}
         </SimpleGrid>
       </Flex>

@@ -12,7 +12,7 @@ import {
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-function MobileNav({ links }: any) {
+function MobileNav({ links }: { links: any }): React.ReactElement {
   const mobileNav = useDisclosure();
   return (
     <Box display={{ md: `none` }}>
@@ -48,7 +48,7 @@ function MobileNav({ links }: any) {
         rounded="sm"
         shadow="sm"
       >
-        <Link href="/">
+        <Link href="/" passHref>
           <Button as={ChakraLink} w="full" mt={16} variant="ghost">
             Home
           </Button>
@@ -57,7 +57,7 @@ function MobileNav({ links }: any) {
         {links.map((link: any, index: number) => {
           if (link.type === `dropdown`) {
             return link.links.map((item: any, i: number) => (
-              <Link href={item.link} key={`${i.toString()}link`}>
+              <Link href={item.link} key={`${i.toString()}link`} passHref>
                 <Button
                   key={i.toString()}
                   as={ChakraLink}
@@ -71,7 +71,7 @@ function MobileNav({ links }: any) {
             ));
           }
           return (
-            <Link href={link.link} key={`${index.toString()}link`}>
+            <Link href={link.link} key={`${index.toString()}link`} passHref>
               <Button
                 key={index.toString()}
                 as={ChakraLink}

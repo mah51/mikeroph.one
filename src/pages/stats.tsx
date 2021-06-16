@@ -1,7 +1,7 @@
 import React from 'react';
-import WIP from '../Components/WIP';
+import WIP from '../components/WIP';
 
-function Stats() {
+function Stats(): React.ReactElement {
   return <WIP />;
 }
 

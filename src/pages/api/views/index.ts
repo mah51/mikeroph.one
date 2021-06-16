@@ -7,7 +7,9 @@ export default async function handler(
 ): Promise<void> {
   const snapshot = await db.ref('views').once('value');
   const views = snapshot.val();
-  const allViews = Object.values(views).reduce((total, value) => total + value);
+  const allViews = Object.values(views).reduce(
+    (total: any, value: any) => total + value
+  );
 
   return res.status(200).json({ total: allViews });
 }

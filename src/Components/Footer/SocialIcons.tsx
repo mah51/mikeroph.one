@@ -12,7 +12,11 @@ interface SocialIconsProps {
   children: React.ReactNode;
 }
 
-function SocialIcons({ children, href, label }: SocialIconsProps) {
+function SocialIcons({
+  children,
+  href,
+  label,
+}: SocialIconsProps): React.ReactElement {
   return (
     <Tooltip label={label}>
       <chakra.button

@@ -10,17 +10,19 @@ import {
   Tooltip,
   Flex,
   SimpleGrid,
+  useColorMode,
 } from '@chakra-ui/react';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { BsPauseFill } from 'react-icons/bs';
 import SocialIcons from './SocialIcons';
 
-function Footer() {
+function Footer(): React.ReactElement {
+  const { colorMode } = useColorMode();
   const { error, data: currentlyPlaying } = useQuery(
     `currentlyPlaying`,
     () => fetch(`/api/get-now-playing`).then((res) => res.json()),
-    { refetchOnMount: true },
+    { refetchOnMount: true }
   );
 
   return (
@@ -58,7 +60,7 @@ function Footer() {
           <Flex ml={2} isTruncated>
             {currentlyPlaying?.songUrl ? (
               <chakra.a
-                color={useColorModeValue(`gray.900`, `gray.200`)}
+                color={colorMode === 'light' ? `gray.900` : `gray.200`}
                 fontSize="md"
                 fontWeight="semibold"
                 maxW="60%"
@@ -71,7 +73,7 @@ function Footer() {
               </chakra.a>
             ) : (
               <chakra.p
-                color={useColorModeValue(`gray.900`, `gray.200`)}
+                color={colorMode === 'light' ? `gray.900` : `gray.200`}
                 fontSize="md"
                 maxW="60%"
                 isTruncated

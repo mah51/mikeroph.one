@@ -1,5 +1,5 @@
 import React from 'react';
-import LineHeading from '@/Components/LineHeading';
+import LineHeading from '@/components/LineHeading';
 import {
   Avatar,
   chakra,
@@ -11,16 +11,20 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import { format, parseISO } from 'date-fns';
-import ViewCounter from './ViewCounter';
+import ViewCounter from '../ViewCounter';
 import Link from 'next/link';
 import { EditIcon } from '@chakra-ui/icons';
+import { frontMatterType } from '@/../utils/mdx';
 
 interface BlogLayoutProps {
   children: React.ReactNode;
-  frontMatter: any;
+  frontMatter: frontMatterType;
 }
 
-function BlogLayout({ children, frontMatter }: BlogLayoutProps) {
+export const BlogLayout = ({
+  children,
+  frontMatter,
+}: BlogLayoutProps): React.ReactElement => {
   return (
     <chakra.article
       display="flex"
@@ -59,7 +63,9 @@ function BlogLayout({ children, frontMatter }: BlogLayoutProps) {
           </Text>
         </Flex>
         <Text color={useColorModeValue('gray.700', 'gray.300')}>
-          {frontMatter.readingTime.text}
+          {frontMatter.wordCount.toLocaleString() + ' words'}
+          {` • `}
+          {frontMatter.readingTime?.text}
           {` • `}
           <ViewCounter slug={frontMatter.slug} />
         </Text>
@@ -80,6 +86,4 @@ function BlogLayout({ children, frontMatter }: BlogLayoutProps) {
       </Container>
     </chakra.article>
   );
-}
-
-export default BlogLayout;
+};

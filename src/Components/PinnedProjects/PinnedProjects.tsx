@@ -4,40 +4,45 @@ import {
   Box,
   Flex,
   Text,
-  useColorModeValue,
   chakra,
   Button,
+  useColorMode,
 } from '@chakra-ui/react';
 import { VscGithub } from 'react-icons/vsc';
 import { formatDistance, format } from 'date-fns';
 import { repoType } from '@/pages/api/github';
-import PinnedImageProjects from './PinnedImageProjects';
-import { pinnedRepoType } from '../../data/pinnedRepos';
+import { pinnedRepoType } from '../../../data/pinnedRepos';
+import PinnedImageProjects from '../PinnedImageProjects';
 
-function PinnedProjects({
-  repo,
-  projectData,
-  left,
-}: {
+interface PinnedProjectsProps {
   repo: repoType;
   projectData: pinnedRepoType;
   left: boolean;
-}) {
+}
+
+export const PinnedProjects: React.FC<PinnedProjectsProps> = ({
+  repo,
+  projectData,
+  left,
+}): React.ReactElement => {
+  const { colorMode } = useColorMode();
+
   if (projectData && projectData?.image) {
     return (
       <PinnedImageProjects left={left} repo={repo} projectData={projectData} />
     );
   }
+
   return (
     <Box h="full" w="full" my={5}>
       <Flex
-        bg={useColorModeValue(`white`, `gray.700`)}
+        bg={colorMode === 'light' ? `white` : `gray.700`}
         px={8}
         py={8}
         height="100%"
         width="100%"
         border="1px solid"
-        borderColor={useColorModeValue(`gray.200`, `gray.700`)}
+        borderColor={colorMode === 'light' ? `gray.200` : `gray.700`}
         borderRadius="2xl"
         boxShadow="xl"
         textAlign="left"
@@ -64,7 +69,7 @@ function PinnedProjects({
             <chakra.span
               ml={2}
               fontSize="md"
-              color={useColorModeValue('gray.500', 'gray.500')}
+              color={colorMode === 'light' ? 'gray.500' : 'gray.500'}
             >
               {format(new Date(repo.created_at), `dd/MM/yy`)}
             </chakra.span>
@@ -84,7 +89,7 @@ function PinnedProjects({
         <Text
           mb={3}
           maxWidth="100%"
-          color={useColorModeValue(`gray.600`, `gray.500`)}
+          color={colorMode === 'light' ? `gray.600` : `gray.500`}
           isTruncated
         >
           <chakra.span mr={2}>
@@ -99,7 +104,7 @@ function PinnedProjects({
           </Badge>
         </Text>
         <Text
-          color={useColorModeValue(`gray.600`, `gray.300`)}
+          color={colorMode === 'light' ? `gray.600` : `gray.300`}
           justifySelf="center"
           height="100%"
           width="100%"
@@ -110,6 +115,4 @@ function PinnedProjects({
       </Flex>
     </Box>
   );
-}
-
-export default PinnedProjects;
+};

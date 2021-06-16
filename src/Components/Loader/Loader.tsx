@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Loader() {
+export const Loader: React.FC = (): React.ReactElement => {
   return (
     <section className="loading-wrapper">
       <div className="loading-card">
@@ -13,6 +13,4 @@ function Loader() {
       </div>
     </section>
   );
-}
-
-export default Loader;
+};
