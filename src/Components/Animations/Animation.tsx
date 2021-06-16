@@ -1,13 +1,13 @@
 import { chakra } from '@chakra-ui/react';
 import React from 'react';
 
-function UpDown({
+export const UpDown = ({
   children,
   type,
 }: {
   children: React.ReactNode;
   type: 'normal' | 'wide' | 'slow';
-}): React.ReactElement {
+}): React.ReactElement => {
   return (
     <chakra.div
       overflow="hidden"
@@ -29,6 +29,4 @@ function UpDown({
       {children}
     </chakra.div>
   );
-}
-
-export default UpDown;
+};
