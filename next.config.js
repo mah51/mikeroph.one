@@ -1,3 +1,5 @@
+const path = require('path');
+
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.michael-hall.me;
@@ -53,6 +55,11 @@ const withMDX = require('@next/mdx')({
 });
 
 module.exports = withMDX({
+  webpack: (config) => {
+    config.resolve.modules.push(path.resolve('./'));
+
+    return config;
+  },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   webpack5: true,
   images: {
