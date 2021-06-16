@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"]
     }
   },
