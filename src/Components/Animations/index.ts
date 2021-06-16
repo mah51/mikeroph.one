@@ -1,1 +1,1 @@
-export { Animation as default } from './Animation';
+export { UpDown as default } from './Animation';
