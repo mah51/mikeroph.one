@@ -15,8 +15,8 @@ import {
 import Image from 'next/image';
 import React from 'react';
 import ImageCard from '../ImageCard';
-import { repoType } from '@/pages/api/github';
-import { pinnedRepoType } from '@/../../data/pinnedRepos';
+import { repoType } from '../../pages/api/github';
+import { pinnedRepoType } from '../../../data/pinnedRepos';
 
 interface PinnedImageProjectsProps {
   repo: repoType;

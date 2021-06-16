@@ -1,6 +1,6 @@
 import React from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
-import ToolCard from '@/components/ToolCard';
+import ToolCard from '../ToolCard';
 import tools, { categories, ToolType } from '../../../data/tools';
 
 export const ToolGrid: React.FC<{ filter: categories }> = ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 import UpDown from '../Animations';
-import SVG from '@/components/SVG';
+import SVG from '../SVG';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import Nav from '../NavBar/Nav';
