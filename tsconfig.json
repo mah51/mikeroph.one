@@ -15,9 +15,9 @@
     "jsx": "preserve",
 
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src/",
+    "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
+      "@/components/*": ["./components/*"],
       "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
