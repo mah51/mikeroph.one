@@ -8,6 +8,7 @@ import {
   HStack,
   Badge,
   VStack,
+  Flex,
 } from '@chakra-ui/react';
 import formatDistance from 'date-fns/formatDistance';
 import { useQuery } from 'react-query';
@@ -38,7 +39,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
           mb={8}
           px={5}
           py={4}
-          width="full"
+          width="calc(100% -10px)"
+          mx={'5px'}
           border="1px solid"
           bg={useColorModeValue(`white`, `gray.700`)}
           borderColor={useColorModeValue(`gray.200`, `gray.700`)}
@@ -58,7 +60,12 @@ export const BlogPost: React.FC<BlogPostProps> = ({
             maxW="full"
             isTruncated
           >
-            <Heading maxW="70%" lineHeight="1.4em" isTruncated>
+            <Heading
+              fontSize={{ base: 'xl', md: '3xl', lg: '4xl' }}
+              maxW="70%"
+              lineHeight="1.4em"
+              isTruncated
+            >
               {title}
             </Heading>
             <Text fontWeight="semibold" fontSize="xl" pb={1}>
@@ -67,23 +74,22 @@ export const BlogPost: React.FC<BlogPostProps> = ({
           </HStack>
           <HStack
             width="full"
-            alignItems="flex-end"
-            direction={{ base: `column`, md: `row` }}
+            alignItems={{ base: 'flex-start', sm: 'flex-end' }}
+            flexDirection={{ base: `column-reverse`, sm: `row` }}
             justifyContent="space-between"
-            flexWrap="nowrap"
             maxW="full"
           >
-            <Text maxW="30%">
+            <Text mt={{ base: 2, sm: 0 }}>
               Written{' '}
               {formatDistance(new Date(publishedAt), new Date(), {
                 addSuffix: true,
               })}
             </Text>
-            <HStack>
+            <HStack sx={{ marginLeft: '0px!important' }}>
               {tags &&
                 tags.map((tag, i) => (
                   <Badge
-                    ml={2}
+                    ml={{ base: 0, sm: 2 }}
                     colorScheme={
                       [
                         `gray`,

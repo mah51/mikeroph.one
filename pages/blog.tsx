@@ -46,7 +46,7 @@ function Blog({ posts }: { posts: any }): React.ReactElement {
       width="full"
       minH="100vh"
       mx="auto"
-      maxW="6xl"
+      maxW="5xl"
     >
       <LineHeading
         mt="28"
@@ -55,15 +55,16 @@ function Blog({ posts }: { posts: any }): React.ReactElement {
       >
         Blog Posts
       </LineHeading>
-      <Text mt={3}>
+      <Text mt={3} px={5}>
         Here are a collection of my blog posts, with {posts.length} blog
         {posts.length > 1 && 's'} :).
       </Text>
-      <Box mt="16" width="70%" mx="auto">
+      <Box mt="16" width="full">
         <Flex
           width="full"
           direction={{ base: 'column', md: 'row' }}
           my={7}
+          px={5}
           justifyContent="space-between"
         >
           <InputGroup
