@@ -64,7 +64,7 @@ function Blog({ posts }: { posts: any }): React.ReactElement {
           width="full"
           direction={{ base: 'column', md: 'row' }}
           my={7}
-          px={5}
+          px={{ base: 5, sm: 2 }}
           justifyContent="space-between"
         >
           <InputGroup
