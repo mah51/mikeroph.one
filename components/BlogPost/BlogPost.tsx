@@ -50,7 +50,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({
           borderRadius="2xl"
           transitionTimingFunction="spring(1 100 10 10)"
           _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
-          isTruncated
         >
           <HStack
             width="full"
@@ -59,14 +58,8 @@ export const BlogPost: React.FC<BlogPostProps> = ({
             direction={{ base: `column`, md: `row` }}
             justifyContent="space-between"
             maxW="full"
-            isTruncated
           >
-            <Heading
-              fontSize={{ base: 'xl', md: '3xl', lg: '4xl' }}
-              maxW="70%"
-              lineHeight="1.4em"
-              isTruncated
-            >
+            <Heading fontSize={{ base: 'xl', md: '3xl' }} maxW="70%">
               {title}
             </Heading>
             <Text fontWeight="semibold" fontSize="xl" pb={1}>
