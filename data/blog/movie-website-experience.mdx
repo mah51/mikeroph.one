@@ -129,6 +129,61 @@ During the construction of the website I tried to focus on the design, which [Ch
   height={544}
 />
 
+The card component looks like this, [link to repo](https://github.com/mah51/movie-web-typescript/blob/main/components/Card/Card.tsx):
+
+```jsx:components/Card/Card.tsx
+  const { image, name, genres, rating, numReviews, tagLine } = movie;
+  return (
+  <chakra.div
+      {...hoverStyles}
+    >
+      <Box mt={-6} mx={-6} mb={6} pos="relative">
+        <Image
+          src={image}
+          layout="responsive"
+          width="16px"
+          height="9px"
+          alt={`${movie?.name} poster`}
+        />
+      </Box>
+
+      <Flex
+      isTruncated
+      direction="column"
+      justifyContent="space-between">
+        <Flex
+        direction={'column'}
+        isTruncated>
+          <Flex
+          justifyContent="space-between"
+          alignItems="center">
+            <Text
+              as="h3"
+              color={useColorModeValue(`gray.700`, `white`)}
+              fontSize="2xl"
+              fontWeight="bold"
+              isTruncated
+            >
+              {name}
+            </Text>
+            <Badge colorScheme="purple">{genres[0]}</Badge>
+          </Flex>
+          <HStack
+          justifyContent="space-between"
+          alignItems="flex-start"
+          mt={3}>
+            <Text color="gray.500" isTruncated>
+              {tagLine || 'No tag line :(...'}
+            </Text>
+
+            <Rating rating={rating} numReviews={numReviews} />
+          </HStack>
+        </Flex>
+      </Flex>
+    </chakra.div>
+    )
+```
+
 <Image
   border
   alt={'Modal to add a review'}
