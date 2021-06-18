@@ -17,6 +17,8 @@ import Link from 'next/link';
 import { EditIcon } from '@chakra-ui/icons';
 import { frontMatterType } from '../../utils/mdx';
 import BlogBadge from '../BlogBadge';
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 interface BlogLayoutProps {
   children: React.ReactNode;
@@ -27,8 +29,26 @@ export const BlogLayout = ({
   children,
   frontMatter,
 }: BlogLayoutProps): React.ReactElement => {
+  const router = useRouter();
   return (
     <>
+      <NextSeo
+        title={frontMatter.title}
+        description={frontMatter.summary}
+        canonical={`https://michael-hall.me${router.asPath}`}
+        openGraph={{
+          url: `https://michael-hall.me${router.asPath}`,
+          type: 'article',
+          article: {
+            publishedTime: new Date(frontMatter.publishedAt).toISOString(),
+          },
+          images: [
+            {
+              url: `https://michael-hall.me${frontMatter.image}`,
+            },
+          ],
+        }}
+      />
       <chakra.article
         display="flex"
         flexDirection="column"

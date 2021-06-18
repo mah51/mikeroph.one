@@ -309,8 +309,6 @@ export const CustomCode: React.FC<any> = (props): React.ReactElement => {
       {...props}
       color={useColorModeValue('gray.800', 'gray.200')}
       bg={useColorModeValue('gray.100', 'gray.900')}
-      px={1}
-      py={0.5}
       wordBreak={'break-word'}
       whiteSpace={'pre-wrap'}
       css={useColorModeValue({ ...lightCodeStyles }, { ...darkCodeStyles })}

@@ -64,6 +64,7 @@ export interface frontMatterType {
   publishedAt: string;
   summary: string;
   tags?: string[];
+  image: string;
   by: {
     name: string;
     avatar: string;
