@@ -3,6 +3,7 @@ import path from 'path';
 import readingTime from 'reading-time';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
+import mdxPrism from '@mapbox/rehype-prism';
 
 export const getFiles = (type: string) =>
   fs.readdirSync(path.join(process.cwd(), `data`, type));
@@ -23,6 +24,7 @@ export async function getFileBySlug(type: string, slug: number) {
         [require('remark-autolink-headings')],
         require('remark-code-titles'),
       ],
+      rehypePlugins: [mdxPrism],
     },
   });
 
@@ -62,7 +64,10 @@ export interface frontMatterType {
   publishedAt: string;
   summary: string;
   tags?: string[];
-  by?: string;
+  by: {
+    name: string;
+    avatar: string;
+  };
   readingTime?: {
     text: string;
   };

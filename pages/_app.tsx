@@ -9,6 +9,8 @@ import { DefaultSeo } from 'next-seo';
 import PlausibleProvider from 'next-plausible';
 import AppLayout from '../components/AppLayout';
 import theme from '../theme';
+import MDXComponents from '../components/MDXComponents';
+import { MDXProvider } from '@mdx-js/react';
 
 const queryClient = new QueryClient();
 export default function MyApp({
@@ -60,15 +62,17 @@ export default function MyApp({
           enabled={process.env.NODE_ENV === 'production'}
           customDomain={'https://stats.michael-hall.me'}
         >
-          {loading ? (
-            <Loader />
-          ) : (
-            <QueryClientProvider client={queryClient}>
-              <AppLayout>
-                <Component {...pageProps} />
-              </AppLayout>
-            </QueryClientProvider>
-          )}
+          <QueryClientProvider client={queryClient}>
+            <MDXProvider components={MDXComponents}>
+              {loading ? (
+                <Loader />
+              ) : (
+                <AppLayout>
+                  <Component {...pageProps} />
+                </AppLayout>
+              )}
+            </MDXProvider>
+          </QueryClientProvider>
         </PlausibleProvider>
       </ChakraProvider>
     </>
