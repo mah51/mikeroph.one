@@ -36,7 +36,14 @@ export const BlogLayout = ({
         title={frontMatter.title}
         description={frontMatter.summary}
         canonical={`https://michael-hall.me${router.asPath}`}
+        twitter={{
+          cardType: 'summary_large_image',
+          site: '@Mikerophone_',
+        }}
         openGraph={{
+          title: frontMatter.title,
+          site_name: 'Michael Hall',
+          description: frontMatter.summary,
           url: `https://michael-hall.me${router.asPath}`,
           type: 'article',
           article: {
