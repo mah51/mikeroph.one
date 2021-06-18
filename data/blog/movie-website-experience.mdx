@@ -1,0 +1,195 @@
+---
+title: 'My experience making a movie rating website with next.js and chakra-ui.'
+publishedAt: '2021-06-17'
+summary: 'Some summary text.'
+tags: ['Web Development', 'Next.JS', 'Chakra-UI']
+by: { name: 'Michael Hall', avatar: '/static/images/profile.jpeg' }
+---
+
+<Image
+  alt={'My new movie rating site, ScuffedMDB.'}
+  src={'/static/images/blog/movie-website-experience/banner.png'}
+  width={1905 / 2}
+  height={957 / 2}
+  priority
+/>
+
+<Padding mt={1} />
+
+# The old website
+
+Last year, my friends and I started watching movies over [discord](https://discord.com) during the quarantine, and we would rate each movie in a discord channel. This worked well at the start but when we tried to look back at the ratings, it was a nightmare, so I decided to build a [movie rating website](https://github.com/mah51/movie-web/). Whilst it was very basic, it worked well until I accidentally deleted the database 😥. The lack of data in the database caused a 500 error during the <Definition term='SSR' definition='Server Side Render' link='https://www.freecodecamp.org/news/what-exactly-is-client-side-rendering-and-hows-it-different-from-server-side-rendering-bd5c786b340d/' />, I couldn't be bothered to fix it for a while so we went back to using discord; until March of this year where I decided I would remake the site, and fix all of its quirks.
+
+### Problems with the old website:
+
+- **Manual entry of movie data**: Movie information such as the poster link and name had to be entered manually, which was tedious.
+- **Manual authentication**: My friends had to sign in with a password that I entered into the database.
+- **Basic design**: Whilst I did use tailwind, I didn't concentrate on the design, and as a result the website looked plain.
+- **Dark mode**: And most importantly, no dark mode 😲.
+
+<Padding mt={2} />
+
+# Building the new website
+
+I am a big fan of [NextJS](https://nextjs.org), so I knew I would be using it for this project. Additionally, I had recently come across [Chakra-UI](https://chakra-ui.com), a react component library focused around flexiblity and accessibility, which I wanted to try out (Spoiler: I loved it). I also used [typescript](https://www.typescriptlang.org/) to see what all the hype is about.
+
+## Deep dive into fixing issues
+
+### Automatic movie data entry
+
+To get all of the movie data I knew I was going to have to use an API, and I settled on [tmdb.org](https://www.themoviedb.org/). After that I made a simple modal component that utilisises this API and then posts all the data to the database.
+
+```jsx:/api/movie-api.ts
+const { search } = req.query
+
+const response = await fetch(
+  `${TMDB_ENDPOINT}?api_key=${process.env.MOVIE_API_KEY}&query=${search}`
+);
+
+const data = await res.json();
+
+res.status(200).send(data)
+```
+
+This data populates a modal, from which I can click a button to add a movie to the site:
+
+<Image
+  border
+  alt={'Movie Modal, used to add movies to the website.'}
+  src={'/static/images/blog/movie-website-experience/movie-modal.png'}
+  ratio={460 / 466}
+  layout={'fill'}
+  chakraWidth={'50%'}
+/>
+
+The movie API returns a lot of data, which is saved to a mongoDB database.<br />
+_Whilst I don't need all the data, I am saving it incase I want to use it later._
+
+```json
+{
+  "adult": false,
+  "backdrop_path": "/XLwjO1NSCIaLznh58OQtmSFl0N.jpg",
+  "genre_ids": [16, 12, 10751, 35],
+  "id": 862,
+  "original_language": "en",
+  "original_title": "Toy Story",
+  "overview": "Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.",
+  "popularity": 88.13,
+  "poster_path": "/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+  "release_date": "1995-10-30",
+  "title": "Toy Story",
+  "video": false,
+  "vote_average": 7.9,
+  "vote_count": 14088
+}
+```
+
+And that's it! One problem down 🌟.
+
+<VStack mt={2} alignItems="flex-start">
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Automatic movie details
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly>
+    Authentication
+  </Checkbox>
+</VStack>
+
+### Authentication
+
+Oh no did someone say... [authentication](https://www.youtube.com/watch?v=9mSVzGnKsXw)?! Certainly one of the trickier things to manage whilst building a website, so stay tuned for a comprehensive tutorial of how to... Nah, I just used [discord's OAuth API](https://discord.com/developers/docs/topics/oauth2), and I couldn't even get that to work so I stole code from an [example](https://github.com/m1community/alii-nextjs-discord-oauth/blob/main/pages/api/oauth.ts) I found. _(Auth sucks, give me a break)_.
+
+Another topic down! This is easy.
+
+<VStack mt={2} alignItems="flex-start">
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Automatic movie details
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Authentication
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly>
+    Nice design
+  </Checkbox>
+</VStack>
+
+### Design
+
+During the construction of the website I tried to focus on the design, which [Chakra-UI](https://chakra-ui.com/) made a breeze. The default colours are great, and allow an easy color scheme selection. In this case I settled for the default purple to become the star of the show; and in my opinion it came out well. In terms of general design, I aimed to keep it fairly minimal and informative, while looking nice; and I think I achieved this, however I'm not great at UI. (and I may change the number of modals in the future).
+
+<Image
+  border
+  alt={'Homepage of ScuffedMDB'}
+  src={'/static/images/blog/movie-website-experience/design.png'}
+  width={1293}
+  height={544}
+/>
+
+<Image
+  border
+  alt={'Modal to add a review'}
+  src={'/static/images/blog/movie-website-experience/review-modal.png'}
+  ratio={460 / 482}
+  layout="fill"
+  chakraWidth="50%"
+/>
+
+<VStack mt={2} alignItems="flex-start">
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Automatic movie details
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Authentication
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Nice design <em>...I mean I like it</em>
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly>
+    Dark mode
+  </Checkbox>
+</VStack>
+
+### DarkMode
+
+This one has already been spoilt, but Chakra-UI ships with a dark mode by default, so this was incredibly easy, and all you have to do to check out <TextColorMode /> mode is hit that toggle button up top!
+
+```jsx:components/NavBar/DesktopNav.tsx
+import { BiMoon, BiSun } from 'react-icons/bi';
+import { useColorModeValue, useColorMode } from '@chakra-ui/react';
+
+const text = useColorModeValue('dark', 'light');
+const SwitchIcon = useColorModeValue(BiMoon, BiSun);
+const { toggleColorMode: toggleMode } = useColorMode();
+
+<IconButton
+  size="md"
+  fontSize="lg"
+  aria-label={`Switch to ${text} mode`}
+  title={`Switch to ${text} mode`}
+  variant="ghost"
+  onClick={toggleMode}
+  colorScheme="brand"
+  icon={<SwitchIcon size={25} />}
+/>;
+```
+
+🎉
+
+<VStack mt={2} alignItems="flex-start">
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Automatic movie details
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Authentication
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Nice design <em>...I mean I like it</em>
+  </Checkbox>
+  <Checkbox colorScheme="brand" isReadOnly defaultIsChecked>
+    Dark mode
+  </Checkbox>
+</VStack>
+
+And that's it! I now have a functioning movie review site. There are a few more features that you can go and check out on [ScuffedMDB](https://movie.michael-hall.me), and if you want to host it for your friend group there is a [guide](https://github.com/mah51/movie-web-typescript).
+
+(Section to come -> Posting to reddit and what I have changed :).)

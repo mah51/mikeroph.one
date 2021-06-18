@@ -13,6 +13,10 @@ export default async function handler(
         return 1;
       }
 
+      if (process.env.VERCEL_ENV !== 'production') {
+        return currentViews;
+      }
+
       return currentViews + 1;
     });
 

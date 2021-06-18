@@ -6,12 +6,12 @@ import {
   useColorModeValue,
   Heading,
   HStack,
-  Badge,
   VStack,
-  Flex,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import formatDistance from 'date-fns/formatDistance';
 import { useQuery } from 'react-query';
+import BlogBadge from '../BlogBadge';
 
 interface BlogPostProps {
   title: string;
@@ -28,6 +28,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
   tags,
   publishedAt,
 }): React.ReactElement => {
+  const spliceBP = useBreakpointValue({ base: 2, md: 5 });
   const { data } = useQuery(`views${slug}`, () => {
     return fetch(`/api/views/${slug}`).then((res) => res.json());
   });
@@ -87,31 +88,9 @@ export const BlogPost: React.FC<BlogPostProps> = ({
             </Text>
             <HStack sx={{ marginLeft: '0px!important' }}>
               {tags &&
-                tags.map((tag, i) => (
-                  <Badge
-                    ml={{ base: 0, sm: 2 }}
-                    colorScheme={
-                      [
-                        `gray`,
-                        `brand`,
-                        `teal`,
-                        `blue`,
-                        `green`,
-                        `pink`,
-                        `orange`,
-                        `red`,
-                        `purple`,
-                        `yellow`,
-                      ][(tag.charCodeAt(0) + tag.charCodeAt(1)) % 10]
-                    }
-                    key={i.toString()}
-                    py={1}
-                    px={2}
-                    borderRadius={'md'}
-                  >
-                    {tag}
-                  </Badge>
-                ))}
+                tags
+                  .slice(0, spliceBP)
+                  .map((tag, i) => <BlogBadge tag={tag} key={i.toString()} />)}
             </HStack>
           </HStack>
           <Text width="full" mt={2}>

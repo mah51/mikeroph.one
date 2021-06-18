@@ -222,3 +222,15 @@ body,
   -o-filter: blur(10px) saturate(180%);
   -ms-filter: blur(10px) saturate(180%);
 }
+
+.remark-code-title + pre {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.blog-content > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
