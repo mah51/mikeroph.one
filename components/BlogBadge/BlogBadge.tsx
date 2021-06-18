@@ -4,7 +4,7 @@ import React from 'react';
 export const BlogBadge: React.FC<{ tag }> = ({ tag }): React.ReactElement => {
   return (
     <Badge
-      ml={{ base: 0, sm: 2 }}
+      
       colorScheme={
         [
           `gray`,

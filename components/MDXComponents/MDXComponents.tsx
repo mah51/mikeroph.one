@@ -107,17 +107,17 @@ export const CustomImage: React.FC<any> = ({
 export const CustomTitle: React.FC<any> = (props): React.ReactElement => {
   const title = props.children[0].props.parentName;
   const titleSize = {
-    h1: '4xl',
-    h2: '2xl',
-    h3: 'xl',
-    h4: 'lg',
-    h5: 'md',
+    h1: ['2xl', '4xl'],
+    h2: ['xl', '2xl'],
+    h3: ['lg', 'xl'],
+    h4: ['md', 'lg'],
+    h5: ['sm', 'md'],
     h6: 'sm',
   };
 
   return (
     <Flex>
-      <LineHeading as={title} fontSize={titleSize[title]} mt={3} {...props}>
+      <LineHeading as={title} fontSize={titleSize[title]} mt={5} {...props}>
         {props.children}
       </LineHeading>
     </Flex>

@@ -2,24 +2,21 @@ import React from 'react';
 import {
   HStack,
   Icon,
-  IconButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   useColorMode,
-  useColorModeValue,
   Link as ChakraLink,
 } from '@chakra-ui/react';
-import { BiMoon, BiSun } from 'react-icons/bi';
+
 import Link from 'next/link';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import ToggleTheme from './ToggleTheme';
 
 function DesktopNav({ links }: { links: any }): React.ReactElement {
   const { colorMode } = useColorMode();
-  const text = useColorModeValue('dark', 'light');
-  const SwitchIcon = useColorModeValue(BiMoon, BiSun);
-  const { toggleColorMode: toggleMode } = useColorMode();
+
   return (
     <HStack spacing={8} display={{ base: `none`, md: `flex` }}>
       {links.map((linkItem: any, index: number) => {
@@ -113,16 +110,7 @@ function DesktopNav({ links }: { links: any }): React.ReactElement {
         return null;
       })}
       <HStack spacing={2}>
-        <IconButton
-          size="md"
-          fontSize="lg"
-          aria-label={`Switch to ${text} mode`}
-          title={`Switch to ${text} mode`}
-          variant="ghost"
-          onClick={toggleMode}
-          colorScheme="brand"
-          icon={<SwitchIcon size={25} />}
-        />
+        <ToggleTheme />
       </HStack>
     </HStack>
   );

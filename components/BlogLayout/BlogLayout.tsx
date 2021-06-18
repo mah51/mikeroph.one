@@ -34,21 +34,32 @@ export const BlogLayout = ({
         flexDirection="column"
         justifyContent="flex-start"
         alignItems="center"
-        pt="28"
+        pt="20"
         width="full"
         minH="100vh"
         mx="auto"
         maxWidth="2xl"
       >
         {frontMatter.tags && (
-          <Flex width="full" justifyContent="flex-start">
+          <Flex
+            width="full"
+            px={3}
+            mb={4}
+            justifyContent="flex-start"
+            flexWrap="wrap"
+            sx={{ rowGap: '10px', columnGap: '10px' }}
+          >
             {frontMatter.tags.map((tag, i) => (
               <BlogBadge tag={tag} key={i.toString()} />
             ))}
           </Flex>
         )}
 
-        <Heading fontSize={{ base: '3xl', md: '6xl' }}>
+        <Heading
+          fontSize={{ base: '3xl', md: '6xl' }}
+          textAlign={{ base: 'center', md: 'left' }}
+          px={2}
+        >
           {frontMatter.title}
         </Heading>
         <Flex
@@ -57,11 +68,11 @@ export const BlogLayout = ({
           alignItems={{ base: 'center', md: 'flex-start' }}
           maxW="2xl"
           mx={'auto'}
-          mb={16}
+          mb={12}
           mt={5}
           width="full"
         >
-          <Flex alignItems="center">
+          <Flex alignItems="center" my={{ base: 2, md: 0 }}>
             <Tag size="lg" colorScheme="brand" borderRadius="full">
               <Avatar
                 name={frontMatter.by.name}
@@ -86,7 +97,13 @@ export const BlogLayout = ({
             <ViewCounter slug={frontMatter.slug} />
           </Text>
         </Flex>
-        <Box mb={16} maxWidth="4xl" width="full" className={'blog-content'}>
+        <Box
+          mb={16}
+          px={2}
+          maxWidth="4xl"
+          width="full"
+          className={'blog-content'}
+        >
           {children}
           <HStack justifyContent="flex-start" mr="auto" mt={5}>
             <EditIcon />
