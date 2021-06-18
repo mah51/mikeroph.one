@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import LineHeading from '../LineHeading';
 import React from 'react';
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 
 interface CustomLinkProps {
   href: string;
