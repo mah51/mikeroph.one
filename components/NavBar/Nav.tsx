@@ -1,15 +1,9 @@
-import React from 'react';
-import {
-  Box,
-  Flex,
-  Link as ChakraLink,
-  chakra,
-  useColorModeValue,
-} from '@chakra-ui/react';
-import Link from 'next/link';
+import React from 'react'
+import { Box, Flex, Link as ChakraLink, chakra, useColorModeValue } from '@chakra-ui/react'
+import Link from 'next/link'
 
-import MobileNav from './MobileNav';
-import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav'
+import DesktopNav from './DesktopNav'
 
 const links = [
   {
@@ -38,38 +32,35 @@ const links = [
       },
     ],
   },
-];
+]
 
 function Nav(): React.ReactElement {
   return (
     <chakra.header
-      width="full"
-      position="fixed"
+      width='full'
+      position='fixed'
       top={0}
       left={0}
       zIndex={10}
-      bg={useColorModeValue(
-        `rgba(255, 255, 255, 0.8)`,
-        `rgba(26, 33, 42, 0.8)`
-      )}
+      bg={useColorModeValue(`rgba(255, 255, 255, 0.8)`, `rgba(26, 33, 41, 0.8)`)}
       sx={{ backdropFilter: `saturate(180%) blur(5px)` }}
     >
-      <chakra.nav mx="auto" p={3}>
+      <chakra.nav mx='auto' p={3}>
         <Flex
-          margin="auto"
-          justifyContent="space-between"
-          alignContent="center"
-          maxW="7xl"
-          width="full"
+          margin='auto'
+          justifyContent='space-between'
+          alignContent='center'
+          maxW='7xl'
+          width='full'
         >
-          <Box display="flex" alignContent="center">
-            <Link href="/" passHref>
+          <Box display='flex' alignContent='center'>
+            <Link href='/' passHref>
               <ChakraLink
-                fontSize="lg"
-                margin="auto"
-                fontWeight="semibold"
-                position="relative"
-                textTransform="capitalize"
+                fontSize='lg'
+                margin='auto'
+                fontWeight='semibold'
+                position='relative'
+                textTransform='capitalize'
                 _after={{
                   transition: `all 0.25s ease-in-out`,
                   content: `''`,
@@ -99,7 +90,7 @@ function Nav(): React.ReactElement {
         </Flex>
       </chakra.nav>
     </chakra.header>
-  );
+  )
 }
 
-export default Nav;
+export default Nav

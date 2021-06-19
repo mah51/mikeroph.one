@@ -1,9 +1,5 @@
-import {
-  ChakraTheme,
-  extendTheme,
-  ThemeComponentProps,
-} from '@chakra-ui/react';
-import { transparentize, mode } from '@chakra-ui/theme-tools';
+import { ChakraTheme, extendTheme, ThemeComponentProps } from '@chakra-ui/react'
+import { transparentize, mode } from '@chakra-ui/theme-tools'
 
 // 2. Call `extendTheme` and pass your custom values
 
@@ -15,32 +11,19 @@ const theme = extendTheme({
     Button: {
       variants: {
         ghostAlwaysOn: (props: ThemeComponentProps<ChakraTheme>) => {
-          const darkBg = transparentize(
-            `${props.colorScheme}.200`,
-            0.12
-          )(props.theme);
-          const darkHoverBg = transparentize(
-            `${props.colorScheme}.200`,
-            0.24
-          )(props.theme);
-          const darkActiveBg = transparentize(
-            `${props.colorScheme}.200`,
-            0.36
-          )(props.theme);
+          const darkBg = transparentize(`${props.colorScheme}.200`, 0.12)(props.theme)
+          const darkHoverBg = transparentize(`${props.colorScheme}.200`, 0.24)(props.theme)
+          const darkActiveBg = transparentize(`${props.colorScheme}.200`, 0.36)(props.theme)
           return {
-            color: mode(
-              `${props.colorScheme}.600`,
-              `${props.colorScheme}.200`
-            )(props),
-            bgColor:
-              props.colorMode === 'light' ? `${props.colorScheme}.50` : darkBg,
+            color: mode(`${props.colorScheme}.600`, `${props.colorScheme}.200`)(props),
+            bgColor: props.colorMode === 'light' ? `${props.colorScheme}.50` : darkBg,
             _hover: {
               bgColor: mode(`${props.colorScheme}.100`, darkHoverBg)(props),
             },
             _active: {
               bgColor: mode(`${props.colorScheme}.200`, darkActiveBg)(props),
             },
-          };
+          }
         },
       },
     },
@@ -48,6 +31,8 @@ const theme = extendTheme({
   styles: {
     global: (props: any) => ({
       '*': {
+        bg: 'none',
+
         _selection: {
           color: props.colorMode === `dark` ? `black` : `white`,
           bg: props.colorMode === `dark` ? `brand.300` : `brand.600`,
@@ -70,6 +55,6 @@ const theme = extendTheme({
       900: `#155733`,
     },
   },
-});
+})
 
-export default theme;
+export default theme
