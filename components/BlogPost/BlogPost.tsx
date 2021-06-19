@@ -6,7 +6,6 @@ import {
   useColorModeValue,
   Heading,
   HStack,
-  VStack,
   useBreakpointValue,
   Flex,
 } from '@chakra-ui/react'
