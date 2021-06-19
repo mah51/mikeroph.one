@@ -8,7 +8,7 @@ import Nav from '../NavBar/Nav'
 import Footer from '../Footer/Footer'
 
 interface AppLayoutProps {
-  children: React.ReactNode
+  children: React.ReactElement
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({ children }): React.ReactElement => {
