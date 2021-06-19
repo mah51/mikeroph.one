@@ -46,7 +46,6 @@ const HeadingFade = ({ children }: HeadingFadeProps): React.ReactElement => {
 
 interface SpotifyProps {
   data: any
-  currentlyPlaying: any
   error: string | null
   revalidate?: number
 }
