@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Heading,
   Avatar,
@@ -10,26 +10,23 @@ import {
   useColorModeValue,
   HStack,
   Tag,
-} from '@chakra-ui/react';
-import { format, parseISO } from 'date-fns';
-import ViewCounter from '../ViewCounter';
-import Link from 'next/link';
-import { EditIcon } from '@chakra-ui/icons';
-import { frontMatterType } from '../../utils/mdx';
-import BlogBadge from '../BlogBadge';
-import { NextSeo } from 'next-seo';
-import { useRouter } from 'next/router';
+} from '@chakra-ui/react'
+import { format, parseISO } from 'date-fns'
+import ViewCounter from '../ViewCounter'
+import Link from 'next/link'
+import { EditIcon } from '@chakra-ui/icons'
+import { frontMatterType } from '../../utils/mdx'
+import BlogBadge from '../BlogBadge'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 
 interface BlogLayoutProps {
-  children: React.ReactNode;
-  frontMatter: frontMatterType;
+  children: React.ReactNode
+  frontMatter: frontMatterType
 }
 
-export const BlogLayout = ({
-  children,
-  frontMatter,
-}: BlogLayoutProps): React.ReactElement => {
-  const router = useRouter();
+export const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): React.ReactElement => {
+  const router = useRouter()
   return (
     <>
       <NextSeo
@@ -57,23 +54,23 @@ export const BlogLayout = ({
         }}
       />
       <chakra.article
-        display="flex"
-        flexDirection="column"
-        justifyContent="flex-start"
-        alignItems="center"
-        pt="20"
-        width="full"
-        minH="100vh"
-        mx="auto"
-        maxWidth="2xl"
+        display='flex'
+        flexDirection='column'
+        justifyContent='flex-start'
+        alignItems='center'
+        pt='20'
+        width='full'
+        minH='100vh'
+        mx='auto'
+        maxWidth='2xl'
       >
         {frontMatter.tags && (
           <Flex
-            width="full"
+            width='full'
             px={3}
             mb={4}
-            justifyContent="flex-start"
-            flexWrap="wrap"
+            justifyContent='flex-start'
+            flexWrap='wrap'
             sx={{ rowGap: '10px', columnGap: '10px' }}
           >
             {frontMatter.tags.map((tag, i) => (
@@ -91,19 +88,19 @@ export const BlogLayout = ({
         </Heading>
         <Flex
           direction={{ base: 'column', md: 'row' }}
-          justifyContent="space-between"
+          justifyContent='space-between'
           alignItems={{ base: 'center', md: 'flex-start' }}
-          maxW="2xl"
+          maxW='2xl'
           mx={'auto'}
           mb={12}
           mt={5}
-          width="full"
+          width='full'
         >
-          <Flex alignItems="center" my={{ base: 2, md: 0 }}>
-            <Tag size="lg" colorScheme="brand" borderRadius="full">
+          <Flex alignItems='center' my={{ base: 2, md: 0 }}>
+            <Tag size='lg' colorScheme='brand' borderRadius='full'>
               <Avatar
                 name={frontMatter.by.name}
-                size="xs"
+                size='xs'
                 ml={-2}
                 mr={2}
                 src={frontMatter.by.avatar}
@@ -124,21 +121,15 @@ export const BlogLayout = ({
             <ViewCounter slug={frontMatter.slug} />
           </Text>
         </Flex>
-        <Box
-          mb={16}
-          px={2}
-          maxWidth="4xl"
-          width="full"
-          className={'blog-content'}
-        >
+        <Box mb={16} px={2} maxWidth='4xl' width='full' className={'blog-content'}>
           {children}
-          <HStack justifyContent="flex-start" mr="auto" mt={5}>
+          <HStack justifyContent='flex-start' mr='auto' mt={5}>
             <EditIcon />
             <Link
-              href={`https://github.com/mah51/personal-site/edit/main/data/blog/${frontMatter.slug}.mdx`}
+              href={`https://github.com/mah51/personal-web/edit/main/data/blog/${frontMatter.slug}.mdx`}
               passHref
             >
-              <ChakraLink target="_blank" rel="noopener noreferrer">
+              <ChakraLink target='_blank' rel='noopener noreferrer'>
                 Edit on github
               </ChakraLink>
             </Link>
@@ -146,5 +137,5 @@ export const BlogLayout = ({
         </Box>
       </chakra.article>
     </>
-  );
-};
+  )
+}
