@@ -95,6 +95,7 @@ export async function getStaticProps(): Promise<{ props: ProjectsProps }> {
   )
 
   const { stars, repos, followers } = await response.json()
+
   return { props: { stars, repos, followers, revalidate: 600 } }
 }
 
