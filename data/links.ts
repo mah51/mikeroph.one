@@ -1,12 +1,19 @@
 export interface LinkType {
-  link: string;
-  id: string;
-  name: string;
-  label?: string;
-  date: Date;
+  link: string
+  id: string
+  name: string
+  label?: string
+  date: Date
 }
 
 export const links: LinkType[] = [
+  {
+    id: 'conic.css',
+    link: 'https://www.conic.style/',
+    name: 'Conic.CSS',
+    label: 'Gradient presets',
+    date: new Date('2021-06-22T17:20'),
+  },
   {
     id: `avataaarsgenerator`,
     link: `https://getavataaars.com/`,
@@ -77,6 +84,6 @@ export const links: LinkType[] = [
     label: `Web Development`,
     date: new Date(`2021-04-20T03:44`),
   },
-];
+]
 
-export default links;
+export default links
