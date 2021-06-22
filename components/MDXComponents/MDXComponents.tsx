@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { css } from '@emotion/react';
+import Link from 'next/link'
+import { css } from '@emotion/react'
 import {
   Box,
   Link as ChakraLink,
@@ -12,35 +12,33 @@ import {
   chakra,
   ListItem,
   AspectRatio,
-} from '@chakra-ui/react';
-import LineHeading from '../LineHeading';
-import React from 'react';
-import Image from 'next/image';
+} from '@chakra-ui/react'
+import LineHeading from '../LineHeading'
+import React from 'react'
+import Image from 'next/image'
 
 interface CustomLinkProps {
-  href: string;
+  href: string
 }
 
-export * from './Definition';
+export * from './Definition'
 
-export const CustomLink: React.FC<CustomLinkProps> = (
-  props
-): React.ReactElement => {
-  const { colorMode } = useColorMode();
-  const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+export const CustomLink: React.FC<CustomLinkProps> = (props): React.ReactElement => {
+  const { colorMode } = useColorMode()
+  const href = props.href
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'))
 
   if (isInternalLink) {
     return (
       <Link href={href} passHref>
         <ChakraLink
-          width="calc(100% + 28px)"
-          position="absolute"
+          width='calc(100% + 28px)'
+          position='absolute'
           ml={'-0.7em'}
-          height="full"
-          maxW="700px"
+          height='full'
+          maxW='700px'
           {...props}
-          cursor="pointer"
+          cursor='pointer'
           _after={{
             content: "'#'",
             visibility: 'hidden',
@@ -56,19 +54,19 @@ export const CustomLink: React.FC<CustomLinkProps> = (
           }}
         />
       </Link>
-    );
+    )
   }
 
   return (
     <ChakraLink
       _hover={{ textDecoration: 'none' }}
       color={colorMode === 'light' ? 'blue.600' : 'blue.200'}
-      target="_blank"
-      rel="noopener noreferrer"
+      target='_blank'
+      rel='noopener noreferrer'
       {...props}
     />
-  );
-};
+  )
+}
 
 export const CustomImage: React.FC<any> = ({
   alt,
@@ -78,7 +76,7 @@ export const CustomImage: React.FC<any> = ({
   ...props
 }): React.ReactElement => {
   return (
-    <Flex direction="column" my={7}>
+    <Flex direction='column' my={7}>
       {ratio ? (
         <AspectRatio width={chakraWidth || 'full'} mx={'auto'} ratio={ratio}>
           <Image className={`${border && 'border'}`} alt={alt} {...props} />
@@ -92,7 +90,7 @@ export const CustomImage: React.FC<any> = ({
         }
       `}</style>
       <Text
-        textAlign="center"
+        textAlign='center'
         fontWeight={'semibold'}
         mt={2}
         color={useColorModeValue('gray.600', 'gray.400')}
@@ -100,12 +98,12 @@ export const CustomImage: React.FC<any> = ({
         {alt}
       </Text>
     </Flex>
-  );
-  ``;
-};
+  )
+  ;``
+}
 
 export const CustomTitle: React.FC<any> = (props): React.ReactElement => {
-  const title = props.children[0].props.parentName;
+  const title = props.children[0].props.parentName
   const titleSize = {
     h1: ['2xl', '4xl'],
     h2: ['xl', '2xl'],
@@ -113,7 +111,7 @@ export const CustomTitle: React.FC<any> = (props): React.ReactElement => {
     h4: ['md', 'lg'],
     h5: ['sm', 'md'],
     h6: 'sm',
-  };
+  }
 
   return (
     <Flex>
@@ -121,18 +119,16 @@ export const CustomTitle: React.FC<any> = (props): React.ReactElement => {
         {props.children}
       </LineHeading>
     </Flex>
-  );
-};
+  )
+}
 
-export const CustomText: React.FC<{ children: string }> = ({
-  children,
-}): React.ReactElement => {
+export const CustomText: React.FC<{ children: string }> = ({ children }): React.ReactElement => {
   return (
-    <Text fontSize={'md'} mt={3}>
+    <Text fontSize={'lg'} mt={4}>
       {children}
     </Text>
-  );
-};
+  )
+}
 
 export const CustomUnorderedList: React.FC<{ children: any }> = ({
   children,
@@ -141,24 +137,20 @@ export const CustomUnorderedList: React.FC<{ children: any }> = ({
     <UnorderedList spacing={'4px'} mt={3}>
       {children}
     </UnorderedList>
-  );
-};
+  )
+}
 
-export const CustomListItem: React.FC<{ children: any }> = ({
-  children,
-}): React.ReactElement => {
+export const CustomListItem: React.FC<{ children: any }> = ({ children }): React.ReactElement => {
   return (
     <ListItem color={useColorModeValue('brand.500', 'brand.300')}>
-      <chakra.span color={useColorModeValue('black', 'white')}>
-        {children}
-      </chakra.span>
+      <chakra.span color={useColorModeValue('black', 'white')}>{children}</chakra.span>
     </ListItem>
-  );
-};
+  )
+}
 
 export const Padding: React.FC<BoxProps> = (props): React.ReactElement => {
-  return <Box width="full" height="1px" {...props} />;
-};
+  return <Box width='full' height='1px' {...props} />
+}
 
 export const RemarkTitle: React.FC<any> = (props): React.ReactElement => {
   return (
@@ -173,26 +165,26 @@ export const RemarkTitle: React.FC<any> = (props): React.ReactElement => {
       borderColor={useColorModeValue('gray.300', 'gray.700')}
       borderTopRadius={'xl'}
       bg={useColorModeValue('gray.200', 'gray.700')}
-      fontSize="sm"
+      fontSize='sm'
       fontFamily={'mono'}
-      fontWeight="bold"
+      fontWeight='bold'
     />
-  );
-};
+  )
+}
 
 export const CustomDiv: React.FC<any> = (props): React.ReactElement => {
   if (props?.className?.includes('remark-code-title')) {
-    return <RemarkTitle {...props} />;
+    return <RemarkTitle {...props} />
   }
 
-  return <chakra.div {...props} />;
-};
+  return <chakra.div {...props} />
+}
 
 export const CustomPre: React.FC<any> = (props): React.ReactElement => {
   return (
     <chakra.pre
       {...props}
-      borderRadius="lg"
+      borderRadius='lg'
       mt={8}
       py={5}
       px={5}
@@ -202,8 +194,8 @@ export const CustomPre: React.FC<any> = (props): React.ReactElement => {
       border={'1px solid'}
       borderColor={useColorModeValue('gray.300', 'gray.700')}
     />
-  );
-};
+  )
+}
 
 const codeStyles = css`
   .token.operator,
@@ -219,7 +211,7 @@ const codeStyles = css`
   .token.variable {
     color: var(--chakra-colors-yellow-500);
   }
-`;
+`
 
 const lightCodeStyles = css`
   ${codeStyles};
@@ -260,7 +252,7 @@ const lightCodeStyles = css`
   .token.deleted {
     color: var(--chakra-colors-purple-600);
   }
-`;
+`
 
 const darkCodeStyles = css`
   ${codeStyles};
@@ -301,7 +293,7 @@ const darkCodeStyles = css`
   .token.deleted {
     color: var(--chakra-colors-purple-300);
   }
-`;
+`
 
 export const CustomCode: React.FC<any> = (props): React.ReactElement => {
   return (
@@ -313,10 +305,10 @@ export const CustomCode: React.FC<any> = (props): React.ReactElement => {
       whiteSpace={'pre-wrap'}
       css={useColorModeValue({ ...lightCodeStyles }, { ...darkCodeStyles })}
     />
-  );
-};
+  )
+}
 
 export const TextColorMode = (): string => {
-  const value = useColorModeValue('dark', 'light');
-  return value;
-};
+  const value = useColorModeValue('dark', 'light')
+  return value
+}
