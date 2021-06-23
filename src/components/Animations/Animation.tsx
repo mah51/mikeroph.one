@@ -3,6 +3,7 @@ import React from 'react'
 
 interface UpDownProps {
   children: React.ReactNode
+
   type: 'normal' | 'wide' | 'slow'
 }
 
