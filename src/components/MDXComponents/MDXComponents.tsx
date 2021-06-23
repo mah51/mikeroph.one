@@ -23,6 +23,7 @@ interface CustomLinkProps {
 }
 
 export * from './Definition'
+export * from './Aside'
 
 export const CustomLink = (props: CustomLinkProps): JSX.Element => {
   const { colorMode } = useColorMode()
@@ -160,9 +161,9 @@ export const Padding = (props: BoxProps): JSX.Element => {
 export const RemarkTitle = (props: BoxProps): JSX.Element => {
   return (
     <chakra.div
-      {...props}
       mt={8}
-      px={5}
+      mx={'-32px'}
+      px={'32px'}
       py={3}
       color={useColorModeValue('gray.800', 'gray.200')}
       border={'1px solid'}
@@ -173,6 +174,7 @@ export const RemarkTitle = (props: BoxProps): JSX.Element => {
       fontSize='sm'
       fontFamily={'mono'}
       fontWeight='bold'
+      {...props}
     />
   )
 }
@@ -191,13 +193,16 @@ export const CustomPre = (props: ChakraProps): JSX.Element => {
       {...props}
       borderRadius='lg'
       mt={8}
+      mx={'-32px'}
       py={5}
-      px={5}
-      overflow={'hidden'}
+      px={'32px'}
+      overflowX={'scroll'}
+      sx={{
+        scrollbarColor: 'var(--chakra-colors-gray-700) var(--chakra-colors-gray-900)',
+        scrollbarWidth: 'thin',
+      }}
       bg={useColorModeValue('gray.100', 'gray.900')}
       color={useColorModeValue('gray.800', 'gray.50')}
-      border={'1px solid'}
-      borderColor={useColorModeValue('gray.300', 'gray.700')}
     />
   )
 }
@@ -306,8 +311,6 @@ export const CustomCode = (props: ChakraProps): JSX.Element => {
       {...props}
       color={useColorModeValue('gray.800', 'gray.200')}
       bg={useColorModeValue('gray.100', 'gray.900')}
-      wordBreak={'break-word'}
-      whiteSpace={'pre-wrap'}
       css={useColorModeValue({ ...lightCodeStyles }, { ...darkCodeStyles })}
     />
   )

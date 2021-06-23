@@ -1,4 +1,5 @@
 import {
+  Aside,
   Definition,
   CustomLink,
   CustomTitle,
@@ -29,6 +30,7 @@ const MDXComponents = {
   code: CustomCode,
   div: CustomDiv,
   VStack,
+  Aside,
   Padding,
   Definition,
   Checkbox,
