@@ -218,7 +218,7 @@ import { useColorModeValue, useColorMode } from '@chakra-ui/react';
 
 const text = useColorModeValue('dark', 'light');
 const SwitchIcon = useColorModeValue(BiMoon, BiSun);
-const { toggleColorMode: toggleMode } = useColorMode();
+const { toggleColorMode } = useColorMode();
 
 <IconButton
   size="md"
@@ -226,15 +226,13 @@ const { toggleColorMode: toggleMode } = useColorMode();
   aria-label={`Switch to ${text} mode`}
   title={`Switch to ${text} mode`}
   variant="ghost"
-  onClick={toggleMode}
+  onClick={toggleColorMode}
   colorScheme="brand"
   icon={<SwitchIcon size={25} />}
 />;
 ```
 
-<Padding mt={2} />
-
-<Sparkles>🎉🎉🎉</Sparkles>
+🎉🎉🎉
 
 <VStack mt={2} alignItems='flex-start'>
   <Checkbox colorScheme='brand' isReadOnly defaultIsChecked>
@@ -247,7 +245,7 @@ const { toggleColorMode: toggleMode } = useColorMode();
     Nice design <em>...I mean I like it</em>
   </Checkbox>
   <Checkbox colorScheme='brand' isReadOnly defaultIsChecked>
-    Dark mode
+    <Sparkles>Dark mode</Sparkles>
   </Checkbox>
 </VStack>
 

@@ -1,13 +1,14 @@
-import useRandomInterval from '../../hooks/useRandomInterval'
+import useRandomInterval from '../../hooks/useRandomInterval.hook'
 import React from 'react'
-import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion'
+import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion.hook'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
 import { generateId, random, sample } from '../../utils/utils'
 import UnstyledButton from '../UnstyledButton'
-import useIsOnscreen from '../../hooks/useIsOnScreen'
+import useIsOnscreen from '../../hooks/useIsOnScreen.hook'
+import { useColorMode, useColorModeValue } from '@chakra-ui/react'
 
-const defaultGeneratePosition = size => {
+const defaultGeneratePosition = (size: number) => {
   const style: any = {}
   style.left = random(0, 100) + '%'
   style.zIndex = sample([1, 3])[0]
@@ -21,7 +22,21 @@ const defaultGeneratePosition = size => {
   return style
 }
 
-const generateSparkle = (colors, minSize, maxSize, generatePosition) => {
+interface SparkleType {
+  id: string
+  color: string
+  size: number
+  numOfPoints: number
+  createdAt: number
+  style: Record<string, unknown>
+}
+
+const generateSparkle = (
+  colors: string[][],
+  minSize: number,
+  maxSize: number,
+  generatePosition: (x: number) => Record<string, unknown>
+): SparkleType => {
   const size = random(minSize, maxSize)
 
   const sparkle = {
@@ -41,20 +56,26 @@ interface SparklesProps {
   variance?: number
   minSize?: number
   maxSize?: number
-  colors?: string[]
+  colors?: string[][]
   children: React.ReactElement
   isToggleable?: boolean
   style?: Record<string, unknown>
-  generatePosition?: (number) => Record<string, unknown>
+  generatePosition?: (x: number) => Record<string, unknown>
   delayBy?: number
 }
 
 const Sparkles = ({
-  rate = 250,
+  rate = 400,
   variance = 200,
   minSize = 10,
   maxSize = 20,
-  colors = ['#FFC700'],
+  colors = [
+    ['#FFC700', 'var(--chakra-colors-yellow-300)'],
+    ['#FFC700', 'var(--chakra-colors-yellow-300)'],
+    ['var(--chakra-colors-purple-500)', 'var(--chakra-colors-purple-300)'],
+    ['var(--chakra-colors-brand-500)', 'var(--chakra-colors-brand-300)'],
+    ['var(--chakra-colors-pink-500)', 'var(--chakra-colors-pink-300)'],
+  ],
   children,
   isToggleable,
   style = {},
@@ -107,6 +128,7 @@ const Sparkles = ({
       window.clearTimeout(timeoutId)
     }
   }, [delayBy])
+  const { colorMode } = useColorMode()
 
   return (
     <Wrapper
@@ -121,13 +143,21 @@ const Sparkles = ({
       style={{
         ...style,
         cursor: isToggleable ? 'pointer' : 'default',
+        textShadow: `0px 0px 10px ${useColorModeValue(
+          'var(--chakra-colors-white)',
+          'var(--chakra-colors-gray-800)'
+        )},
+        1px 1px 3px ${useColorModeValue(
+          'var(--chakra-colors-white)',
+          'var(--chakra-colors-gray-800)'
+        )}`,
       }}
       {...delegated}
     >
-      {sparkles.map(sparkle => (
+      {sparkles.map((sparkle: SparkleType) => (
         <Sparkle
           key={sparkle.id}
-          color={sparkle.color}
+          color={colorMode === 'light' ? sparkle.color[0] : sparkle.color[1] || sparkle.color[0]}
           size={sparkle.size}
           numOfPoints={sparkle.numOfPoints}
           style={sparkle.style}
@@ -171,7 +201,7 @@ const spin = keyframes`
   }
 
   100% {
-    transform: rotate(100deg);
+    transform: rotate(200deg);
   }
 `
 
@@ -179,7 +209,6 @@ const Wrapper = styled(UnstyledButton)`
   display: inline-block;
   position: relative;
   color: inherit;
-  text-shadow: 0px 0px 3px var(--color-background), 1px 1px 1px var(--color-background);
 `
 
 const SparkleWrapper = styled.span`
@@ -187,7 +216,7 @@ const SparkleWrapper = styled.span`
   display: block;
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: ${comeInOut} 900ms forwards;
+    animation: ${comeInOut} 1300ms forwards;
   }
 `
 
@@ -195,7 +224,7 @@ const SparkleSvg = styled.svg`
   display: block;
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: ${spin} 1000ms linear;
+    animation: ${spin} 1400ms linear;
   }
 `
 
