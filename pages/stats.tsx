@@ -1,8 +1,8 @@
-import React from 'react';
-import WIP from '../components/WIP';
+import React from 'react'
+import WIP from '@/components/WIP'
 
 function Stats(): React.ReactElement {
-  return <WIP />;
+  return <WIP />
 }
 
-export default Stats;
+export default Stats

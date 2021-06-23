@@ -10,7 +10,7 @@ import {
   Flex,
 } from '@chakra-ui/react'
 import { Fade } from 'react-awesome-reveal'
-import { RecentSongs, TopArtists, TopSongs, CurrentlyPlaying } from '../components/MusicLayouts'
+import { RecentSongs, TopArtists, TopSongs, CurrentlyPlaying } from '@/components/MusicLayouts'
 import { NextSeo } from 'next-seo'
 import { useQuery } from 'react-query'
 

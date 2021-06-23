@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Flex,
   HStack,
@@ -10,47 +10,28 @@ import {
   Tabs,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react';
-import LineHeading from '../components/LineHeading';
-import ToolGrid from '../components/ToolGrid';
-import {
-  AiFillApple,
-  AiFillChrome,
-  AiFillWindows,
-  AiOutlineDesktop,
-} from 'react-icons/ai';
-import { BsPhone } from 'react-icons/bs';
-import { NextSeo } from 'next-seo';
+} from '@chakra-ui/react'
+import LineHeading from '@/components/LineHeading'
+import ToolGrid from '@/components/ToolGrid'
+import { AiFillApple, AiFillChrome, AiFillWindows, AiOutlineDesktop } from 'react-icons/ai'
+import { BsPhone } from 'react-icons/bs'
+import { NextSeo } from 'next-seo'
 
 function Tools(): React.ReactElement {
   return (
     <>
-      <NextSeo title="Tools" />
-      <Flex
-        direction="column"
-        alignItems="center"
-        width="full"
-        minH="100vh"
-        mx="auto"
-        maxW="6xl"
-      >
+      <NextSeo title='Tools' />
+      <Flex direction='column' alignItems='center' width='full' minH='100vh' mx='auto' maxW='6xl'>
         <LineHeading
-          mt="28"
+          mt='28'
           fontSize={{ base: `3xl`, sm: `4xl`, md: `5xl`, lg: `6xl` }}
-          textAlign="center"
+          textAlign='center'
         >
           Tools
         </LineHeading>
         <Text mt={3}>Some tools that I find useful :).</Text>
-        <Tabs
-          variant="soft-rounded"
-          colorScheme="blue"
-          align="center"
-          w="100%"
-          mt="10"
-          mb="24"
-        >
-          <TabList display="flex" flexWrap="wrap">
+        <Tabs variant='soft-rounded' colorScheme='blue' align='center' w='100%' mt='10' mb='24'>
+          <TabList display='flex' flexWrap='wrap'>
             <Tab
               bg={useColorModeValue(`white.100`, `gray.800`)}
               color={useColorModeValue(`gray.600`, `gray.500`)}
@@ -131,25 +112,25 @@ function Tools(): React.ReactElement {
 
           <TabPanels>
             <TabPanel>
-              <ToolGrid filter="mac" />
+              <ToolGrid filter='mac' />
             </TabPanel>
             <TabPanel>
-              <ToolGrid filter="windows" />
+              <ToolGrid filter='windows' />
             </TabPanel>
             <TabPanel>
-              <ToolGrid filter="chrome" />
+              <ToolGrid filter='chrome' />
             </TabPanel>
             <TabPanel>
-              <ToolGrid filter="web" />
+              <ToolGrid filter='web' />
             </TabPanel>
             <TabPanel>
-              <ToolGrid filter="ios" />
+              <ToolGrid filter='ios' />
             </TabPanel>
           </TabPanels>
         </Tabs>
       </Flex>
     </>
-  );
+  )
 }
 
-export default Tools;
+export default Tools
