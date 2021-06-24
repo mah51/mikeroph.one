@@ -4,8 +4,8 @@ body,
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .loading-wrapper {
@@ -233,4 +233,21 @@ body,
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
+}
+
+@keyframes animatedUnderline {
+  0% {
+    stroke-dashoffset: 850;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-underline {
+  stroke-dasharray: 850;
+  stroke-dashoffset: 850;
+
+  animation: animatedUnderline 2s ease-in-out forwards;
+  animation-delay: 2s;
 }
