@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 import MobileNav from './MobileNav'
 import DesktopNav from './DesktopNav'
-import router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { transparentize } from '@chakra-ui/theme-tools'
 
 const links = [
