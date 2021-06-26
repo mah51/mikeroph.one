@@ -47,9 +47,9 @@ export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Elem
           viewBox='0 0 24 24'
           fill='none'
           stroke={useColorModeValue(`${colors[type]}.500`, `${colors[type]}.400`)}
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeWidth='2'
+          strokeLinecap='round'
+          strokeLinejoin='round'
         >
           {(() => {
             switch (type) {

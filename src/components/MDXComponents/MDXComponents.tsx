@@ -166,9 +166,6 @@ export const RemarkTitle = (props: BoxProps): JSX.Element => {
       px={'32px'}
       py={3}
       color={useColorModeValue('gray.800', 'gray.200')}
-      border={'1px solid'}
-      borderBottom={'none'}
-      borderColor={useColorModeValue('gray.300', 'gray.700')}
       borderTopRadius={'xl'}
       bg={useColorModeValue('gray.200', 'gray.700')}
       fontSize='sm'
@@ -191,19 +188,29 @@ export const CustomPre = (props: ChakraProps): JSX.Element => {
   return (
     <chakra.pre
       {...props}
-      borderRadius='lg'
+      borderRadius='xl'
       mt={8}
       mx={'-32px'}
-      py={5}
+      pt={5}
+      pb={3}
       px={'32px'}
-      overflowX={'scroll'}
-      sx={{
-        scrollbarColor: 'var(--chakra-colors-gray-700) var(--chakra-colors-gray-900)',
-        scrollbarWidth: 'thin',
-      }}
       bg={useColorModeValue('gray.100', 'gray.900')}
       color={useColorModeValue('gray.800', 'gray.50')}
-    />
+    >
+      <chakra.div
+        overflowX={'scroll'}
+        pb={2}
+        sx={{
+          scrollPaddingBottom: '10px',
+          scrollbarColor: useColorModeValue(
+            'var(--chakra-colors-gray-300) var(--chakra-colors-gray-100)',
+            'var(--chakra-colors-gray-700) var(--chakra-colors-gray-900)'
+          ),
+          scrollbarWidth: 'thin',
+        }}
+        {...props}
+      />
+    </chakra.pre>
   )
 }
 
