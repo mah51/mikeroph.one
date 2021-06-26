@@ -58,35 +58,6 @@ export default function Home(): React.ReactElement {
               >
                 Welcome to my website! The purpose of this site is for me to test things out & maybe
                 show some things off. I&apos;m a uni student studying biochemistry in the UK.
-                {/* <br />
-                Some of my interests include: {` `}
-                <chakra.span
-                  ml={3}
-                  fontSize="4xl"
-                  fontWeight="semibold"
-                  position="relative"
-                  textTransform="capitalize"
-                  _after={{
-                    transition: `all 0.25s ease-in-out`,
-                    content: `''`,
-                     Fixes anti-aliasing issue in chrome that leaves one pixel'
-                    outline: `1px solid transparent`,
-                    width: `100%`,
-                    height: `30%`,
-                    position: `absolute`,
-                    bottom: 1,
-                    left: 0,
-                    bg: useColorModeValue(`brand.200`, `brand.900`),
-                    zIndex: -1,
-                  }}
-                >
-                  <TextTransition
-                    springConfig={presets.wobbly}
-                    inline
-                    className="transition"
-                    text={interests[index % interests.length]}
-                  />
-                </chakra.span> */}
               </chakra.p>
             </Flex>
           </Flex>

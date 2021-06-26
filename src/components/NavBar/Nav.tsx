@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Box,
   Flex,
@@ -6,13 +6,14 @@ import {
   chakra,
   useColorModeValue,
   useColorMode,
-} from '@chakra-ui/react'
-import Link from 'next/link'
+} from '@chakra-ui/react';
+import Link from 'next/link';
 
-import MobileNav from './MobileNav'
-import DesktopNav from './DesktopNav'
-import { useRouter } from 'next/router'
-import { transparentize } from '@chakra-ui/theme-tools'
+import MobileNav from './MobileNav';
+import DesktopNav from './DesktopNav';
+import { useRouter } from 'next/router';
+import { transparentize } from '@chakra-ui/theme-tools';
+import styled from '@emotion/styled';
 
 const links = [
   {
@@ -41,11 +42,11 @@ const links = [
       },
     ],
   },
-]
+];
 
 function Nav(): JSX.Element {
-  const router = useRouter()
-  const { colorMode } = useColorMode()
+  const router = useRouter();
+  const { colorMode } = useColorMode();
   return (
     <chakra.header
       width='full'
@@ -108,43 +109,45 @@ function Nav(): JSX.Element {
         </Flex>
       </chakra.nav>
     </chakra.header>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
 
 const AnimatedTitle = () => (
-  <ChakraLink
-    position='relative'
-    fontSize='2xl'
-    borderBottom='1px solid transparent'
-    _hover={{
-      textDecoration: 'none',
-      borderBottom: '6px solid transparent',
-    }}
-    fontWeight='semibold'
-    textAlign='center'
-  >
+  <CustomChakraLink position='relative' fontSize='2xl' fontWeight='semibold' textAlign='center'>
     Michael Hall
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <chakra.svg
+      className='path-under'
       position='absolute'
       height='27px'
-      bottom={'-15px'}
+      bottom={'-14px'}
       left={'-15px'}
+      transition={'all 0.2s'}
+      transitionTimingFunction='spring(1 10 10 10)'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 265 43'
       fill='none'
       stroke={useColorModeValue('brand.600', 'brand.300')}
-      stroke-width='5px'
-      stroke-linecap='round'
-      stroke-linejoin='round'
-      stroke-miterlimit='10'
+      strokeWidth='5px'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeMiterlimit='10'
     >
       <path
         className='animated-underline'
         d='M16.7 20.2c76.5 4.4 153.6-9.7 229.8-4.1 5.4.4 12.4 2.1 11.7 5.6-67.3 1.7-134.5 5.5-201.2 11.5l87.7-.9c35.2-.4 70.8-.7 104.9 4.6'
       ></path>
     </chakra.svg>
-  </ChakraLink>
-)
+  </CustomChakraLink>
+);
+
+const CustomChakraLink = styled(ChakraLink)`
+  &:hover {
+    text-decoration: none;
+  }
+  &:hover .path-under {
+    transform: translateY(6px);
+  }
+`;
