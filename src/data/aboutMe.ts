@@ -1,12 +1,15 @@
-const info = [
+const style = props =>
+  `color: var(--chakra-colors-brand-${
+    props.colorMode === 'light' ? '600' : '300'
+  });font-weight: 500;`;
+const info = props => [
   {
-    input: 'self.getCurrentLocation()',
-    return: '"Kent, UK"',
+    input: 'self.learnAboutMe()',
+    return: 'Loaded data...',
   },
   {
-    input: 'self.contactMe',
-    return:
-      '["<a rel="noopener" href="https://www.linkedin.com/in/michael-hall-86616b17b/">LinkedIn</a>", "<a rel="noopener" href="https://github.com/mah51">github</a>", "<a rel="noopener" href="https://www.instagram.com/accounts/login/">instagram</a>"]',
+    input: 'self.currentLocation',
+    return: '"Kent, UK"',
   },
 
   {
@@ -20,6 +23,16 @@ const info = [
   {
     input: 'self.skills',
     return: '[ "JavaScript", "Python", "React", "Next.JS", "Chakra-UI", "Tailwind", "SASS", "git"]',
+  },
+  {
+    input: 'self.contactMe()',
+    return: `["<a style="${style(
+      props
+    )}" rel="noopener" href="https://www.linkedin.com/in/michael-hall-86616b17b/">LinkedIn</a>", "<a style="${style(
+      props
+    )}" rel="noopener" href="https://github.com/mah51">Github</a>", "<a rel="noopener" style="${style(
+      props
+    )}" href="https://www.instagram.com/accounts/login/">Instagram</a>"]`,
   },
 ];
 

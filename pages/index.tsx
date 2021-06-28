@@ -24,8 +24,10 @@ export default function Home(): React.ReactElement {
       <Box
         minH='100vh'
         height='full'
-        width='full'
-        pt={{ base: '28', sm: '14', md: '16', lg: '28' }}
+        width='70%'
+        maxW='7xl'
+        mx='auto'
+        pt={{ base: '28', sm: '14', md: '16', xl: '20' }}
       >
         {/* Im not actually too sure why this needs to be here, but without this additional flex
         the body doesn't begin at the top of the page... */}
