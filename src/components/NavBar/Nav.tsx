@@ -84,6 +84,7 @@ function Nav(): JSX.Element {
                     width: `0%`,
                     height: `25%`,
                     position: `absolute`,
+
                     bottom: 1,
                     left: 0,
                     bg:
@@ -98,6 +99,7 @@ function Nav(): JSX.Element {
                     },
                     color: colorMode === 'light' ? `gray.900` : `white`,
                   }}
+                  color={colorMode === 'light' ? 'gray.900' : 'white'}
                 >
                   Michael Hall
                 </ChakraLink>
@@ -115,7 +117,13 @@ function Nav(): JSX.Element {
 export default Nav;
 
 const AnimatedTitle = () => (
-  <CustomChakraLink position='relative' fontSize='2xl' fontWeight='semibold' textAlign='center'>
+  <CustomChakraLink
+    color={useColorModeValue('gray.900', 'white')}
+    position='relative'
+    fontSize='2xl'
+    fontWeight='semibold'
+    textAlign='center'
+  >
     Michael Hall
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <chakra.svg

@@ -8,6 +8,11 @@ const theme = extendTheme({
     useSystemColorMode: true,
   },
   components: {
+    Link: {
+      baseStyle: props => ({
+        color: mode('brand.600', 'brand.300')(props),
+      }),
+    },
     Heading: {
       baseStyle: {
         fontFamily: 'Ubuntu',
