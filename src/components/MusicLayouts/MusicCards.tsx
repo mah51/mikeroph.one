@@ -1,16 +1,16 @@
-import { Box, Flex, SimpleGrid, Skeleton, Text, useColorModeValue } from '@chakra-ui/react'
-import Image from 'next/image'
-import React, { useState } from 'react'
-import styles from '../../styles/styles.module.css'
+import { Box, Flex, SimpleGrid, Skeleton, Text, useColorModeValue } from '@chakra-ui/react';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import styles from '../../styles/styles.module.css';
 
 interface SongCardProps {
-  song: any
-  titleCard?: boolean
-  isPlaying?: boolean
+  song: any;
+  titleCard?: boolean;
+  isPlaying?: boolean;
 }
 
 export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps): JSX.Element => {
-  const [imageLoad, setImageLoad] = useState(false)
+  const [imageLoad, setImageLoad] = useState(false);
   return (
     <Box as='a' href={song.external_urls?.spotify} h='full' w='full' isTruncated overflow='visible'>
       <SimpleGrid
@@ -21,7 +21,7 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps): JSX.Ele
         maxWidth='2xl'
         templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
         border='1px solid'
-        bg={useColorModeValue(`white`, `gray.700`)}
+        bg={useColorModeValue(`white`, `gray.900`)}
         borderColor={useColorModeValue(`gray.200`, `gray.700`)}
         boxShadow='lg'
         transition='all 0.25s'
@@ -71,11 +71,11 @@ export const SongCard = ({ song, titleCard, isPlaying }: SongCardProps): JSX.Ele
         </Flex>
       </SimpleGrid>
     </Box>
-  )
-}
+  );
+};
 
 export const ArtistCard = ({ artist }: { artist: any }): JSX.Element => {
-  const [imageLoad, setImageLoad] = useState(false)
+  const [imageLoad, setImageLoad] = useState(false);
   return (
     <Box
       overflow='visible'
@@ -126,5 +126,5 @@ export const ArtistCard = ({ artist }: { artist: any }): JSX.Element => {
         {artist.name}
       </Text>
     </Box>
-  )
-}
+  );
+};

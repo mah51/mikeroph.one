@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   AspectRatio,
   Badge,
@@ -8,16 +8,16 @@ import {
   Text,
   useColorModeValue,
   VStack,
-} from '@chakra-ui/react'
-import formatDistance from 'date-fns/formatDistance'
-import { LinkType } from '@/data/links'
+} from '@chakra-ui/react';
+import formatDistance from 'date-fns/formatDistance';
+import { LinkType } from '@/data/links';
 
 const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
   return (
     <Box as='a' href={link} height='100%'>
       <VStack
         w='100%'
-        bg={useColorModeValue(`white`, `gray.800`)}
+        bg={useColorModeValue(`white`, `gray.900`)}
         rounded='xl'
         borderWidth='1px'
         borderColor={useColorModeValue(`gray.100`, `gray.700`)}
@@ -81,9 +81,9 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
           spacing={0}
           align='start'
           width='100%'
-          bg={useColorModeValue('white', 'gray.700')}
+          bg={useColorModeValue('white', 'gray.900')}
           border={'1px solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderColor={useColorModeValue('gray.200', 'gray.900')}
         >
           <Flex justifyContent='space-between' width='100%' py={2}>
             <Text fontSize='sm' noOfLines={1} fontWeight='500'>
@@ -96,7 +96,7 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
         </VStack>
       </VStack>
     </Box>
-  )
-}
+  );
+};
 
-export default LinkCard
+export default LinkCard;

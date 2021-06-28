@@ -1,7 +1,7 @@
-import { Badge } from '@chakra-ui/react'
+import { Badge } from '@chakra-ui/react';
 
 interface BlogBadgeProps {
-  tag: string
+  tag: string;
 }
 
 const BlogBadge = ({ tag }: BlogBadgeProps): JSX.Element => {
@@ -14,11 +14,12 @@ const BlogBadge = ({ tag }: BlogBadgeProps): JSX.Element => {
       }
       py={1}
       px={2}
+      fontWeight={'600'}
       borderRadius={'md'}
     >
       {tag}
     </Badge>
-  )
-}
+  );
+};
 
-export default BlogBadge
+export default BlogBadge;

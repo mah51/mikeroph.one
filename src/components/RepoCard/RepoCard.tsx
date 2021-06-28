@@ -1,10 +1,10 @@
-import React from 'react'
-import { Badge, Box, Flex, Text, useColorModeValue } from '@chakra-ui/react'
-import { repoType } from '@/pages/api/github'
+import React from 'react';
+import { Box, Stack, Tag, Text, useColorModeValue, VStack } from '@chakra-ui/react';
+import { repoType } from '@/pages/api/github';
 
 interface RepoCardProps {
-  repo: repoType
-  i: number
+  repo: repoType;
+  i: number;
 }
 
 const RepoCard = ({ repo, i }: RepoCardProps): JSX.Element => {
@@ -18,9 +18,10 @@ const RepoCard = ({ repo, i }: RepoCardProps): JSX.Element => {
       isTruncated
       overflow='visible'
     >
-      <Flex
+      <VStack
+        spacing={1}
         p={3}
-        bg={useColorModeValue(`white`, `gray.700`)}
+        bg={useColorModeValue(`white`, `gray.900`)}
         height='100%'
         width='100%'
         maxWidth='100%'
@@ -38,19 +39,17 @@ const RepoCard = ({ repo, i }: RepoCardProps): JSX.Element => {
         alignItems='flex-start'
         isTruncated
       >
-        <Text
-          fontSize={{ base: `lg`, md: `xl` }}
-          fontWeight='semibold'
-          mb={3}
-          maxW='full'
-          isTruncated
-        >
-          {repo.name}
+        <Stack isInline alignItems='center'>
+          <Text fontSize={{ base: `lg`, md: `xl` }} fontWeight='semibold' maxW='full' isTruncated>
+            {repo.name}
+          </Text>
+          {repo.language && (
+            <Tag colorScheme='brand' size='sm' ml={2} mt='auto' height='22px'>
+              {repo.language}
+            </Tag>
+          )}
+        </Stack>
 
-          <Badge colorScheme='brand' ml={2}>
-            {repo.language}
-          </Badge>
-        </Text>
         <Text
           color={useColorModeValue(`gray.600`, `gray.400`)}
           justifySelf='center'
@@ -59,9 +58,9 @@ const RepoCard = ({ repo, i }: RepoCardProps): JSX.Element => {
         >
           {repo.description}
         </Text>
-      </Flex>
+      </VStack>
     </Box>
-  )
-}
+  );
+};
 
-export default RepoCard
+export default RepoCard;

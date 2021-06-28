@@ -1,30 +1,31 @@
-import React from 'react'
-import { Badge, Box, Flex, Text, chakra, Button, useColorMode } from '@chakra-ui/react'
-import { VscGithub } from 'react-icons/vsc'
-import { formatDistance, format } from 'date-fns'
-import { repoType } from '@/pages/api/github'
-import { pinnedRepoType } from '@/data/pinnedRepos'
-import PinnedImageProjects from '../PinnedImageProjects'
+import React from 'react';
+import { Box, Flex, Text, useColorMode, Stack, Link as ChakraLink, VStack } from '@chakra-ui/react';
+import { repoType } from '@/pages/api/github';
+import { pinnedRepoType } from '@/data/pinnedRepos';
+import PinnedImageProjects from '../PinnedImageProjects';
+import Link from 'next/link';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import Tags from '../Tags';
 
 interface PinnedProjectsProps {
-  repo: repoType
-  projectData: pinnedRepoType
-  left: boolean
+  repo: repoType;
+  projectData: pinnedRepoType;
+  left: boolean;
 }
 
 const PinnedProjects = ({ repo, projectData, left }: PinnedProjectsProps): JSX.Element => {
-  const { colorMode } = useColorMode()
+  const { colorMode } = useColorMode();
 
   if (projectData && projectData?.image) {
-    return <PinnedImageProjects left={left} repo={repo} projectData={projectData} />
+    return <PinnedImageProjects left={left} repo={repo} projectData={projectData} />;
   }
 
   return (
     <Box h='full' w='full' my={5}>
-      <Flex
-        bg={colorMode === 'light' ? `white` : `gray.700`}
-        px={8}
-        py={8}
+      <VStack
+        bg={colorMode === 'light' ? `white` : `gray.900`}
+        px={{ base: 4, md: 8 }}
+        py={4}
         height='100%'
         width='100%'
         border='1px solid'
@@ -36,6 +37,7 @@ const PinnedProjects = ({ repo, projectData, left }: PinnedProjectsProps): JSX.E
         justifyContent='flex-start'
         alignItems='flex-start'
         isTruncated
+        spacing={1}
       >
         <Flex
           direction={{ base: 'column', sm: 'row' }}
@@ -43,59 +45,44 @@ const PinnedProjects = ({ repo, projectData, left }: PinnedProjectsProps): JSX.E
           width='full'
           isTruncated
           justifyContent='space-between'
-          alignItems='center'
+          alignItems='flex-start'
         >
-          <Text fontSize={{ base: `2xl`, md: `4xl` }} fontWeight='bold' isTruncated maxW='100%'>
-            {projectData.name}
-            <chakra.span
-              ml={2}
-              fontSize='md'
-              color={colorMode === 'light' ? 'gray.500' : 'gray.500'}
-            >
-              {format(new Date(repo.created_at), `dd/MM/yy`)}
-            </chakra.span>
-          </Text>
-          <Button
-            mt={[2, 0]}
-            isTruncated
-            as='a'
-            href={repo.html_url}
-            leftIcon={<VscGithub />}
-            colorScheme='brand'
-            variant='ghostAlwaysOn'
-          >
-            View on GitHub
-          </Button>
+          <Flex width='full' justifyContent='space-between'>
+            <Text fontSize={{ base: `2xl`, md: `4xl` }} fontWeight='bold' isTruncated maxW='100%'>
+              {projectData.name}
+            </Text>
+            <Stack isInline justifyContent='flex-end' alignItems='center' spacing={4} mr={1}>
+              {repo?.html_url && (
+                <Link href={repo?.html_url} passHref>
+                  <ChakraLink isExternal className={`hover-link-${colorMode}`}>
+                    <FaGithub size={23} />
+                  </ChakraLink>
+                </Link>
+              )}
+              {projectData?.deployedLink && (
+                <Link href={projectData.deployedLink} passHref>
+                  <ChakraLink isExternal className={`hover-link-${colorMode}`}>
+                    <FaExternalLinkAlt size={20} />
+                  </ChakraLink>
+                </Link>
+              )}
+            </Stack>
+          </Flex>
         </Flex>
-        <Text
-          mb={3}
-          maxWidth='100%'
-          color={colorMode === 'light' ? `gray.600` : `gray.500`}
-          isTruncated
-        >
-          <chakra.span mr={2}>
-            Last edited{` `}
-            {formatDistance(new Date(repo.pushed_at), Date.now(), {
-              addSuffix: true,
-            })}
-          </chakra.span>
-          •
-          <Badge colorScheme='brand' ml={2} isTruncated>
-            {repo.language}
-          </Badge>
-        </Text>
+        <Tags tags={projectData?.stack} />
         <Text
           color={colorMode === 'light' ? `gray.600` : `gray.300`}
           justifySelf='center'
           height='100%'
           width='100%'
           whiteSpace='normal'
+          pt={2}
         >
           {projectData.longDescription}
         </Text>
-      </Flex>
+      </VStack>
     </Box>
-  )
-}
+  );
+};
 
-export default PinnedProjects
+export default PinnedProjects;

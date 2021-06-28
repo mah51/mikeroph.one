@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 import {
   Link as ChakraLink,
   Text,
@@ -8,25 +8,25 @@ import {
   HStack,
   useBreakpointValue,
   Flex,
-} from '@chakra-ui/react'
-import formatDistance from 'date-fns/formatDistance'
-import { useQuery } from 'react-query'
-import BlogBadge from '../BlogBadge'
+} from '@chakra-ui/react';
+import formatDistance from 'date-fns/formatDistance';
+import { useQuery } from 'react-query';
+import BlogBadge from '../BlogBadge';
 
 interface BlogPostProps {
-  title: string
-  summary: string
-  slug: string
-  tags: string[]
-  publishedAt: string
+  title: string;
+  summary: string;
+  slug: string;
+  tags: string[];
+  publishedAt: string;
 }
 
 const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): JSX.Element => {
-  const spliceBP = useBreakpointValue({ base: 2, md: 4 })
+  const spliceBP = useBreakpointValue({ base: 2, md: 4 });
   const { data } = useQuery(`views${slug}`, () => {
-    return fetch(`/api/views/${slug}`).then(res => res.json())
-  })
-  const views = data?.total
+    return fetch(`/api/views/${slug}`).then(res => res.json());
+  });
+  const views = data?.total;
   return (
     <Link href={`/blog/${slug}`} passHref>
       <ChakraLink _hover={{ textDecoration: `none` }} width='full'>
@@ -38,7 +38,7 @@ const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): J
           width='calc(100% -10px)'
           mx={'5px'}
           border='1px solid'
-          bg={useColorModeValue(`white`, `gray.700`)}
+          bg={useColorModeValue(`white`, `gray.900`)}
           borderColor={useColorModeValue(`gray.200`, `gray.700`)}
           boxShadow='lg'
           transition='all 0.25s'
@@ -59,7 +59,7 @@ const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): J
                 tags.slice(0, spliceBP).map((tag, i) => <BlogBadge tag={tag} key={i.toString()} />)}
             </HStack>
             <Text
-              fontWeight='semibold'
+              fontWeight='medium'
               fontSize='lg'
               color={useColorModeValue('gray.600', 'gray.400')}
             >
@@ -76,7 +76,7 @@ const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): J
         </Flex>
       </ChakraLink>
     </Link>
-  )
-}
+  );
+};
 
-export default BlogPost
+export default BlogPost;
