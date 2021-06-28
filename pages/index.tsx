@@ -1,24 +1,42 @@
-import { Box, Flex, Heading, Image, chakra, useColorModeValue, Skeleton } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { NextSeo } from 'next-seo'
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  chakra,
+  useColorModeValue,
+  Skeleton,
+  Link as ChakraLink,
+  useBreakpoint,
+} from '@chakra-ui/react';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { NextSeo } from 'next-seo';
+import AboutTerminal from '@/components/AboutTerminal';
 
 export default function Home(): React.ReactElement {
-  const [imageLoad, setImageLoad] = useState(false)
-
+  const [imageLoad, setImageLoad] = useState(false);
+  const bp = useBreakpoint();
   return (
     <>
       <NextSeo title='Home' />
-      <Box minH='100vh' width='full'>
+
+      <Box
+        minH='100vh'
+        height='full'
+        width='full'
+        pt={{ base: '28', sm: '14', md: '16', lg: '28' }}
+      >
         {/* Im not actually too sure why this needs to be here, but without this additional flex
         the body doesn't begin at the top of the page... */}
-        <Flex>
-          <Flex
-            p={{ base: 0, sm: 16 }}
-            direction={{ base: `column`, lg: `row` }}
-            mt='max(calc(50vh - 200px), 100px)'
-            alignItems='center'
-            mx='auto'
-          >
+        <Flex
+          direction='column'
+          justifyContent={{ base: 'center', md: 'flex-start' }}
+          height='full'
+          width='full'
+          p={{ base: 0, sm: 16 }}
+        >
+          <Flex direction={{ base: `column`, lg: `row` }} alignItems='center' mx='auto'>
             <Skeleton isLoaded={imageLoad} boxSize='250px' borderRadius='2xl' m='auto'>
               <Image
                 borderRadius='2xl'
@@ -56,13 +74,24 @@ export default function Home(): React.ReactElement {
                 fontSize='xl'
                 mt={2}
               >
-                Welcome to my website! The purpose of this site is for me to test things out & maybe
-                show some things off. I&apos;m a uni student studying biochemistry in the UK.
+                Welcome to my website! I use this to show some of my{' '}
+                <Link href='/projects' passHref>
+                  <ChakraLink>projects</ChakraLink>
+                </Link>{' '}
+                off, and test things out. You can see what music I am listening to on the{' '}
+                <Link href='/music' passHref>
+                  <ChakraLink>music page</ChakraLink>
+                </Link>{' '}
+                or what websites i like on the{' '}
+                <Link href='/links' passHref>
+                  <ChakraLink>links page</ChakraLink>
+                </Link>
               </chakra.p>
             </Flex>
           </Flex>
+          {!['base', 'sm'].includes(bp) && <AboutTerminal />}
         </Flex>
       </Box>
     </>
-  )
+  );
 }
