@@ -7,7 +7,6 @@ import {
   Flex,
   SimpleGrid,
   AspectRatio,
-  Badge,
   useColorMode,
   Tag,
   Stack,
