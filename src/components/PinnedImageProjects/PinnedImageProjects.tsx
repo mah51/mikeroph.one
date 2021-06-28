@@ -1,27 +1,29 @@
-import { VscGithub } from 'react-icons/vsc'
-import { format, formatDistance } from 'date-fns'
 import {
-  Button,
   AspectRatio,
   Box,
   Heading,
   Text,
   VStack,
-  chakra,
-  Badge,
   useBreakpointValue,
   useColorMode,
-} from '@chakra-ui/react'
-import Image from 'next/image'
-import React from 'react'
-import ImageCard from '../ImageCard'
-import { repoType } from '@/pages/api/github'
-import { pinnedRepoType } from '@/data/pinnedRepos'
+  Link as ChakraLink,
+  Stack,
+  Flex,
+} from '@chakra-ui/react';
+import Image from 'next/image';
+import React from 'react';
+import ImageCard from '../ImageCard';
+import { repoType } from '@/pages/api/github';
+import { pinnedRepoType } from '@/data/pinnedRepos';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import Link from 'next/link';
+
+import Tags from '../Tags';
 
 interface PinnedImageProjectsProps {
-  repo: repoType
-  projectData: pinnedRepoType
-  left: boolean
+  repo: repoType;
+  projectData: pinnedRepoType;
+  left: boolean;
 }
 
 const PinnedImageProjects = ({
@@ -29,8 +31,8 @@ const PinnedImageProjects = ({
   repo,
   left,
 }: PinnedImageProjectsProps): JSX.Element => {
-  const { colorMode } = useColorMode()
-  const bp = useBreakpointValue({ base: `base`, lg: `lg` })
+  const { colorMode } = useColorMode();
+  const bp = useBreakpointValue({ base: `base`, lg: `lg` });
   if (bp === `lg`) {
     return (
       <Box position='relative' width='100%' py={5}>
@@ -59,7 +61,7 @@ const PinnedImageProjects = ({
           top='50%'
           transform='translate(0, -50%)'
           borderRadius='2xl'
-          bg={colorMode === 'light' ? `white` : `gray.700`}
+          bg={colorMode === 'light' ? `white` : `gray.900`}
           p={5}
           width='45%'
           maxWidth='600px'
@@ -69,50 +71,38 @@ const PinnedImageProjects = ({
           borderColor={colorMode === 'light' ? `gray.200` : `gray.700`}
         >
           <VStack maxHeight='full' height='full' width='full' maxWidth='full'>
-            <Heading isTruncated>
-              {projectData.name}
-              {` `}
-              <chakra.span ml={2} fontSize='md' color='gray.500'>
-                {format(new Date(repo.created_at), `dd/MM/yy`)}
-              </chakra.span>
-            </Heading>
-            <Text
-              maxWidth='100%'
-              maxHeight='100%'
-              height='100%'
-              width='100%'
-              textAlign='center'
-              color={colorMode === 'light' ? `gray.500` : `gray.500`}
-            >
-              <chakra.span mr={2}>
-                Last edited{` `}
-                {formatDistance(new Date(repo.pushed_at), Date.now(), {
-                  addSuffix: true,
-                })}
-              </chakra.span>
-              •
-              <Badge colorScheme='brand' ml={2} isTruncated>
-                {repo.language}
-              </Badge>
-            </Text>
-            <Text height='full' pt={2} pb={5}>
+            <Stack width='full'>
+              <Flex justifyContent='space-between'>
+                <Heading isTruncated>{projectData.name}</Heading>
+                <Stack isInline justifyContent='flex-end' alignItems='center' spacing={4} mr={1}>
+                  {repo?.html_url && (
+                    <Link href={repo?.html_url} passHref>
+                      <ChakraLink isExternal className={`hover-link-${colorMode}`}>
+                        <FaGithub size={23} />
+                      </ChakraLink>
+                    </Link>
+                  )}
+                  {projectData?.deployedLink && (
+                    <Link href={projectData.deployedLink} passHref>
+                      <ChakraLink isExternal className={`hover-link-${colorMode}`}>
+                        <FaExternalLinkAlt size={20} />
+                      </ChakraLink>
+                    </Link>
+                  )}
+                </Stack>
+              </Flex>
+
+              <Tags tags={projectData?.stack} />
+            </Stack>
+            <Text height='full' pt={2}>
               {projectData.longDescription}
             </Text>
-            <Button
-              as='a'
-              href={repo.html_url}
-              leftIcon={<VscGithub />}
-              colorScheme='brand'
-              variant='ghostAlwaysOn'
-            >
-              View on GitHub
-            </Button>
           </VStack>
         </Box>
       </Box>
-    )
+    );
   }
-  return <ImageCard projectData={projectData} repo={repo} />
-}
+  return <ImageCard projectData={projectData} repo={repo} />;
+};
 
-export default PinnedImageProjects
+export default PinnedImageProjects;

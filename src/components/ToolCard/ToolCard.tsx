@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Box,
   Image,
@@ -7,20 +7,21 @@ import {
   Flex,
   SimpleGrid,
   AspectRatio,
-  Badge,
   useColorMode,
-} from '@chakra-ui/react'
-import { usePalette } from 'react-palette'
-import { ToolType } from '@/data/tools'
+  Tag,
+  Stack,
+} from '@chakra-ui/react';
+import { usePalette } from 'react-palette';
+import { ToolType } from '@/data/tools';
 
 export const ToolCard = ({ name, description, link, id, labels }: ToolType): JSX.Element => {
-  const { data } = usePalette(`./static/images/toolImages/${id}.png`)
-  const { colorMode } = useColorMode()
+  const { data } = usePalette(`./static/images/toolImages/${id}.png`);
+  const { colorMode } = useColorMode();
 
   return (
     <Box as='a' href={link} height='100%'>
       <SimpleGrid
-        bg={useColorModeValue(`white`, `gray.700`)}
+        bg={useColorModeValue(`white`, `gray.900`)}
         p={3}
         height='100%'
         gridTemplateColumns='85px 1fr'
@@ -83,27 +84,31 @@ export const ToolCard = ({ name, description, link, id, labels }: ToolType): JSX
           alignItems='flex-start'
           isTruncated
         >
-          <Text fontSize='xl' fontWeight='semibold'>
-            {name}
+          <Stack isInline alignItems='center'>
+            <Text fontSize='xl' fontWeight='semibold'>
+              {name}
+            </Text>
             {labels?.map((label, index) => (
-              <Badge
+              <Tag
+                size='md'
+                height='20px'
                 key={index.toString() + id}
                 color={colorMode === 'light' ? data.darkVibrant : data.lightVibrant}
                 bg={`${colorMode === 'light' ? data.darkVibrant : data.lightVibrant}22`}
-                mb={1}
                 ml={2}
               >
                 {label}
-              </Badge>
+              </Tag>
             ))}
-          </Text>
+          </Stack>
+
           <Text color={useColorModeValue(`gray.600`, `gray.400`)} whiteSpace='normal' width='100%'>
             {description}
           </Text>
         </Flex>
       </SimpleGrid>
     </Box>
-  )
-}
+  );
+};
 
-export default ToolCard
+export default ToolCard;

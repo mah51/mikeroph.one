@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { css } from '@emotion/react'
+import Link from 'next/link';
+import { css } from '@emotion/react';
 import {
   Box,
   Link as ChakraLink,
@@ -13,22 +13,22 @@ import {
   ListItem,
   AspectRatio,
   ChakraProps,
-} from '@chakra-ui/react'
-import LineHeading from '../LineHeading'
-import React from 'react'
-import Image, { ImageProps } from 'next/image'
+} from '@chakra-ui/react';
+import LineHeading from '../LineHeading';
+import React from 'react';
+import Image, { ImageProps } from 'next/image';
 
 interface CustomLinkProps {
-  href: string
+  href: string;
 }
 
-export * from './Definition'
-export * from './Aside'
+export * from './Definition';
+export * from './Aside';
 
 export const CustomLink = (props: CustomLinkProps): JSX.Element => {
-  const { colorMode } = useColorMode()
-  const href = props.href
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'))
+  const { colorMode } = useColorMode();
+  const href = props.href;
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (
@@ -56,7 +56,7 @@ export const CustomLink = (props: CustomLinkProps): JSX.Element => {
           }}
         />
       </Link>
-    )
+    );
   }
 
   return (
@@ -67,13 +67,13 @@ export const CustomLink = (props: CustomLinkProps): JSX.Element => {
       rel='noopener noreferrer'
       {...props}
     />
-  )
-}
+  );
+};
 
 interface CustomImageProps {
-  ratio?: number
-  border?: boolean
-  chakraWidth?: number
+  ratio?: number;
+  border?: boolean;
+  chakraWidth?: number;
 }
 
 export const CustomImage = ({
@@ -106,12 +106,12 @@ export const CustomImage = ({
         {alt}
       </Text>
     </Flex>
-  )
-  ;``
-}
+  );
+  ``;
+};
 
 export const CustomTitle = (props: { children: JSX.Element[] }): JSX.Element => {
-  const title = props.children[0].props.parentName
+  const title = props.children[0].props.parentName;
   const titleSize = {
     h1: ['2xl', '4xl'],
     h2: ['xl', '2xl'],
@@ -119,7 +119,7 @@ export const CustomTitle = (props: { children: JSX.Element[] }): JSX.Element => 
     h4: ['md', 'lg'],
     h5: ['sm', 'md'],
     h6: 'sm',
-  }
+  };
 
   return (
     <Flex>
@@ -127,43 +127,43 @@ export const CustomTitle = (props: { children: JSX.Element[] }): JSX.Element => 
         {props.children}
       </LineHeading>
     </Flex>
-  )
-}
+  );
+};
 
 export const CustomText = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <Text fontSize={'lg'} mt={4}>
       {children}
     </Text>
-  )
-}
+  );
+};
 
 export const CustomUnorderedList = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
-    <UnorderedList spacing={'4px'} mt={3}>
+    <UnorderedList fontSize='lg' spacing={'4px'} mt={3}>
       {children}
     </UnorderedList>
-  )
-}
+  );
+};
 
 export const CustomListItem = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <ListItem color={useColorModeValue('brand.500', 'brand.300')}>
       <chakra.span color={useColorModeValue('black', 'white')}>{children}</chakra.span>
     </ListItem>
-  )
-}
+  );
+};
 
 export const Padding = (props: BoxProps): JSX.Element => {
-  return <Box width='full' height='1px' {...props} />
-}
+  return <Box width='full' height='1px' {...props} />;
+};
 
 export const RemarkTitle = (props: BoxProps): JSX.Element => {
   return (
     <chakra.div
       mt={8}
-      mx={'-32px'}
-      px={'32px'}
+      mx={'-20px'}
+      px={'20px'}
       py={3}
       color={useColorModeValue('gray.800', 'gray.200')}
       borderTopRadius={'xl'}
@@ -173,16 +173,16 @@ export const RemarkTitle = (props: BoxProps): JSX.Element => {
       fontWeight='bold'
       {...props}
     />
-  )
-}
+  );
+};
 
 export const CustomDiv = (props: BoxProps): JSX.Element => {
   if (props?.className?.includes('remark-code-title')) {
-    return <RemarkTitle {...props} />
+    return <RemarkTitle {...props} />;
   }
 
-  return <chakra.div {...props} />
-}
+  return <chakra.div {...props} />;
+};
 
 export const CustomPre = (props: ChakraProps): JSX.Element => {
   return (
@@ -190,10 +190,10 @@ export const CustomPre = (props: ChakraProps): JSX.Element => {
       {...props}
       borderRadius='xl'
       mt={8}
-      mx={'-32px'}
+      mx={'-20px'}
       pt={5}
       pb={3}
-      px={'32px'}
+      px={'20px'}
       bg={useColorModeValue('gray.100', 'gray.900')}
       color={useColorModeValue('gray.800', 'gray.50')}
     >
@@ -211,8 +211,8 @@ export const CustomPre = (props: ChakraProps): JSX.Element => {
         {...props}
       />
     </chakra.pre>
-  )
-}
+  );
+};
 
 const codeStyles = css`
   .token.operator,
@@ -228,7 +228,7 @@ const codeStyles = css`
   .token.variable {
     color: var(--chakra-colors-yellow-500);
   }
-`
+`;
 
 const lightCodeStyles = css`
   ${codeStyles};
@@ -269,7 +269,7 @@ const lightCodeStyles = css`
   .token.deleted {
     color: var(--chakra-colors-purple-600);
   }
-`
+`;
 
 const darkCodeStyles = css`
   ${codeStyles};
@@ -310,7 +310,7 @@ const darkCodeStyles = css`
   .token.deleted {
     color: var(--chakra-colors-purple-300);
   }
-`
+`;
 
 export const CustomCode = (props: ChakraProps): JSX.Element => {
   return (
@@ -320,10 +320,10 @@ export const CustomCode = (props: ChakraProps): JSX.Element => {
       bg={useColorModeValue('gray.100', 'gray.900')}
       css={useColorModeValue({ ...lightCodeStyles }, { ...darkCodeStyles })}
     />
-  )
-}
+  );
+};
 
 export const TextColorMode = (): string => {
-  const value = useColorModeValue('dark', 'light')
-  return value
-}
+  const value = useColorModeValue('dark', 'light');
+  return value;
+};
