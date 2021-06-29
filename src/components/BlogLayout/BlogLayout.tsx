@@ -138,7 +138,11 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
               href={`https://github.com/mah51/personal-web/edit/main/data/blog/${frontMatter.slug}.mdx`}
               passHref
             >
-              <ChakraLink target='_blank' rel='noopener noreferrer'>
+              <ChakraLink
+                color={useColorModeValue('gray.900', 'white')}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
                 Edit on github
               </ChakraLink>
             </Link>

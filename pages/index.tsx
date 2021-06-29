@@ -24,7 +24,7 @@ export default function Home(): React.ReactElement {
       <Box
         minH='100vh'
         height='full'
-        width='70%'
+        width={{ base: '95%', md: '70%' }}
         maxW='7xl'
         mx='auto'
         pt={{ base: '28', sm: '14', md: '16', xl: '20' }}
@@ -38,7 +38,12 @@ export default function Home(): React.ReactElement {
           width='full'
           p={{ base: 0, sm: 16 }}
         >
-          <Flex direction={{ base: `column`, lg: `row` }} alignItems='center' mx='auto'>
+          <Flex
+            direction={{ base: `column`, lg: `row` }}
+            alignItems='center'
+            mx='auto'
+            my={{ xl: '16' }}
+          >
             <Skeleton isLoaded={imageLoad} boxSize='250px' borderRadius='2xl' m='auto'>
               <Image
                 borderRadius='2xl'
@@ -84,10 +89,19 @@ export default function Home(): React.ReactElement {
                 <Link href='/music' passHref>
                   <ChakraLink>music page</ChakraLink>
                 </Link>{' '}
-                or what websites i like on the{' '}
+                or the{' '}
                 <Link href='/links' passHref>
-                  <ChakraLink>links page</ChakraLink>
+                  <ChakraLink>websites</ChakraLink>
+                </Link>{' '}
+                &{' '}
+                <Link href='/links' passHref>
+                  <ChakraLink>tools</ChakraLink>
+                </Link>{' '}
+                that i like. Sometimes I even write{' '}
+                <Link href='/blog' passHref>
+                  <ChakraLink>blogs</ChakraLink>
                 </Link>
+                .
               </chakra.p>
             </Flex>
           </Flex>

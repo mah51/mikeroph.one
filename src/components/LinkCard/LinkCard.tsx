@@ -19,7 +19,7 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
         w='100%'
         bg={useColorModeValue(`white`, `gray.900`)}
         rounded='xl'
-        borderWidth='1px'
+        border='1px solid'
         borderColor={useColorModeValue(`gray.100`, `gray.700`)}
         transition='all 0.25s'
         transitionTimingFunction='spring(1 100 10 10)'
