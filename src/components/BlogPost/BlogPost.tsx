@@ -69,10 +69,16 @@ const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): J
               {'•'} {`${views ? new Number(views).toLocaleString() : '–––'} views`}
             </Text>
           </Flex>
-          <Heading mb={2} fontSize={{ base: '2xl', md: '3xl' }}>
+          <Heading
+            color={useColorModeValue('gray.900', 'white')}
+            mb={2}
+            fontSize={{ base: '2xl', md: '3xl' }}
+          >
             {title}
           </Heading>
-          <Text width='full'>{summary}</Text>
+          <Text color={useColorModeValue('gray.900', 'white')} width='full'>
+            {summary}
+          </Text>
         </Flex>
       </ChakraLink>
     </Link>
