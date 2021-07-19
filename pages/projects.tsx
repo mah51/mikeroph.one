@@ -1,18 +1,18 @@
-import React from 'react'
-import { Box, Button, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react'
-import { FaGithub } from 'react-icons/fa'
-import { NextSeo } from 'next-seo'
-import LineHeading from '@/components/LineHeading'
-import RepoCard from '@/components/RepoCard'
-import PinnedProjects from '@/components/PinnedProjects'
-import { pinnedRepos, pinnedRepoType } from '@/data/pinnedRepos'
-import { repoType } from '@/pages/api/github'
+import React from 'react';
+import { Box, Button, Flex, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { FaGithub } from 'react-icons/fa';
+import { NextSeo } from 'next-seo';
+import LineHeading from '@/components/LineHeading';
+import RepoCard from '@/components/RepoCard';
+import PinnedProjects from '@/components/PinnedProjects';
+import { pinnedRepos, pinnedRepoType } from '@/data/pinnedRepos';
+import { repoType } from '@/pages/api/github';
 
 interface ProjectsProps {
-  stars: number
-  repos: repoType[]
-  followers: number
-  revalidate?: number
+  stars: number;
+  repos: repoType[];
+  followers: number;
+  revalidate?: number;
 }
 
 function Projects({ repos }: ProjectsProps): React.ReactElement {
@@ -86,17 +86,17 @@ function Projects({ repos }: ProjectsProps): React.ReactElement {
         </SimpleGrid>
       </Box>
     </>
-  )
+  );
 }
 
 export async function getStaticProps(): Promise<{ props: ProjectsProps }> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_HOST || `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`}/api/github`
-  )
+  );
 
-  const { stars, repos, followers } = await response.json()
+  const { stars, repos, followers } = await response.json();
 
-  return { props: { stars, repos, followers, revalidate: 600 } }
+  return { props: { stars, repos, followers, revalidate: 600 } };
 }
 
-export default Projects
+export default Projects;
