@@ -63,6 +63,7 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
         }}
       />
       <chakra.article
+        id={'blogArticle'}
         display='flex'
         flexDirection='column'
         justifyContent='flex-start'

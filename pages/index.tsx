@@ -24,7 +24,7 @@ export default function Home(): React.ReactElement {
       <Box
         minH='100vh'
         height='full'
-        width={{ base: '95%', md: '70%' }}
+        width={{ base: '95%', md: '90%', lg: '80%', xl: '90%W' }}
         maxW='7xl'
         mx='auto'
         pt={{ base: '28', sm: '14', md: '16', xl: '20' }}
@@ -46,6 +46,7 @@ export default function Home(): React.ReactElement {
           >
             <Skeleton isLoaded={imageLoad} boxSize='250px' borderRadius='2xl' m='auto'>
               <Image
+                flexGrow={3}
                 borderRadius='2xl'
                 boxSize='250px'
                 src='./static/images/profile.jpeg'
@@ -59,6 +60,7 @@ export default function Home(): React.ReactElement {
               direction='column'
               pl={{ base: 0, lg: 10 }}
               my={{ base: 10, lg: 0 }}
+              flexGrow={1}
             >
               <Heading
                 bgGradient={`linear(to-r, ${useColorModeValue(
