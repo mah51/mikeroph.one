@@ -12,7 +12,7 @@ export const pinnedRepos: pinnedRepoType[] = [
     id: `mikebot`,
     name: `MikeBot`,
     stack: ['Discord.JS', 'Node'],
-    longDescription: `I wanted to learn how to use JavaScript and this project helped me dive into it. MikeBot utilised the discord API via discord.js to perform a variety of tasks from moderation, games, and general fun. I spent ages over quarantine on this project.`,
+    longDescription: `I wanted to learn how to use JavaScript and this project helped me dive into it. MikeBot utilised the discord API via discord.js to perform a variety of tasks from moderation, games, and general fun. I spent ages over quarantine on this project, and is where I started learning JS.`,
   },
 
   {
@@ -21,18 +21,17 @@ export const pinnedRepos: pinnedRepoType[] = [
     name: `My Website`,
     deployedLink: 'https://michael-hall.me',
     image:
-      'https://user-images.githubusercontent.com/47287285/120091560-0b630200-c104-11eb-8b08-1c34bdfd98ab.png',
-    longDescription: `The inspiration for this website were Lee Rob's and Daniel Wirtz's websites (you might see a few similarities 🙃 ). I learnt a lot about NextJS and Chakra, and had a great time making it.`,
+      'https://user-images.githubusercontent.com/47287285/126173254-b30cafad-d757-4f5e-9a4e-f2c89b3657b2.png',
+    longDescription: `I was looking through Lee Rob's and Daniel Wirtz's websites one afternoon, and decided I need one for myself (you might see a few similarities 🙃 ). I learnt a lot about NextJS and Chakra, and had a great time making it.`,
   },
   {
-    id: `movie-web-typescript`,
+    id: `scuffedmdb`,
     stack: ['Next.JS', 'Chakra-UI'],
     name: `ScuffedMDB`,
     deployedLink: 'https://movie.michael-hall.me',
-
     image:
-      'https://user-images.githubusercontent.com/47287285/119243076-915ad800-bb5b-11eb-96c3-a943db35e4ea.png',
-    longDescription: `I built the first version of this website during the latter half of quarantine to rate movies that my friends and I had watched over discord. Then decided it needed a remodel, and created ScuffedMDB (Movie-rating V2.0), made with NextJS and ChakraUI.`,
+      'https://user-images.githubusercontent.com/47287285/125026394-616c8300-e07c-11eb-9678-a6e497119b7d.png',
+    longDescription: `I built the first version of this website during the latter half of quarantine to rate movies that my friends and I had watched over discord. Then decided it needed a remodel, and created ScuffedMDB (Movie-rating V2.0), made with NextJS and ChakraUI. It has been great to make a website, that not only all my friends can use, but other people an use for their own movie rating sites.`,
   },
 ];
 
