@@ -1,1 +1,1 @@
-export { default } from './PinnedImageProjects'
+export { default } from './PinnedImageProjects';

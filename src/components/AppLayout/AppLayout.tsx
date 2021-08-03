@@ -1,18 +1,18 @@
-import React from 'react'
-import { Box, useColorModeValue } from '@chakra-ui/react'
-import UpDown from '../Animations'
-import SVG from '../SVG'
-import { useRouter } from 'next/router'
-import { NextSeo } from 'next-seo'
-import Nav from '../NavBar/Nav'
-import Footer from '../Footer/Footer'
+import React from 'react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
+import UpDown from '../Animations';
+import SVG from '../SVG';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
+import Nav from '../NavBar/Nav';
+import Footer from '../Footer/Footer';
 
 interface AppLayoutProps {
-  children: React.ReactElement
+  children: React.ReactElement;
 }
 
 const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <>
@@ -45,7 +45,7 @@ const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
       </Box>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default AppLayout
+export default AppLayout;

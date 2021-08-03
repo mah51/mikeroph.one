@@ -1,8 +1,8 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 export default styled.button`
   display: ${(props: any) => {
-    return props.display || 'block'
+    return props.display || 'block';
   }};
   margin: 0;
   padding: 0;
@@ -20,4 +20,4 @@ export default styled.button`
   &:focus:not(.focus-visible) {
     outline: none;
   }
-`
+`;

@@ -1,7 +1,7 @@
-import { Flex, SimpleGrid, Text } from '@chakra-ui/react'
-import React from 'react'
-import LineHeading from '../LineHeading'
-import { SongCard, ArtistCard } from './MusicCards'
+import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
+import React from 'react';
+import LineHeading from '../LineHeading';
+import { SongCard, ArtistCard } from './MusicCards';
 
 export const TopSongs = ({ songs }: { songs: any }): JSX.Element => (
   <Flex
@@ -20,7 +20,7 @@ export const TopSongs = ({ songs }: { songs: any }): JSX.Element => (
       <SongCard song={song} key={song.id} />
     ))}
   </Flex>
-)
+);
 
 export const TopArtists = ({ artists }: { artists: any }): React.ReactElement => (
   <Flex direction='column' maxW='xl' width='full' mx='auto' overflow='visible'>
@@ -42,7 +42,7 @@ export const TopArtists = ({ artists }: { artists: any }): React.ReactElement =>
       ))}
     </SimpleGrid>
   </Flex>
-)
+);
 
 export const RecentSongs = ({ songs }: { songs: any }): JSX.Element => (
   <Flex direction='column' width='full' maxW='2xl' mx='auto' overflow='visible'>
@@ -53,10 +53,10 @@ export const RecentSongs = ({ songs }: { songs: any }): JSX.Element => (
       <SongCard song={song.track} key={index.toString() + song.track.id} />
     ))}
   </Flex>
-)
+);
 
 interface CurrentlyPlayingProps {
-  song: any
+  song: any;
 }
 
 export const CurrentlyPlaying = ({ song }: CurrentlyPlayingProps): JSX.Element => (
@@ -68,4 +68,4 @@ export const CurrentlyPlaying = ({ song }: CurrentlyPlayingProps): JSX.Element =
       <Text>Nothing playing</Text>
     )}
   </Flex>
-)
+);

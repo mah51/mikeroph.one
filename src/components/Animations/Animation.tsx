@@ -1,10 +1,10 @@
-import { chakra } from '@chakra-ui/react'
-import React from 'react'
+import { chakra } from '@chakra-ui/react';
+import React from 'react';
 
 interface UpDownProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 
-  type: 'normal' | 'wide' | 'slow'
+  type: 'normal' | 'wide' | 'slow';
 }
 
 const UpDown = ({ children, type }: UpDownProps): JSX.Element => {
@@ -28,7 +28,7 @@ const UpDown = ({ children, type }: UpDownProps): JSX.Element => {
     >
       {children}
     </chakra.div>
-  )
-}
+  );
+};
 
-export default UpDown
+export default UpDown;

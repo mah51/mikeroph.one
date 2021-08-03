@@ -1,1 +1,1 @@
-export { default } from './WIP'
+export { default } from './WIP';

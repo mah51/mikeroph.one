@@ -1,10 +1,10 @@
-import React from 'react'
-import { chakra, Tooltip, useColorModeValue, VisuallyHidden } from '@chakra-ui/react'
+import React from 'react';
+import { chakra, Tooltip, useColorModeValue, VisuallyHidden } from '@chakra-ui/react';
 
 interface SocialIconsProps {
-  href: string
-  label: string
-  children: React.ReactNode
+  href: string;
+  label: string;
+  children: React.ReactNode;
 }
 
 const SocialIcons = ({ children, href, label }: SocialIconsProps): JSX.Element => {
@@ -30,7 +30,7 @@ const SocialIcons = ({ children, href, label }: SocialIconsProps): JSX.Element =
         {children}
       </chakra.button>
     </Tooltip>
-  )
-}
+  );
+};
 
-export default SocialIcons
+export default SocialIcons;

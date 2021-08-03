@@ -1,11 +1,11 @@
-import React from 'react'
-import { chakra, useColorModeValue, Text, Heading } from '@chakra-ui/react'
-import { transparentize } from '@chakra-ui/theme-tools'
+import React from 'react';
+import { chakra, useColorModeValue, Text, Heading } from '@chakra-ui/react';
+import { transparentize } from '@chakra-ui/theme-tools';
 
 interface AsideProps {
-  children: React.ReactNode
-  type: 'positive' | 'negative' | 'neutral' | 'warning'
-  title?: string
+  children: React.ReactNode;
+  type: 'positive' | 'negative' | 'neutral' | 'warning';
+  title?: string;
 }
 
 const colors = {
@@ -13,7 +13,7 @@ const colors = {
   negative: 'red',
   neutral: 'blue',
   warning: 'orange',
-}
+};
 
 export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Element => {
   return (
@@ -60,16 +60,16 @@ export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Elem
                     <line x1='12' y1='16' x2='12' y2='12'></line>
                     <line x1='12' y1='8' x2='12.01' y2='8'></line>
                   </>
-                )
-                break
+                );
+                break;
               case 'positive':
                 return (
                   <>
                     <path d='M22 11.08V12a10 10 0 1 1-5.93-9.14'></path>
                     <polyline points='22 4 12 14.01 9 11.01'></polyline>
                   </>
-                )
-                break
+                );
+                break;
               case 'warning':
                 return (
                   <>
@@ -77,7 +77,7 @@ export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Elem
                     <line x1='12' y1='9' x2='12' y2='13'></line>
                     <line x1='12' y1='17' x2='12.01' y2='17'></line>
                   </>
-                )
+                );
               case 'negative':
                 return (
                   <>
@@ -85,7 +85,7 @@ export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Elem
                     <line x1='8' x2='16' y1='8' y2='16' />
                     <line x2='8' x1='16' y1='8' y2='16' />
                   </>
-                )
+                );
               default:
                 return (
                   <>
@@ -93,7 +93,7 @@ export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Elem
                     <line x1='12' y1='16' x2='12' y2='12'></line>
                     <line x1='12' y1='8' x2='12.01' y2='8'></line>
                   </>
-                )
+                );
             }
           })()}
         </chakra.svg>
@@ -105,5 +105,5 @@ export const Aside = ({ children, type, title, ...props }: AsideProps): JSX.Elem
       )}
       <Text mt={2}>{children}</Text>
     </chakra.aside>
-  )
-}
+  );
+};

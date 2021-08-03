@@ -10,7 +10,7 @@ const Loader = (): JSX.Element => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

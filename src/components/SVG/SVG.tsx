@@ -1,4 +1,4 @@
-import { chakra, useColorModeValue } from '@chakra-ui/react'
+import { chakra, useColorModeValue } from '@chakra-ui/react';
 
 const icons = {
   triangle: {
@@ -35,20 +35,20 @@ const icons = {
     ),
     viewBox: `0 0 30 30`,
   },
-}
+};
 
-type IconType = 'triangle' | 'circle' | 'hexa' | 'box'
+type IconType = 'triangle' | 'circle' | 'hexa' | 'box';
 
 type SVGProps = {
-  stroke?: boolean
-  color?: string | number | any
-  width: number
-  icon: IconType
-  zIndex?: number
-  left: string
-  top: string
-  hiddenMobile?: boolean
-}
+  stroke?: boolean;
+  color?: string | number | any;
+  width: number;
+  icon: IconType;
+  zIndex?: number;
+  left: string;
+  top: string;
+  hiddenMobile?: boolean;
+};
 
 const SVG = ({
   stroke = false,
@@ -83,6 +83,6 @@ const SVG = ({
   >
     {icons[icon].shape}
   </chakra.svg>
-)
+);
 
-export default SVG
+export default SVG;

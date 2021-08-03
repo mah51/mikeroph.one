@@ -1,1 +1,1 @@
-export { default } from './BlogBadge'
+export { default } from './BlogBadge';

@@ -1,1 +1,1 @@
-export { default } from './RepoCard'
+export { default } from './RepoCard';

@@ -1,1 +1,1 @@
-export { default } from './Sparkles'
+export { default } from './Sparkles';

@@ -1,1 +1,1 @@
-export { default } from './ToolGrid'
+export { default } from './ToolGrid';

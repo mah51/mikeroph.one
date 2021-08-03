@@ -1,1 +1,1 @@
-export { default } from './LineHeading'
+export { default } from './LineHeading';

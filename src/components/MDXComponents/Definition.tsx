@@ -1,6 +1,6 @@
-import { chakra, Tooltip, useColorModeValue } from '@chakra-ui/react'
+import { chakra, Tooltip, useColorModeValue } from '@chakra-ui/react';
 
-import { transparentize } from '@chakra-ui/theme-tools'
+import { transparentize } from '@chakra-ui/theme-tools';
 
 // interface DefinitionProps {
 //   link?: string;
@@ -26,9 +26,9 @@ import { transparentize } from '@chakra-ui/theme-tools'
 // };
 
 interface DefinitionStylesProps {
-  term: string
-  definition: string
-  link?: string
+  term: string;
+  definition: string;
+  link?: string;
 }
 
 export const Definition = ({ term, definition, link }: DefinitionStylesProps): JSX.Element => {
@@ -78,5 +78,5 @@ export const Definition = ({ term, definition, link }: DefinitionStylesProps): J
         {term}
       </chakra.span>
     </Tooltip>
-  )
-}
+  );
+};

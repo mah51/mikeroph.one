@@ -1,1 +1,1 @@
-export { default } from "./AboutTerminal";
+export { default } from './AboutTerminal';

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import React from 'react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 const WIP = (): JSX.Element => {
   return (
@@ -13,7 +13,7 @@ const WIP = (): JSX.Element => {
       <Heading>This page is currently a work in progress</Heading>
       <Text color='gray.500'>Check back later :)</Text>
     </Flex>
-  )
-}
+  );
+};
 
-export default WIP
+export default WIP;

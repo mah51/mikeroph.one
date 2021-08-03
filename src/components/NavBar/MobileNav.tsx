@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Box,
   Button,
@@ -8,13 +8,13 @@ import {
   useDisclosure,
   VStack,
   Link as ChakraLink,
-} from '@chakra-ui/react'
-import Link from 'next/link'
-import { AiOutlineMenu } from 'react-icons/ai'
-import ToggleTheme from './ToggleTheme'
+} from '@chakra-ui/react';
+import Link from 'next/link';
+import { AiOutlineMenu } from 'react-icons/ai';
+import ToggleTheme from './ToggleTheme';
 
 function MobileNav({ links }: { links: any }): JSX.Element {
-  const mobileNav = useDisclosure()
+  const mobileNav = useDisclosure();
   return (
     <Box display={{ md: `none` }}>
       <ToggleTheme />
@@ -62,7 +62,7 @@ function MobileNav({ links }: { links: any }): JSX.Element {
                   {item.name}
                 </Button>
               </Link>
-            ))
+            ));
           }
           return (
             <Link href={link.link} key={`${index.toString()}link`} passHref>
@@ -70,11 +70,11 @@ function MobileNav({ links }: { links: any }): JSX.Element {
                 {link.name}
               </Button>
             </Link>
-          )
+          );
         })}
       </VStack>
     </Box>
-  )
+  );
 }
 
-export default MobileNav
+export default MobileNav;

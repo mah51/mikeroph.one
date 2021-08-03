@@ -21,7 +21,7 @@ const Tools: ToolType[] = [
   {
     id: `telegram`,
     category: [`windows`, `mac`, `ios`, `web`],
-    link: `https://discord.com`,
+    link: `https://telegram.org/`,
     labels: [`Messaging`],
     name: `Telegram`,
     description: `Instant messaging app with lots of functionality.`,

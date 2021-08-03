@@ -1,9 +1,9 @@
 export interface LinkType {
-  link: string
-  id: string
-  name: string
-  label?: string
-  date: Date
+  link: string;
+  id: string;
+  name: string;
+  label?: string;
+  date: Date;
 }
 
 export const links: LinkType[] = [
@@ -84,6 +84,6 @@ export const links: LinkType[] = [
     label: `Web Development`,
     date: new Date(`2021-04-20T03:44`),
   },
-]
+];
 
-export default links
+export default links;

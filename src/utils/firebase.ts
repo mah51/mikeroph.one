@@ -7,8 +7,7 @@ if (!admin.apps.length) {
       privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
       projectId: 'personal-site-76e82',
     }),
-    databaseURL:
-      'https://personal-site-76e82-default-rtdb.europe-west1.firebasedatabase.app/',
+    databaseURL: 'https://personal-site-76e82-default-rtdb.europe-west1.firebasedatabase.app/',
   });
 }
 

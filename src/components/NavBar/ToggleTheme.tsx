@@ -1,10 +1,10 @@
-import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react'
-import { BiMoon, BiSun } from 'react-icons/bi'
+import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { BiMoon, BiSun } from 'react-icons/bi';
 
 const ToggleTheme = (): JSX.Element => {
-  const text = useColorModeValue('dark', 'light')
-  const SwitchIcon = useColorModeValue(BiMoon, BiSun)
-  const { toggleColorMode: toggleMode } = useColorMode()
+  const text = useColorModeValue('dark', 'light');
+  const SwitchIcon = useColorModeValue(BiMoon, BiSun);
+  const { toggleColorMode: toggleMode } = useColorMode();
   return (
     <IconButton
       mr={{ base: 2, md: 0 }}
@@ -17,7 +17,7 @@ const ToggleTheme = (): JSX.Element => {
       colorScheme='brand'
       icon={<SwitchIcon size={25} />}
     />
-  )
-}
+  );
+};
 
-export default ToggleTheme
+export default ToggleTheme;
