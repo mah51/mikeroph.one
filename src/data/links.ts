@@ -8,7 +8,7 @@ export interface LinkType {
 
 export const links: LinkType[] = [
     {
-    id: 'shapedivider,
+    id: 'shapedivider',
     link: 'https://www.shapedivider.app/',
     name: 'Shape Divider',
     label: 'Generate SVG section dividers.',
