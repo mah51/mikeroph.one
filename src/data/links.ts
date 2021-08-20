@@ -7,6 +7,21 @@ export interface LinkType {
 }
 
 export const links: LinkType[] = [
+    {
+    id: 'shapedivider,
+    link: 'https://www.shapedivider.app/',
+    name: 'Shape Divider',
+    label: 'Generate SVG section dividers.',
+    date: new Date('2021-08-20T03:12')
+  },
+  {
+    id: 'haikei.app',
+    favourite: true,
+    link: 'https://haikei.app/',
+    name: 'Haikei',
+    label: 'Design generators',
+    date: new Date('2021-08-20T03:11')
+  },
   {
     id: 'conic.css',
     link: 'https://www.conic.style/',
