@@ -1,9 +1,10 @@
 export interface LinkType {
-  link: string
-  id: string
-  name: string
-  label?: string
-  date: Date
+  link: string;
+  id: string;
+  name: string;
+  label?: string;
+  favourite?: boolean;
+  date: Date;
 }
 
 export const links: LinkType[] = [
