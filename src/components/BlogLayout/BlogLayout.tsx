@@ -136,7 +136,7 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
           <HStack justifyContent='flex-start' mr='auto' mt={5}>
             <EditIcon />
             <Link
-              href={`https://github.com/mah51/personal-web/edit/main/data/blog/${frontMatter.slug}.mdx`}
+              href={`https://github.com/mah51/michael-hall.me/edit/main/data/blog/${frontMatter.slug}.mdx`}
               passHref
             >
               <ChakraLink

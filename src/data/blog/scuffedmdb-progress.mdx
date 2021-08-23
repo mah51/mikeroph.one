@@ -1,0 +1,33 @@
+---
+title: 'Big changes I made to ScuffedMDB and why I made them.'
+publishedAt: '2021-08-23'
+summary: "I have made a lot of changes to my movie rating site ScuffedMDB over the last couple of months, here's why."
+tags: ['ScuffedMDB', 'Web Development', 'Next.JS', 'Chakra-UI', 'Movie Rating']
+by: { name: 'Michael Hall', avatar: '/static/images/profile.jpeg' }
+image: '/static/images/blog/movie-website-experience/banner.png'
+published: false
+---
+
+# Introduction
+
+About two months ago I wrote a blog post about my experience with [ScuffedMDB](https://smdb.michael-hall.me) and how I made it, since then I have made some pretty big changes, and I wanted to share some of them with you.
+
+As I explained in my previous blog post, I made this website to rate movies with my friends, without bloated or annoying UX features, it does what it says on the tin. It has come to the point where it is open source and takes less than fifteen minutes to setup your own instance, if you want to do so there are instructions on the [repo](https://github.com/mah51/scuffedmdb/#README). As it is hosted on the brilliant [Vercel](https://vercel.com) platform, it is free to use and hosting it yourself is a breeze.
+
+# User Experience
+
+When weighing up my changes, I decided to highlight the UX changes first, as these are what I really care about with this site. I wanted to make it as simple to use as possible.
+
+## Say no to modals
+
+On the original site, there was one main home page, and then three individual modals, one to add movies, one to add reviews, and one to see the details of a selected movie. I originally liked this to keep the website simple, but after I posted it to reddit I had people telling me to remove the modals, as it was a UX nightmare (They weren't wrong). So I did!
+
+Adding a movie and adding a review are simple tasks that can use modals, however displaying all of the data from a movie in a modal was proving difficult. So I made a new page, with an endpoint of `/movie/:id`, which displays the details of a movie.
+
+<Image
+  border
+  alt={'Movie details page'}
+  src={'/static/images/blog/scuffedmdb-progress/details-page.png'}
+  width={1920}
+  height={1080}
+/>

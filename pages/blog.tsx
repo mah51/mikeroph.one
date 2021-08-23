@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -12,27 +12,32 @@ import {
   MenuList,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react'
-import { getAllFilesFrontMatter } from '@/utils/mdx'
-import BlogPost from '@/components/BlogPost'
-import LineHeading from '@/components/LineHeading'
-import { AiOutlineSearch } from 'react-icons/ai'
-import { BiChevronDown } from 'react-icons/bi'
+} from '@chakra-ui/react';
+import { getAllFilesFrontMatter } from '@/utils/mdx';
+import BlogPost from '@/components/BlogPost';
+import LineHeading from '@/components/LineHeading';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { BiChevronDown } from 'react-icons/bi';
 
 function Blog({ posts }: { posts: any }): React.ReactElement {
-  const [filter, setFilter] = useState('')
-  const [sort, setSort] = useState('recent')
+  const [filter, setFilter] = useState('');
+  const [sort, setSort] = useState('recent');
 
   const filteredBlogPosts = posts
-    .filter((frontMatter: any) => frontMatter.title.toLowerCase().includes(filter))
+    .filter(
+      (frontMatter: any) =>
+        frontMatter.title.toLowerCase().includes(filter) &&
+        (frontMatter.published || !process.env.VERCEL_ENV)
+    )
+
     .sort((a: any, b: any) => {
       if (sort === 'recent' || sort === 'old') {
-        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       }
-    })
+    });
 
   if (sort === 'recent') {
-    filteredBlogPosts.reverse()
+    filteredBlogPosts.reverse();
   }
 
   return (
@@ -99,11 +104,11 @@ function Blog({ posts }: { posts: any }): React.ReactElement {
         ))}
       </Box>
     </Flex>
-  )
+  );
 }
 
 export async function getStaticProps(): Promise<{ props: { posts: any } }> {
-  const posts = await getAllFilesFrontMatter()
-  return { props: { posts } }
+  const posts = await getAllFilesFrontMatter();
+  return { props: { posts } };
 }
-export default Blog
+export default Blog;
