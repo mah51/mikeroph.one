@@ -8,6 +8,7 @@ import {
   HStack,
   useBreakpointValue,
   Flex,
+  Tag,
 } from '@chakra-ui/react';
 import formatDistance from 'date-fns/formatDistance';
 import { useQuery } from 'react-query';
@@ -19,9 +20,17 @@ interface BlogPostProps {
   slug: string;
   tags: string[];
   publishedAt: string;
+  featured?: boolean;
 }
 
-const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): JSX.Element => {
+const BlogPost = ({
+  title,
+  summary,
+  slug,
+  tags,
+  publishedAt,
+  featured,
+}: BlogPostProps): JSX.Element => {
   const spliceBP = useBreakpointValue({ base: 2, md: 4 });
   const { data } = useQuery(`views${slug}`, () => {
     return fetch(`/api/views/${slug}`).then(res => res.json());
@@ -34,6 +43,7 @@ const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): J
           mb={8}
           px={5}
           py={4}
+          mt={featured ? 14 : 0}
           direction='column'
           width='calc(100% -10px)'
           mx={'5px'}
@@ -43,9 +53,28 @@ const BlogPost = ({ title, summary, slug, tags, publishedAt }: BlogPostProps): J
           boxShadow='lg'
           transition='all 0.25s'
           borderRadius='2xl'
+          borderTopLeftRadius={featured ? '0' : '2xl'}
+          position='relative'
           transitionTimingFunction='spring(1 100 10 10)'
           _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
         >
+          {featured && (
+            <Tag
+              fontFamily='Ubuntu'
+              fontWeight='extrabold'
+              size='lg'
+              position='absolute'
+              top={0}
+              left={0}
+              border='1px solid'
+              borderColor='brand.200'
+              borderBottomRadius='0'
+              transform='translateY(-100%)'
+              colorScheme='brand'
+            >
+              New Post
+            </Tag>
+          )}
           <Flex
             width='full'
             alignItems={{ base: 'flex-start', sm: 'flex-end' }}

@@ -22,6 +22,8 @@ import { BiChevronDown } from 'react-icons/bi';
 function Blog({ posts }: { posts: any }): React.ReactElement {
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('recent');
+  posts[0].featured =
+    Date.now() - new Date(posts[0].publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
 
   const filteredBlogPosts = posts
     .filter(
@@ -36,7 +38,7 @@ function Blog({ posts }: { posts: any }): React.ReactElement {
       }
     });
 
-  if (sort === 'recent') {
+  if (sort === 'old') {
     filteredBlogPosts.reverse();
   }
 
