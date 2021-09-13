@@ -47,4 +47,63 @@ Another big UX improvement is related to editing reviews, previously there was n
   alt='Editing a review with autofill'
 />
 
-##
+<Aside type='neutral' title='Allowing modal to be opened by any component'>
+  To allow other components to open the review modal and set which movie is being editited I had to
+  use React's `useContext` function, which is works exactly how I wanted it to. However it was a new
+  feature to me, so I had to do some googling.
+
+```jsx:utils/ModalContext.ts
+
+export const ReviewModalContext = React.createContext<ReviewContext>({
+  isOpen: false,
+  onOpen: () => {},
+  onClose: () => {},
+  movie: null,
+  setMovie: () => {},
+});
+
+```
+
+And the values of the context are initialized in the `pages/_app` component.
+
+```jsx:pages/_app.tsx
+function MyApp({ Component, pageProps }: AppProps): React.ReactChild {
+  const { onOpen, onClose, isOpen } = useDisclosure();
+  const [movie, setMovie] = useState<SerializedMovieType<
+    ReviewType<PopulatedUserType>[]
+  > | null>(null);
+
+  return (
+      <ReviewModalContext.Provider
+        value={{ isOpen, onOpen, onClose, movie, setMovie }}
+      >
+        <Component {...pageProps} />
+      </ReviewModalContext.Provider>
+  )
+}
+```
+
+This then allows me to utilise the `useContext` function to open, close, or set the movie for the modal.
+
+```jsx
+import { useContext } from 'react';
+import { ReviewModalContext } from './utils/ModalContext';
+
+function SomeComponent() {
+  const { onOpen, onClose, isOpen, setMovie } = useContext(ReviewModalContext);
+
+  return <Button onClick={onClose}>Close modal!</Button>;
+}
+```
+
+</Aside>
+
+## Changing authentication provider
+
+Whilst this doesn't initially seem like a UX problem, the old auth I was using was a botched together from some code I found online. This caused a few problems, such as the user being logged out every time they closed the browser, and my understanding of JWT tokens and cookies is pretty minimal so I decided to switch to next-auth.
+
+This basically handles all of the authentication, and was very simple to configure the basic functionality, however I did struggle extending properties on the user component.
+
+# Performance
+
+## Using next/image component

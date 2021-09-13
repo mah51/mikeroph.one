@@ -17,6 +17,7 @@ export default function Blog({
       </BlogLayout>
     );
   }
+  return null;
 }
 
 export async function getStaticPaths(): Promise<any> {
