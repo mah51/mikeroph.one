@@ -1,8 +1,12 @@
-# Personal Website
+# michael-hall.me
 
 This repository is home to my [website's](https://www.michael-hall.me) code.
 
 The website itself uses NextJS, Chakra-UI, and TypeScript and is a place to show off my other projects. The core of the website is finished, but there are some changes I would like to make (see TODOs), additionally, it will constantly be updated with new projects, or pages if I want to add them :).
+
+The website is open source so feel free to use bits of code or to fork the whole thing if you want to use it as the base of your website! If you do fork the whole thing I would appreciate you leaving a link to this repo somewhere on the site or in the repo though. Thanks :).
+
+If you like this project, check out some of my other [ones](https://github.com/mah51), leave me a message, or <a href="https://www.buymeacoffee.com/gbraad" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>, but of course that isn't required!
 
 
 TODOs:
