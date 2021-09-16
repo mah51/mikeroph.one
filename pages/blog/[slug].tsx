@@ -10,7 +10,7 @@ export default function Blog({
   mdxSource: any;
   frontMatter: any;
 }): React.ReactElement {
-  if (frontMatter.published || !process.env.VERCEL_ENV) {
+  if (frontMatter.published || process.env.NODE_ENV === 'development') {
     return (
       <BlogLayout frontMatter={frontMatter}>
         <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />

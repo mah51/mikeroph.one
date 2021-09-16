@@ -29,7 +29,7 @@ function Blog({ posts }: { posts: any }): React.ReactElement {
     .filter(
       (frontMatter: any) =>
         frontMatter.title.toLowerCase().includes(filter) &&
-        (frontMatter.published || !process.env.VERCEL_ENV)
+        (frontMatter.published || process.env.NODE_ENV === 'development')
     )
 
     .sort((a: any, b: any) => {
