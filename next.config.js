@@ -1,10 +1,10 @@
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' unpkg.com 'unsafe-eval' 'unsafe-inline' *.michael-hall.me;
-  child-src *.youtube.com *.google.com *.twitter.com;
+  child-src 'self' 'unsafe-inline' *.youtube.com *.google.com *.twitter.com;
   style-src 'self' unpkg.com 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
-  media-src 'none';
+  media-src 'self';
   connect-src *;
   font-src 'self' fonts.gstatic.com;
 `;
@@ -23,7 +23,7 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
     key: 'X-Frame-Options',
-    value: 'DENY',
+    value: 'ALLOW',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
   {

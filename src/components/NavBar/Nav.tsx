@@ -27,13 +27,13 @@ const links = [
     link: `/projects`,
   },
   {
+    name: `Research`,
+    link: `/research`,
+  },
+  {
     type: `dropdown`,
     name: `Other`,
     links: [
-      {
-        name: `Music`,
-        link: `/spotify`,
-      },
       {
         name: `Tools`,
         link: `/tools`,
@@ -41,6 +41,10 @@ const links = [
       {
         name: `Links`,
         link: `/links`,
+      },
+      {
+        name: `Music`,
+        link: `/spotify`,
       },
     ],
   },
