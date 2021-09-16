@@ -1,10 +1,11 @@
-import { Badge } from '@chakra-ui/react';
+import { Badge, BoxProps } from '@chakra-ui/react';
 
 interface BlogBadgeProps {
   tag: string;
 }
 
-const BlogBadge = ({ tag }: BlogBadgeProps): JSX.Element => {
+const BlogBadge = (props: BlogBadgeProps & BoxProps): JSX.Element => {
+  const { tag } = props;
   return (
     <Badge
       colorScheme={
@@ -16,6 +17,7 @@ const BlogBadge = ({ tag }: BlogBadgeProps): JSX.Element => {
       px={2}
       fontWeight={'600'}
       borderRadius={'md'}
+      {...props}
     >
       {tag}
     </Badge>
