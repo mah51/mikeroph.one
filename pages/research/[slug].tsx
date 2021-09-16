@@ -3,7 +3,7 @@ import { ResearchItem, researchItems } from '@/data/researchItems';
 import { Avatar } from '@chakra-ui/avatar';
 import { Box, Flex, HStack, VStack, Text } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
-import LineHeading from 'dist/src/components/LineHeading';
+import LineHeading from '@/components/LineHeading';
 import { title } from 'process';
 import React, { ReactElement } from 'react';
 
