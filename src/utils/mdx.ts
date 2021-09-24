@@ -11,7 +11,7 @@ import remarkCodeTitles from 'remark-code-titles';
 export const getFiles = (type: string) =>
   fs.readdirSync(path.join(process.cwd(), `src`, `data`, type));
 
-export async function getFileBySlug(type: string, slug: number) {
+export async function getFileBySlug(type: string, slug: number): Promise<any> {
   const source = slug
     ? fs.readFileSync(path.join(process.cwd(), `src`, `data`, type, `${slug}.mdx`), `utf8`)
     : fs.readFileSync(path.join(process.cwd(), `src`, `data`, `${type}.mdx`), `utf8`);
@@ -35,7 +35,7 @@ export async function getFileBySlug(type: string, slug: number) {
   };
 }
 
-export async function getAllFilesFrontMatter() {
+export async function getAllFilesFrontMatter(): Promise<any> {
   const files = fs.readdirSync(path.join(process.cwd(), `src`, `data`, `blog`));
 
   return files.reduce((allPosts: any, postSlug: string) => {

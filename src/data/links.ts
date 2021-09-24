@@ -8,12 +8,19 @@ export interface LinkType {
 }
 
 export const links: LinkType[] = [
-    {
+  {
+    id: 'squoosh',
+    link: 'https://squoosh.app/',
+    name: 'Squoosh',
+    label: 'Image Compression',
+    date: new Date('2021-09-24'),
+  },
+  {
     id: 'shapedivider',
     link: 'https://www.shapedivider.app/',
     name: 'Shape Divider',
     label: 'Generate SVG section dividers.',
-    date: new Date('2021-08-20T03:12')
+    date: new Date('2021-08-20T03:12'),
   },
   {
     id: 'haikei.app',
@@ -21,7 +28,7 @@ export const links: LinkType[] = [
     link: 'https://haikei.app/',
     name: 'Haikei',
     label: 'Design generators',
-    date: new Date('2021-08-20T03:11')
+    date: new Date('2021-08-20T03:11'),
   },
   {
     id: 'conic.css',
@@ -100,6 +107,6 @@ export const links: LinkType[] = [
     label: `Web Development`,
     date: new Date(`2021-04-20T03:44`),
   },
-]
+];
 
-export default links
+export default links;
