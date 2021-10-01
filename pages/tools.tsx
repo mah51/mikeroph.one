@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Flex,
   HStack,
@@ -10,12 +10,12 @@ import {
   Tabs,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react'
-import LineHeading from '@/components/LineHeading'
-import ToolGrid from '@/components/ToolGrid'
-import { AiFillApple, AiFillChrome, AiFillWindows, AiOutlineDesktop } from 'react-icons/ai'
-import { BsPhone } from 'react-icons/bs'
-import { NextSeo } from 'next-seo'
+} from '@chakra-ui/react';
+import LineHeading from '@/components/LineHeading';
+import ToolGrid from '@/components/ToolGrid';
+import { AiFillApple, AiFillChrome, AiFillWindows, AiOutlineDesktop } from 'react-icons/ai';
+import { BsPhone } from 'react-icons/bs';
+import { NextSeo } from 'next-seo';
 
 function Tools(): React.ReactElement {
   return (
@@ -71,7 +71,6 @@ function Tools(): React.ReactElement {
               }}
               mr={2}
               mt={2}
-              s
             >
               <HStack spacing={1}>
                 <Icon as={AiFillChrome} />
@@ -130,7 +129,7 @@ function Tools(): React.ReactElement {
         </Tabs>
       </Flex>
     </>
-  )
+  );
 }
 
-export default Tools
+export default Tools;

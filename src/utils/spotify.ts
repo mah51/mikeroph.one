@@ -27,7 +27,7 @@ const getAccessToken = async () => {
   return response.json();
 };
 
-export const getNowPlaying = async () => {
+export const getNowPlaying = async (): Promise<Response> => {
   const { access_token } = await getAccessToken();
 
   return fetch(NOW_PLAYING_ENDPOINT, {
@@ -37,7 +37,7 @@ export const getNowPlaying = async () => {
   });
 };
 
-export const getSpotifyData = async () => {
+export const getSpotifyData = async (): Promise<any> => {
   const { access_token } = await getAccessToken();
 
   const responseTracks = await fetch(TOP_TRACKS_ENDPOINT, {

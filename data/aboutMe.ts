@@ -1,8 +1,9 @@
-const style = props =>
+const style = (props) =>
   `color: var(--chakra-colors-brand-${
     props.colorMode === 'light' ? '600' : '300'
   });font-weight: 500;`;
-const info = props => [
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+const info = (props: any): { input: string; return: string }[] => [
   {
     input: 'self.learnAboutMe()',
     return: 'Loaded data...',
@@ -22,7 +23,8 @@ const info = props => [
   },
   {
     input: 'self.skills',
-    return: '[ "JavaScript", "Python", "React", "Next.JS", "Chakra-UI", "Tailwind", "SASS", "git"]',
+    return:
+      '[ "JavaScript", "Python", "React", "Next.JS", "Chakra-UI", "Tailwind", "SASS", "git"]',
   },
   {
     input: 'self.contactMe()',

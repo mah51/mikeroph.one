@@ -36,8 +36,6 @@ export const ToolCard = ({ name, description, link, id, labels }: ToolType): JSX
         <AspectRatio ratio={1} boxSize='85px'>
           <Box
             position='relative'
-            maxHeight='100%'
-            maxWidth='100%'
             overflow='hidden'
             boxShadow={`inset 0 0 20px 5px ${useColorModeValue(
               `${data.darkVibrant}19`,
@@ -50,10 +48,7 @@ export const ToolCard = ({ name, description, link, id, labels }: ToolType): JSX
               border='1px solid'
               position='absolute'
               borderColor={useColorModeValue(`${data.darkVibrant}`, `${data.lightVibrant}`)}
-              top={0}
-              bottom={0}
-              left={0}
-              right={0}
+              inset='0'
               opacity={useColorModeValue(0.15, 0.25)}
             />
             <Image

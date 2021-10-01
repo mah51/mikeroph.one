@@ -1,31 +1,36 @@
-import React from 'react'
+import React from 'react';
 
-const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
+const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const useRandomInterval = (callback, minDelay, maxDelay) => {
-  const timeoutId = React.useRef(null)
-  const savedCallback = React.useRef(callback)
+const useRandomInterval = (
+  callback: () => any,
+  minDelay: number,
+  maxDelay: number
+): (() => any) => {
+  const timeoutId = React.useRef(null);
+  const savedCallback = React.useRef(callback);
   React.useEffect(() => {
-    savedCallback.current = callback
-  })
+    savedCallback.current = callback;
+  });
   React.useEffect(() => {
-    const isEnabled = typeof minDelay === 'number' && typeof maxDelay === 'number'
+    const isEnabled =
+      typeof minDelay === 'number' && typeof maxDelay === 'number';
     if (isEnabled) {
       const handleTick = () => {
-        const nextTickAt = random(minDelay, maxDelay)
+        const nextTickAt = random(minDelay, maxDelay);
         timeoutId.current = window.setTimeout(() => {
-          savedCallback.current()
-          handleTick()
-        }, nextTickAt)
-      }
-      handleTick()
+          savedCallback.current();
+          handleTick();
+        }, nextTickAt);
+      };
+      handleTick();
     }
-    return () => window.clearTimeout(timeoutId.current)
-  }, [minDelay, maxDelay])
+    return () => window.clearTimeout(timeoutId.current);
+  }, [minDelay, maxDelay]);
   const cancel = React.useCallback(function () {
-    window.clearTimeout(timeoutId.current)
-  }, [])
-  return cancel
-}
+    window.clearTimeout(timeoutId.current);
+  }, []);
+  return cancel;
+};
 
-export default useRandomInterval
+export default useRandomInterval;

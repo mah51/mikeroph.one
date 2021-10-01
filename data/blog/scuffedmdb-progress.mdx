@@ -1,0 +1,195 @@
+---
+title: 'Big changes I made to ScuffedMDB and why I made them.'
+publishedAt: '2021-10-01'
+summary: "I have made a lot of changes to my movie rating site ScuffedMDB over the last couple of months, here's why."
+tags: ['ScuffedMDB', 'Web Development', 'Next.JS', 'Chakra-UI', 'Movie Rating']
+by: { name: 'Michael Hall', avatar: '/static/images/profile.jpeg' }
+image: '/static/images/blog/scuffedmdb-progress/banner.png'
+published: false
+---
+
+<Image
+  alt={'My new movie rating site, ScuffedMDB.'}
+  src={'/static/images/blog/scuffedmdb-progress/banner.png'}
+  width={1905 / 2}
+  height={957 / 2}
+  layout='responsive'
+  blurDataURL={
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=='
+  }
+  placeholder='blur'
+/>
+
+# Introduction
+
+About two months ago I wrote a blog post about my experience with [ScuffedMDB](https://smdb.michael-hall.me) and how I made it, since then I have made some pretty big changes, and I wanted to share some of them with you.
+
+As I explained in my previous blog post, I made this website to rate movies with my friends, without any annoying ads or annoying UX features, it does what it says on the tin. It has come to the point where it is open source and takes less than fifteen minutes to setup your own instance, if you want to do so there are instructions on the [repo](https://github.com/mah51/scuffedmdb/#README). It is completely free to host thanks to the brilliant [Vercel](https://vercel.com) platform.
+
+# User Experience
+
+When weighing up my changes, I decided to highlight the UX changes first. UX is very important to keep the site simple and easy to use which is what I really care about.
+
+## Say no to modals
+
+On the original site, there was one main home page, and then three individual modals, one to add movies, one to add reviews, and one to see the details of a selected movie. Having this arrangement was a shortcut, as it was easier to code, but after I posted it to reddit it was quite clear that this was a very confusing way to display information. So I endeavoured to make a movie details page that was able to display more data and be slightly more intuitive.
+
+<Image
+  border
+  alt={'New movie details page'}
+  src={'/static/images/blog/scuffedmdb-progress/details-page.png'}
+  width={1920}
+  height={1080}
+/>
+
+I am happy how this page turned out, and I am able to display a lot more information about the movie in a way that isn't cluttered.
+
+## Editing reviews made easier
+
+Another big UX improvement is related to editing reviews, previously there wasn't an 'editing' state while writing reviews, submitting a review would overwrite the previous. I changed this so the review modal would pre-populate with the old review. Now you don't have to re-type out a whole review just because you made a typo!
+
+<Image
+  src='/static/images/blog/scuffedmdb-progress/review-editing.png'
+  ratio={476 / 441}
+  chakraWidth='50%'
+  layout='fill'
+  border
+  alt='Editing a review with autofill'
+/>
+
+However, this didn't come without its challenges. As I wanted to be able to make the review modal accessible from the movie details page too, I needed to be able to share context around the web app, showing what movie is currently selected in the modal and whether it is open or closed. Thankfully I was able to do this by using [react-context](https://reactjs.org/docs/context.html).
+
+<Aside type={"neutral"} title={"Allowing the review modal to be opened by any component"}>
+
+To allow other components to utilise the review modal I had to
+use React's `useContext` function. Whilst this is a perfect scenario to use react-context, it was still a new feature to me, so I had to do some googling.
+
+I use a ModalContext file to initiate the methods and properties I want the context to have.
+
+```jsx:utils/ModalContext.ts
+
+  export const ReviewModalContext = React.createContext<ReviewContext>({
+    isOpen: false,
+    onOpen: () => {},
+    onClose: () => {},
+    movie: null,
+    setMovie: () => {},
+  });
+
+```
+
+<!--- </ReviewContext> This tag is to stop the typescript in the example from ruining the syntax colouring in my editor -_- -->
+
+These properties are then initialized in the `pages/_app` component.
+
+```jsx:pages/_app.tsx
+function MyApp({ Component, pageProps }: AppProps): React.ReactChild {
+  const { onOpen, onClose, isOpen } = useDisclosure(); // A chakra-ui utility to open and close modals
+  const [movie, setMovie] = useState<SerializedMovieType<
+    ReviewType<PopulatedUserType>[]
+  > | null>(null);
+
+  return (
+      <ReviewModalContext.Provider
+        value={{ isOpen, onOpen, onClose, movie, setMovie }}
+      >
+        <Component {...pageProps} />
+      </ReviewModalContext.Provider>
+  )
+}
+```
+
+This then allows me to utilise the `useContext` function to open, close, or set the movie for the modal.
+
+```jsx
+import { useContext } from 'react';
+import { ReviewModalContext } from './utils/ModalContext';
+
+function SomeComponent() {
+  const { onOpen, onClose, isOpen, setMovie } = useContext(ReviewModalContext);
+
+  return <Button onClick={onClose}>Close modal!</Button>;
+}
+```
+
+</Aside>
+
+## Changing authentication provider
+
+Whilst this doesn't initially seem like a UX problem, the old auth I was using was botched together from some code I found online. This caused a few problems, such as the user being logged out every time they closed the browser. As my understanding of JWT tokens and cookies is criminally minimal, I decided to switch to [next-auth](https://github.com/nextauthjs/next-auth).
+
+This basically handles all of the authentication, and was very simple to configure the basic functionality, however I did struggle extending properties on the user component.
+
+Additionally, this allowed me to add quite an important feature for those who wish to use this as a closed off community. You can now set a list of discord ids in `ALLOWED_USERS` in `.env.local`. This function is called on every log in attempt and goes through each discord id to check if the user logging in is in that list:
+
+```jsx:pages/api/[...nextauth].ts
+
+async signIn(user, account, profile) {
+  const ALLOWED_USERS = process.env.ALLOWED_USERS;
+  if (ALLOWED_USERS) {
+    if (
+      ALLOWED_USERS
+        .replace(/\s/, '')
+        .split(',')
+        .includes(profile?.id as string)
+    ) {
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
+
+```
+
+# Performance
+
+## Using the next/image component
+
+Whilst this is very easy to implement, it provides a great improvement in page load performance. You have probably already seen it in action, every image on this blog is only loaded as it scrolls into the <Definition term='viewport' definition='The area of the web-page that the user can see' />. This component will also resize, optimize, cache and serve the images in modern formats such as WebP. This provided a huge improvement in page load speed, however there is still room for improvement here. Together the SSR and cold-start take longer than I would like, but that is the draw-back with serverless hosting and once warm, the page load times are fast enough. For more information on the next/image component you can read the [next/image docs](https://nextjs.org/docs/api-reference/next/image).
+
+# Small improvements
+
+There are many other small improvements that I have made, but I don't have time to go into them all, or we would be here all day. So instead I am just going to whack them all into a list!
+
+- Allow host to change the accent colour throughout the website via the `.env.local` file.
+
+<Image
+  src='/static/images/blog/scuffedmdb-progress/site-accent.png'
+  ratio={1920 / 1080}
+  layout='fill'
+  border
+  alt='Website with a teal accent color'
+/>
+
+- Implement a mobile nav with hamburger button (much like the one on this site).
+- Markdown support for review comments.
+- Hide your discord image on the site, it is replaced with a default discord image.
+- Show the most recent movie on a card at the top of the page, allowing the user to open a review modal with one click.
+- Filter movies by genre.
+- Added a table view so users can scroll through the content a lot faster.
+
+<Image
+  src='/static/images/blog/scuffedmdb-progress/table-view.png'
+  ratio={1920 / 1080}
+  layout='fill'
+  border
+  alt='The new table view.'
+/>
+
+<Sparkles>
+  - Added support for webhooks and made a discord bot to send details about movies and reviews to a
+  discord server once added. (Okay... this isn't a small one, I'll have a seperate blog post on this
+  :))
+</Sparkles>
+
+## An quick note about typescript
+
+For the majority of the time typescript has been amazing, however I have had a bit of trouble trying to integrate it with all the different User instances. For example, if it is serialized, from next auth, from mongoDB etc, the properties on the object change as do their types. I tried a few different tricks but have settled on leaving it unsolved for now. It got to the point where it would take more time to solve the typescript issue than any issues that came around from the unknown types.
+
+<Aside type={'positive'} title={'Thank you very much for reading!'}>
+  Whilst I do write these for myself, it's also great if it helps other people out! So thank you for
+  reading through and I hope I helped you out just a little bit. If you would like to host
+  ScuffedMDB for yourself, you can visit
+  <a href='https://github.com/mah51/scuffedmdb'> the repository</a>.
+</Aside>

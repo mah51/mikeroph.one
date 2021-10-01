@@ -81,16 +81,27 @@ export const CustomImage = ({
   ratio,
   border,
   chakraWidth,
+  layout,
   ...props
 }: ImageProps & CustomImageProps): JSX.Element => {
   return (
     <Flex direction='column' my={7}>
       {ratio ? (
         <AspectRatio width={chakraWidth || 'full'} mx={'auto'} ratio={ratio}>
-          <Image className={`${border && 'border'}`} alt={alt} {...props} />
+          <Image
+            className={`${border && 'border'}`}
+            alt={alt}
+            layout={layout || 'fill'}
+            {...props}
+          />
         </AspectRatio>
       ) : (
-        <Image className={`${border && 'border'}`} alt={alt} {...props} />
+        <Image
+          className={`${border && 'border'}`}
+          layout={layout || 'responsive'}
+          alt={alt}
+          {...props}
+        />
       )}
       <style jsx global>{`
         .border {

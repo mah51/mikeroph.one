@@ -1,7 +1,7 @@
-import React from 'react'
-import { SimpleGrid } from '@chakra-ui/react'
-import ToolCard from '../ToolCard'
-import tools, { categories, ToolType } from '../../data/tools'
+import React from 'react';
+import { SimpleGrid } from '@chakra-ui/react';
+import ToolCard from '../ToolCard';
+import tools, { categories, ToolType } from '@/data/tools';
 
 const ToolGrid = ({ filter }: { filter: categories }): JSX.Element => {
   return (
@@ -10,18 +10,18 @@ const ToolGrid = ({ filter }: { filter: categories }): JSX.Element => {
         .filter(x => x.category.includes(filter))
         .sort((a, b) => {
           if (a.name < b.name) {
-            return -1
+            return -1;
           }
           if (a.name > b.name) {
-            return 1
+            return 1;
           }
-          return 0
+          return 0;
         })
         .map((tool: ToolType, index: number) => (
           <ToolCard {...tool} key={index.toString()} />
         ))}
     </SimpleGrid>
-  )
-}
+  );
+};
 
-export default ToolGrid
+export default ToolGrid;

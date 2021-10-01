@@ -50,7 +50,8 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
           title: frontMatter.title,
           site_name: 'Michael Hall',
           description: frontMatter.summary,
-          url: `https://michael-hall.me${router.asPath}`,
+          url: `https://michael-hall.me${router.asPath}/`,
+
           type: 'article',
           article: {
             publishedTime: new Date(frontMatter.publishedAt).toISOString(),

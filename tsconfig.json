@@ -19,11 +19,11 @@
       "@/pages/*": ["pages/*"],
       "@/components/*": ["src/components/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/data/*": ["src/data/*"],
+      "@/data/*": ["data/*"],
       "@/hooks/*": ["src/hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.hook.ts", "src"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.hook.ts", "src", "data"],
   "exclude": ["node_modules"],
   "typeAcquisition": {
     "include": ["react", "next"]

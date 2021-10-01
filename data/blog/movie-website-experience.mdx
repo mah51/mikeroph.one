@@ -13,6 +13,7 @@ published: true
   src={'/static/images/blog/movie-website-experience/banner.png'}
   width={1905 / 2}
   height={957 / 2}
+  layout='responsive'
   blurDataURL={
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=='
   }
@@ -63,7 +64,8 @@ This data populates a modal, from which I can click a button to add a movie to t
   alt={'Movie Modal, used to add movies to the website.'}
   src={'/static/images/blog/movie-website-experience/movie-modal.png'}
   ratio={460 / 466}
-  layout={'fill'}
+  sizes='650px'
+  layout='fill'
   chakraWidth={'50%'}
 />
 
@@ -130,8 +132,9 @@ During the construction of the website I tried to focus on the design, which [Ch
   border
   alt={'Homepage of ScuffedMDB'}
   src={'/static/images/blog/movie-website-experience/design.png'}
-  width={1293}
-  height={544}
+  width={1293 / 2}
+  height={544 / 2}
+  layout='responsive'
 />
 
 The card component looks like this, [link to repo](https://github.com/mah51/movie-web-typescript/blob/main/components/Card/Card.tsx):
