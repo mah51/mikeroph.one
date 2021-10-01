@@ -23,7 +23,14 @@
       "@/hooks/*": ["src/hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.hook.ts", "src", "data"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.hook.ts",
+    "src",
+    "data"
+  ],
   "exclude": ["node_modules"],
   "typeAcquisition": {
     "include": ["react", "next"]

@@ -31,7 +31,8 @@ const random = (min: number, max: number): number =>
 const clamp = (val: number, min = 0, max = 1): number =>
   Math.max(min, Math.min(max, val));
 
-const sample = (arr: string[], len = 1): string[] => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+const sample = (arr: any, len = 1): string[] => {
   const output = [];
 
   for (let i = 0; i < len; i++) {
