@@ -6,7 +6,6 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   const response = await getNowPlaying();
-  console.log(response);
   if (response.status === 204 || response.status > 400) {
     return res.status(200).json({ isPlaying: false });
   }
