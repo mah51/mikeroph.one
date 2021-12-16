@@ -61,7 +61,6 @@ module.exports = withMDX({
       'SPOTIFY_CLIENT_ID',
       'SPOTIFY_CLIENT_SECRET',
       'SPOTIFY_REFRESH_TOKEN',
-      'NEXT_PUBLIC_HOST',
       'FIREBASE_PRIVATE_KEY',
       'FIREBASE_CLIENT_EMAIL',
     ].filter((envVar) => !process.env[envVar]);
