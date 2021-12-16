@@ -54,6 +54,24 @@ const withMDX = require('@next/mdx')({
 
 module.exports = withMDX({
   pageExtensions: ['ts', 'tsx'],
+  webpack: (config, { dev, isServer }) => {
+    if (dev) return config;
+    if (!isServer) return config;
+    const missingVars = [
+      'SPOTIFY_CLIENT_ID',
+      'SPOTIFY_CLIENT_SECRET',
+      'SPOTIFY_REFRESH_TOKEN',
+      'NEXT_PUBLIC_HOST',
+      'FIREBASE_PRIVATE_KEY',
+      'FIREBASE_CLIENT_EMAIL',
+    ].filter((envVar) => !process.env[envVar]);
+    if (missingVars.length) {
+      throw new Error(
+        'You are missing some vital environment variables: ' +
+          missingVars.join(', ')
+      );
+    }
+  },
   webpack5: true,
   images: {
     domains: ['i.scdn.co', 'user-images.githubusercontent.com'],
