@@ -8,6 +8,10 @@ The website is open source so feel free to use bits of code or to fork the whole
 
 If you like this project, check out some of my other [ones](https://github.com/mah51)!
 
+## If you want to setup this webiste yourself:
+
+fork project and make sure all .env.example variables are filled out on the vercel dashboard. To get a spotify refresh token you can use [this site](https://getyourspotifyrefreshtoken.herokuapp.com/) (note: This is not an official site, just one someone randomly found on medium so use at your own discretion)
+
 
 TODOs:
 
