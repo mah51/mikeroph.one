@@ -70,6 +70,7 @@ module.exports = withMDX({
           missingVars.join(', ')
       );
     }
+    return config;
   },
   webpack5: true,
   images: {
