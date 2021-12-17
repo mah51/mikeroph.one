@@ -13,6 +13,7 @@ interface ProjectsProps {
   repos: repoType[];
   followers: number;
   revalidate?: number;
+  error?: string;
 }
 
 function Projects({ repos }: ProjectsProps): React.ReactElement {
@@ -131,12 +132,26 @@ function Projects({ repos }: ProjectsProps): React.ReactElement {
 }
 
 export async function getStaticProps(): Promise<{ props: ProjectsProps }> {
-  const response = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_HOST ||
-      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    }/api/github`
-  );
+  let error = null;
+  let response = null;
+  try {
+    response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_HOST ||
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      }/api/github`
+    );
+    if (!response.ok) {
+      error = `${response.status} ${response.statusText}`;
+    }
+  } catch (e) {
+    console.error(e);
+    error = 'There was an error fetching github stats';
+  }
+
+  if (error) {
+    return { props: { stars: 0, followers: 0, repos: [], error } };
+  }
 
   const { stars, repos, followers } = await response.json();
 

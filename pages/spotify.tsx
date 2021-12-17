@@ -130,17 +130,25 @@ function Spotify({ data, error }: SpotifyProps): React.ReactElement {
 }
 
 export async function getStaticProps(): Promise<{ props: SpotifyProps }> {
-   const response = await fetch(
-     `${
-       process.env.NEXT_PUBLIC_HOST ||
-       `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-     }/api/get-spotify-data`
-   );
   let error = null;
-  if (response.status !== 200) {
-    error = `There was an error: ${response.status}`;
+  let data = null;
+  try {
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_HOST ||
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      }/api/get-spotify-data`
+    );
+    if (response.status !== 200) {
+      error = `There was an error: ${response.status}`;
+    } else {
+      data = await response.json();
+    }
+  } catch (e) {
+    console.error(e);
+    error = 'There was an error fetching data from spotify';
   }
-  const data = await response.json();
+
   return { props: { data, error, revalidate: 60 } };
 }
 
