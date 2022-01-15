@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import vCardsJS from 'vcards-js';
 
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
-  if (req.query.id !== process.env.CONTACT_VCARD_ID) return res.send(404);
   const vCard = vCardsJS();
   vCard.firstName = 'Michael';
   vCard.lastName = 'Hall';
