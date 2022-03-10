@@ -134,7 +134,7 @@ function Nav(): JSX.Element {
                   }}
                   color={colorMode === 'light' ? 'gray.900' : 'white'}
                 >
-                  Michael Hall
+                  Shahriar Avi
                 </ChakraLink>
               )}
             </Link>
