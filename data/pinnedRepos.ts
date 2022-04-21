@@ -16,10 +16,10 @@ export const pinnedRepos: pinnedRepoType[] = [
   },
 
   {
-    id: `michael-hall.me`,
+    id: `mikeroph.one`,
     stack: ['Next.JS', 'Chakra-UI', 'MDX'],
     name: `My Website`,
-    deployedLink: 'https://michael-hall.me',
+    deployedLink: 'https://mikeroph.one',
     image:
       'https://user-images.githubusercontent.com/47287285/126173254-b30cafad-d757-4f5e-9a4e-f2c89b3657b2.png',
     longDescription: `I was looking through Lee Rob's and Daniel Wirtz's websites one afternoon, and decided I need one for myself (you might see a few similarities 🙃 ). I learnt a lot about NextJS and Chakra, and had a great time making it.`,
@@ -28,7 +28,7 @@ export const pinnedRepos: pinnedRepoType[] = [
     id: `scuffedmdb`,
     stack: ['Next.JS', 'Chakra-UI'],
     name: `ScuffedMDB`,
-    deployedLink: 'https://smdb.michael-hall.me',
+    deployedLink: 'https://smdb.mikeroph.one',
     image:
       'https://user-images.githubusercontent.com/47287285/125026394-616c8300-e07c-11eb-9678-a6e497119b7d.png',
     longDescription: `I built the first version of this website during the latter half of quarantine to rate movies that my friends and I had watched over discord. Then decided it needed a remodel, and created ScuffedMDB (Movie-rating V2.0), made with NextJS and ChakraUI. It has been great to make a website, that not only all my friends can use, but other people can use (and have :)) for their own movie rating sites.`,

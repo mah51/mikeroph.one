@@ -26,7 +26,10 @@ interface BlogLayoutProps {
   frontMatter: frontMatterType;
 }
 
-const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => {
+const BlogLayout = ({
+  children,
+  frontMatter,
+}: BlogLayoutProps): JSX.Element => {
   const router = useRouter();
   return (
     <>
@@ -41,7 +44,7 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.summary}
-        canonical={`https://michael-hall.me${router.asPath}`}
+        canonical={`https://mikeroph.one${router.asPath}`}
         twitter={{
           cardType: 'summary_large_image',
           site: '@Mikerophone_',
@@ -50,7 +53,7 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
           title: frontMatter.title,
           site_name: 'Michael Hall',
           description: frontMatter.summary,
-          url: `https://michael-hall.me${router.asPath}/`,
+          url: `https://mikeroph.one${router.asPath}/`,
 
           type: 'article',
           article: {
@@ -58,30 +61,30 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
           },
           images: [
             {
-              url: `https://michael-hall.me${frontMatter.image}`,
+              url: `https://mikeroph.one${frontMatter.image}`,
             },
           ],
         }}
       />
       <chakra.article
         id={'blogArticle'}
-        display='flex'
-        flexDirection='column'
-        justifyContent='flex-start'
-        alignItems='center'
-        pt='20'
-        width='full'
-        minH='100vh'
-        mx='auto'
-        maxWidth='2xl'
+        display="flex"
+        flexDirection="column"
+        justifyContent="flex-start"
+        alignItems="center"
+        pt="20"
+        width="full"
+        minH="100vh"
+        mx="auto"
+        maxWidth="2xl"
       >
         {frontMatter.tags && (
           <Flex
-            width='full'
+            width="full"
             px={3}
             mb={4}
-            justifyContent='flex-start'
-            flexWrap='wrap'
+            justifyContent="flex-start"
+            flexWrap="wrap"
             sx={{ rowGap: '10px', columnGap: '10px' }}
           >
             {frontMatter.tags.map((tag, i) => (
@@ -99,19 +102,19 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
         </Heading>
         <Flex
           direction={{ base: 'column', md: 'row' }}
-          justifyContent='space-between'
+          justifyContent="space-between"
           alignItems={{ base: 'center', md: 'flex-start' }}
-          maxW='2xl'
+          maxW="2xl"
           mx={'auto'}
           mb={12}
           mt={5}
-          width='full'
+          width="full"
         >
-          <Flex alignItems='center' my={{ base: 2, md: 0 }}>
-            <Tag size='lg' colorScheme='brand' borderRadius='full'>
+          <Flex alignItems="center" my={{ base: 2, md: 0 }}>
+            <Tag size="lg" colorScheme="brand" borderRadius="full">
               <Avatar
                 name={frontMatter.by.name}
-                size='xs'
+                size="xs"
                 ml={-2}
                 mr={2}
                 src={frontMatter.by.avatar}
@@ -132,18 +135,24 @@ const BlogLayout = ({ children, frontMatter }: BlogLayoutProps): JSX.Element => 
             <ViewCounter slug={frontMatter.slug} />
           </Text>
         </Flex>
-        <Box mb={16} px={2} maxWidth='4xl' width='full' className={'blog-content'}>
+        <Box
+          mb={16}
+          px={2}
+          maxWidth="4xl"
+          width="full"
+          className={'blog-content'}
+        >
           {children}
-          <HStack justifyContent='flex-start' mr='auto' mt={5}>
+          <HStack justifyContent="flex-start" mr="auto" mt={5}>
             <EditIcon />
             <Link
-              href={`https://github.com/mah51/michael-hall.me/edit/main/src/data/blog/${frontMatter.slug}.mdx`}
+              href={`https://github.com/mah51/mikeroph.one/edit/main/src/data/blog/${frontMatter.slug}.mdx`}
               passHref
             >
               <ChakraLink
                 color={useColorModeValue('gray.900', 'white')}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Edit on github
               </ChakraLink>
