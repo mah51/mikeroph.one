@@ -26,10 +26,10 @@ const links = [
     name: `Projects`,
     link: `/projects`,
   },
-  {
-    name: `Research`,
-    link: `/research`,
-  },
+  //   {
+  //     name: `Research`,
+  //     link: `/research`,
+  //   },
   {
     type: `dropdown`,
     name: `Other`,
@@ -42,10 +42,10 @@ const links = [
         name: `Links`,
         link: `/links`,
       },
-      {
-        name: `Music`,
-        link: `/spotify`,
-      },
+      //   {
+      //     name: `Music`,
+      //     link: `/spotify`,
+      //   },
     ],
   },
 ];
@@ -70,8 +70,8 @@ function Nav(): JSX.Element {
 
   return (
     <chakra.header
-      width='full'
-      position='fixed'
+      width="full"
+      position="fixed"
       _before={{
         transition: 'all 0.10s',
         transitionTimingFunction: '1 100 10 10',
@@ -87,28 +87,31 @@ function Nav(): JSX.Element {
       top={0}
       left={0}
       zIndex={10}
-      bg={useColorModeValue(`rgba(255, 255, 255, 0.8)`, `rgba(26, 33, 41, 0.8)`)}
+      bg={useColorModeValue(
+        `rgba(255, 255, 255, 0.8)`,
+        `rgba(26, 33, 41, 0.8)`
+      )}
       sx={{ backdropFilter: `saturate(180%) blur(5px)` }}
     >
-      <chakra.nav mx='auto' p={3}>
+      <chakra.nav mx="auto" p={3}>
         <Flex
-          margin='auto'
-          justifyContent='space-between'
-          alignContent='center'
-          maxW='7xl'
-          width='full'
+          margin="auto"
+          justifyContent="space-between"
+          alignContent="center"
+          maxW="7xl"
+          width="full"
         >
-          <Box display='flex' alignContent='center'>
-            <Link href='/' passHref>
+          <Box display="flex" alignContent="center">
+            <Link href="/" passHref>
               {router.asPath === '/' ? (
                 <AnimatedTitle />
               ) : (
                 <ChakraLink
-                  fontSize='lg'
-                  margin='auto'
-                  fontWeight='semibold'
-                  position='relative'
-                  textTransform='capitalize'
+                  fontSize="lg"
+                  margin="auto"
+                  fontWeight="semibold"
+                  position="relative"
+                  textTransform="capitalize"
                   _after={{
                     transition: `all 0.25s ease-in-out`,
                     content: `''`,
@@ -152,33 +155,33 @@ export default Nav;
 const AnimatedTitle = () => (
   <CustomChakraLink
     color={useColorModeValue('gray.900', 'white')}
-    position='relative'
-    fontSize='2xl'
-    fontWeight='semibold'
-    textAlign='center'
+    position="relative"
+    fontSize="2xl"
+    fontWeight="semibold"
+    textAlign="center"
   >
     Michael Hall
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <chakra.svg
-      className='path-under'
-      position='absolute'
-      height='27px'
+      className="path-under"
+      position="absolute"
+      height="27px"
       bottom={'-14px'}
       left={'-15px'}
       transition={'all 0.2s'}
-      transitionTimingFunction='spring(1 10 10 10)'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 265 43'
-      fill='none'
+      transitionTimingFunction="spring(1 10 10 10)"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 265 43"
+      fill="none"
       stroke={useColorModeValue('brand.600', 'brand.300')}
-      strokeWidth='5px'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeMiterlimit='10'
+      strokeWidth="5px"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit="10"
     >
       <path
-        className='animated-underline'
-        d='M16.7 20.2c76.5 4.4 153.6-9.7 229.8-4.1 5.4.4 12.4 2.1 11.7 5.6-67.3 1.7-134.5 5.5-201.2 11.5l87.7-.9c35.2-.4 70.8-.7 104.9 4.6'
+        className="animated-underline"
+        d="M16.7 20.2c76.5 4.4 153.6-9.7 229.8-4.1 5.4.4 12.4 2.1 11.7 5.6-67.3 1.7-134.5 5.5-201.2 11.5l87.7-.9c35.2-.4 70.8-.7 104.9 4.6"
       ></path>
     </chakra.svg>
   </CustomChakraLink>

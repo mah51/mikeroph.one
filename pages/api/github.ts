@@ -12,6 +12,12 @@ export interface repoType {
   fork: boolean;
 }
 
+const excludedRepoNames = [
+  'protein-links',
+  'mah51',
+  'create-typescript-component',
+];
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -24,7 +30,9 @@ export default async function handler(
   const user = await userResponse.json();
   const repositories = await userReposResponse.json();
 
-  const notForked = repositories.filter((repo: any) => !repo.fork);
+  const notForked = repositories.filter(
+    (repo: any) => !repo.fork && !excludedRepoNames.includes(repo.name)
+  );
 
   const stars =
     notForked.reduce(

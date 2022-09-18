@@ -1,7 +1,12 @@
 import React from 'react';
-import { Flex, chakra, useColorModeValue, VStack, Text } from '@chakra-ui/react';
+import {
+  Flex,
+  chakra,
+  useColorModeValue,
+  VStack,
+  Text,
+} from '@chakra-ui/react';
 import { useHotkeys } from 'react-hotkeys-hook';
-import Head from 'next/head';
 
 interface StatementProps {
   input: string;
@@ -25,7 +30,7 @@ const Statement = ({
       setDisplayedIndex(input.length);
       setShowResult(true);
       setTimeout(() => {
-        setVisibleIndex(x => x + 1);
+        setVisibleIndex((x) => x + 1);
       }, 400);
     }
   });
@@ -50,45 +55,53 @@ const Statement = ({
     }
     if (visibleIndex === 0 && displayedIndex === 0) {
       setTimeout(() => {
-        setDisplayedIndex(i => i + 1);
+        setDisplayedIndex((i) => i + 1);
       }, 3000);
       return;
     }
     setTimeout(() => {
       setDisplayedIndex(displayedIndex + 1);
     }, 25 + Math.random() * 75);
-  }, [displayedIndex, input.length, showResult, visibleIndex, setVisibleIndex, thisIndex, visible]);
-  const initialState = !showResult && displayedIndex >= input.length && thisIndex === 0;
+  }, [
+    displayedIndex,
+    input.length,
+    showResult,
+    visibleIndex,
+    setVisibleIndex,
+    thisIndex,
+    visible,
+  ]);
+  const initialState =
+    !showResult && displayedIndex >= input.length && thisIndex === 0;
 
   const shownInput = input.substring(0, displayedIndex);
   return (
     <>
-      <Head>
-        {/* eslint-disable-next-line @next/next/no-page-custom-font*/}
-        <link
-          href='https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap'
-          rel='stylesheet'
-        />
-      </Head>
-      <VStack spacing={1} alignItems='flex-start' visibility={visible ? 'visible' : 'hidden'}>
-        <Flex fontFamily='Ubuntu Mono' fontSize='lg'>
+      <VStack
+        spacing={1}
+        alignItems="flex-start"
+        visibility={visible ? 'visible' : 'hidden'}
+      >
+        <Flex fontFamily="Ubuntu Mono" fontSize="lg">
           <chakra.span
             mr={2}
             color={useColorModeValue('purple.500', 'purple.300')}
-            fontWeight='bold'
+            fontWeight="bold"
           >
             &gt;
           </chakra.span>{' '}
           {shownInput}
         </Flex>
         <Text
-          fontFamily='Ubuntu Mono'
-          fontSize='lg'
+          fontFamily="Ubuntu Mono"
+          fontSize="lg"
           color={useColorModeValue('gray.500', 'gray.400')}
           visibility={showResult || initialState ? 'visible' : 'hidden'}
-          alignSelf='flex-start'
+          alignSelf="flex-start"
           dangerouslySetInnerHTML={{
-            __html: initialState ? 'Press enter to see what I am about' : result,
+            __html: initialState
+              ? 'Press enter to see what I am about'
+              : result,
           }}
         />
       </VStack>

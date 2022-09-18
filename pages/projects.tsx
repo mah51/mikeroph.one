@@ -117,9 +117,7 @@ function Projects({ repos }: ProjectsProps): React.ReactElement {
         >
           {repos
             .sort(
-              (a: any, b: any) =>
-                new Date(a.pushed_at).getTime() -
-                new Date(b.pushed_at).getTime()
+              (a: any, b: any) => new Date(a.pushed_at) - new Date(b.pushed_at)
             )
             .reverse()
             .map((repo: repoType, index: number) => (

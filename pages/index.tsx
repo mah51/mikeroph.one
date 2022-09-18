@@ -92,12 +92,14 @@ export default function Home(): React.ReactElement {
                 <Link href="/projects" passHref>
                   <ChakraLink>projects</ChakraLink>
                 </Link>{' '}
-                off, and test things out. You can see what music I am listening
+                off, and test things out.
+                {/* You can see what music I am listening
                 to on the{' '}
                 <Link href="/music" passHref>
                   <ChakraLink>music page</ChakraLink>
                 </Link>{' '}
-                or the{' '}
+                or the{' '} */}{' '}
+                You can see the{' '}
                 <Link href="/links" passHref>
                   <ChakraLink>websites</ChakraLink>
                 </Link>{' '}
@@ -111,7 +113,8 @@ export default function Home(): React.ReactElement {
                 </Link>
                 . I am currently undertaking a research masters degree in
                 Computational Biology at the University of Kent; attempting to
-                predict protein function from sequence using deep learning.
+                predict a protein&apos;s function from its sequence using deep
+                learning.
               </chakra.p>
             </Flex>
           </Flex>

@@ -34,7 +34,7 @@ const info = (props: any): { input: string; return: string }[] => [
       props
     )}" rel="noopener" href="https://github.com/mah51">Github</a>", "<a rel="noopener" style="${style(
       props
-    )}" href="https://www.instagram.com/accounts/login/">Instagram</a>"]`,
+    )}" href="mailto:michael.hall17@icloud.com">Email</a>"]`,
   },
 ];
 
