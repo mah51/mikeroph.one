@@ -104,7 +104,7 @@ export default function Home(): React.ReactElement {
                   <ChakraLink>websites</ChakraLink>
                 </Link>{' '}
                 &{' '}
-                <Link href="/links" passHref>
+                <Link href="/tools" passHref>
                   <ChakraLink>tools</ChakraLink>
                 </Link>{' '}
                 that I like. Sometimes I even write{' '}
@@ -113,8 +113,7 @@ export default function Home(): React.ReactElement {
                 </Link>
                 . I am currently undertaking a research masters degree in
                 Computational Biology at the University of Kent; attempting to
-                predict a protein&apos;s function from its sequence using deep
-                learning.
+                predict a protein&apos;s function from its sequence using machine learning.
               </chakra.p>
             </Flex>
           </Flex>
