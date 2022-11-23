@@ -3,6 +3,7 @@ export const pinnedRepos: pinnedRepoType[] = [
     image:
       'https://user-images.githubusercontent.com/47287285/119244610-38467080-bb6a-11eb-8c0e-2e241a31dac8.png',
     name: 'WormTracker',
+    deployedLink: "https://worm.mikeroph.one",
     stack: ['React', 'Semantic-UI'],
     id: 'WormTracker',
     longDescription:
