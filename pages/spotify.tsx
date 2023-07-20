@@ -52,7 +52,6 @@ const HeadingFade = ({ children }: HeadingFadeProps): React.ReactElement => {
 interface SpotifyProps {
   data: any;
   error: string | null;
-  revalidate?: number;
 }
 
 function Spotify({ data, error }: SpotifyProps): React.ReactElement {
@@ -129,7 +128,9 @@ function Spotify({ data, error }: SpotifyProps): React.ReactElement {
   );
 }
 
-export async function getStaticProps(): Promise<{ props: SpotifyProps }> {
+export async function getStaticProps(): Promise<
+  { props: SpotifyProps } & { revalidate: number }
+> {
   let error = null;
   let data = null;
   try {
@@ -149,7 +150,7 @@ export async function getStaticProps(): Promise<{ props: SpotifyProps }> {
     error = 'There was an error fetching data from spotify';
   }
 
-  return { props: { data, error, revalidate: 60 } };
+  return { props: { data, error }, revalidate: 60 };
 }
 
 export default Spotify;
