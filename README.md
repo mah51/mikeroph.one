@@ -22,8 +22,6 @@ Dark Mode:
 Blog Page:
 ![Screen Shot 2021-07-19 at 15 07 45](https://user-images.githubusercontent.com/47287285/126173254-b30cafad-d757-4f5e-9a4e-f2c89b3657b2.png)
 
-Music Page:
-
 Project page:
 
 ![Screen Shot 2021-07-19 at 15 09 53](https://user-images.githubusercontent.com/47287285/126173594-1155459f-cc80-4dde-ad75-e2ee6444be94.png)
